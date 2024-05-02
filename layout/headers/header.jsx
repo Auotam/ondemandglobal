@@ -101,23 +101,24 @@ const HeaderOne = () => {
                   
 
                   <li className="nl-simple" aria-haspopup="true">
-                    <a href="/" className="h-link">
-                      How to use
+                    <a href="#how-to-use" className="h-link">
+                      How To Use
                     </a>
                   </li>
                   
-                  <li className="nl-simple" aria-haspopup="true">
-                    <a href="/" className="h-link">
-                      Features
-                    </a>
-                  </li>
+                  
 
                   <li aria-haspopup="true">
                     <span className="wsmenu-click">
                       <i className="wsmenu-arrow"></i>
                     </span>
                     <a href="#pricing-3" className="h-link">
-                      Price
+                      Pricing
+                    </a>
+                  </li>
+                  <li className="nl-simple" aria-haspopup="true">
+                    <a href="#features" className="h-link">
+                      Features
                     </a>
                   </li>
 
@@ -159,7 +160,7 @@ const HeaderOne = () => {
                         aria-haspopup="true"
                       >
                         <a href="/login" className="h-link">
-                          Sign in
+                          Sign In
                         </a>
                       </li>
                       <li className="nl-simple" aria-haspopup="true">
@@ -167,7 +168,7 @@ const HeaderOne = () => {
                           href="/register"
                           class="btn r-04 btn--theme hover--tra-white"
                         >
-                          Sign up
+                          Sign Up
                         </a>
                       </li>{" "}
                     </>

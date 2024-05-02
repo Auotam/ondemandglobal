@@ -57,7 +57,8 @@ const FoundationSection = () => {
 										
 										<div className="price mt-25">
 											<sup className="color--black">$</sup>								
-											<span className="color--black">4.99</span>
+											<span className="color--black">4</span>
+											<sup className="coins color--black">99</sup>
 											<sup className="validity color--grey">Month</sup>
 										</div>
 
@@ -66,6 +67,7 @@ const FoundationSection = () => {
 
 									
 									<a href="#" className="pt-btn btn btn--theme hover--theme">Start 14-day trial</a>
+									<p className="p-sm btn-txt color--grey">Start 7-day free trial</p>
 									<p className="p-sm btn-txt color--grey">Start 7-day free trial</p>
                                     <p className="p-sm btn-txt color--grey">Secure storage for emergency information</p>
                                     <p className="p-sm btn-txt color--grey">Access to personal QR code</p>
@@ -133,7 +135,7 @@ const FoundationSection = () => {
 											
 											<div className="price2">
 												<sup className="color--black">$</sup>								
-												<span className="color--black">6</span>
+												<span className="color--black">14</span>
 												<sup className="coins color--black">99</sup>
 												<sup className="validity color--grey">per month</sup>
 											</div>

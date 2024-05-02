@@ -51,8 +51,8 @@ const HeroSlider = () => {
 
                         
                         <div className="btns-group">
-                            <a href="#banner-13" className="btn r-04 btn--theme hover--black">Get started</a>
-                            <a href="https://www.youtube.com/watch?v=7e90gBu4pas" className="video-popup2 btn r-04 btn--tra-black hover--violet-100">See how it works
+                            <a href="/register" className="btn r-04 btn--theme hover--black">Get started</a>
+                            <a href="javascript:" className="video-popup2 btn r-04 btn--tra-black hover--violet-100">See how it works
                             </a>
                         </div>	
 

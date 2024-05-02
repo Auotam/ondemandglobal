@@ -7,7 +7,7 @@ import "swiper/css/bundle";
 const BrandSlider = ({ brand_classA }) => {
   return (
     <>
-      <section id="features-11" className="py-100 features-section division">
+      <section id="features" className="py-100 features-section division">
 				<div className="container">
 
 
