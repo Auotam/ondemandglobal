@@ -31,14 +31,14 @@ const index = () => {
       <HeroSlider />
       <BlogSection />
       <FoundationSection />
-      <PricingSection />
+      {/* <PricingSection />
       <PortfolioSection />
-      <WorkSection />
-      <ServiceSection />   
+      <WorkSection /> */}
+      {/* <ServiceSection />    */}
        {/* <TestimonialSection />
       <FactSection /> */}
      
-      <BrandSlider />
+      <BrandSlider /> 
       <FooterOne /> 
     </div>
 

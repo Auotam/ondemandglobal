@@ -11,6 +11,7 @@ import AppProvider from '../context/AppContext';
 import Preloader from '../components/preloader';
 import SEO from '../components/seo';
 import useUserData from '@/utils/UseUserdata';
+import "../styles/globals.css"
 
 let persistor = persistStore(store)
 

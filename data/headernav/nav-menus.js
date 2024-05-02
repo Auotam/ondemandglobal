@@ -11,7 +11,7 @@ const nav_menus_list = [
     title: 'About',
     hasDropdown: false,
     dropdownItems: [
-      { link: '#lnk-1', title: 'Why Milpaq?' },
+      { link: '#lnk-1', title: 'Why OnDemand?' },
       { link: '#lnk-2', title: 'Integrations' },
       { link: '#lnk-3', title: 'How It Works' },
       { link: '#features-2', title: 'Best Solutions' },

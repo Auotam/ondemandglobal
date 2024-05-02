@@ -4,143 +4,165 @@ import React from 'react';
 const FoundationSection = () => {
     return (
         <>
-        <section id="lnk-1" className="pt-100 ct-02 content-section division">
-        <div className="container">
+        <section id="pricing-3" className="gr--whitesmoke inner-page-hero pb-60 pricing-section">
+				<div className="container">
 
 
-            
-            <div className="row d-flex align-items-center">
+					
+					<div className="row justify-content-center">	
+						<div className="col-md-10 col-lg-8">
+							<div className="section-title text-center mb-60">	
+
+								<h2 className="s-52 w-700">Simple, Flexible Pricing</h2>
+
+								
+								<div className="toggle-btn ext-toggle-btn toggle-btn-md mt-30">
+									<span className="toggler-txt">Billed monthly</span>
+							        <label className="switch-wrap">
+							          <input type="checkbox" id="checbox" onclick="check()" />
+							          <span className="switcher bg--grey switcher--theme">
+											<span className="show-annual"></span>
+								   			<span className="show-monthly"></span>
+							          </span>
+							        </label>
+							        <span className="toggler-txt">Billed yearly</span>
+
+							        
+							        <p className="color--theme">Save up to 25% with yearly billing</p>
+
+							    </div>
 
 
-              
-                <div className="col-md-6">
-                    <div className="img-block left-column wow fadeInRight">
-                        <img className="img-fluid" src="/assets/images/img-10.png" alt="content-image" />
-                    </div>
-                </div>
+							</div>	
+						</div>
+					</div>	
 
 
-            
-                <div className="col-md-6">
-                    <div className="txt-block right-column wow fadeInLeft">
-
-                        
-                         <span className="section-id">Enhance Engagement</span>
-
-                       
-                        <h2 className="s-46 w-700">Engage your most valuable visitors</h2>
-
-                        	
-                        <p>Sodales tempor sapien quaerat ipsum undo congue laoreet turpis neque auctor turpis 
-                            vitae dolor luctus placerat magna and ligula cursus purus vitae purus an ipsum suscipit
-                        </p>
-
-                        
-                        <h5 className="s-24 w-700">Digits that define growth</h5>
-
-                       
-                        <ul className="simple-list">
-
-                            <li className="list-item">
-                                <p>Sapien quaerat tempor an ipsum laoreet purus and sapien dolor an ultrice ipsum 
-                                   aliquam undo congue cursus dolor
-                                </p>
-                            </li>
-
-                            <li className="list-item">
-                                <p className="mb-0">Purus suscipit cursus vitae cubilia magnis volute egestas vitae 
-                                   sapien turpis ultrice auctor congue magna placerat
-                                </p>
-                            </li>
-
-                        </ul>
-
-                    </div>
-                </div>	
+					
+					<div className="pricing-3-wrapper text-center">
+						<div className="row row-cols-1 row-cols-md-3">
 
 
-            </div>
+							
+							<div className="col">
+								<div id="pt-3-1" className="p-table pricing-3-table bg--white-100 block-shadow r-12 wow fadeInUp" >
 
 
-        </div>	   
-    </section>
+									
+									<div className="pricing-table-header">
 
-<section className="pt-100 ct-01 content-section division">
-<div className="container">
+										
+										<h4 className="s-32">Individual</h4>
 
+										
+										<div className="price mt-25">
+											<sup className="color--black">$</sup>								
+											<span className="color--black">4.99</span>
+											<sup className="validity color--grey">Month</sup>
+										</div>
 
-    
-    <div className="row d-flex align-items-center">
-
-
-     
-        <div className="col-md-6 order-last order-md-2">
-            <div className="txt-block left-column wow fadeInRight">
-
-
-            
-                <div className="txt-box">
-
-                   	
-                    <h5 className="s-24 w-700">Solution that grows with you</h5>
-
-                  
-                    <p>Sodales tempor sapien quaerat ipsum undo congue laoreet turpis neque auctor turpis 
-                       vitae dolor luctus placerat magna and ligula cursus purus vitae purus an ipsum suscipit
-                    </p>
-
-                </div>
+									</div>	
 
 
-            	
-                <div className="txt-box mb-0">
-
-                   
-                    <h5 className="s-24 w-700">Connect your data sources</h5>
-
-                  
-                    <p>Tempor sapien sodales quaerat ipsum undo congue laoreet turpis neque auctor turpis 
-                        vitae dolor luctus placerat magna and ligula cursus purus an ipsum vitae suscipit 
-                        purus  
-                    </p>
-
-                   
-                    <ul className="simple-list">
-
-                        <li className="list-item">
-                            <p>Tempor sapien quaerat an ipsum laoreet purus and sapien dolor an ultrice ipsum
-                               aliquam undo congue dolor cursus 
-                            </p>
-                        </li>
-
-                        <li className="list-item">
-                            <p className="mb-0">Cursus purus suscipit vitae cubilia magnis volute egestas vitae 
-                               sapien turpis ultrice auctor congue magna placerat
-                            </p>
-                        </li>
-
-                    </ul>
-
-                </div>
+									
+									<a href="#" className="pt-btn btn btn--theme hover--theme">Start 14-day trial</a>
+									<p className="p-sm btn-txt color--grey">Start 7-day free trial</p>
+                                    <p className="p-sm btn-txt color--grey">Secure storage for emergency information</p>
+                                    <p className="p-sm btn-txt color--grey">Access to personal QR code</p>
 
 
-            </div>
-        </div>	
+								</div>
+							</div>	
 
 
-      
-        <div className="col-md-6 order-first order-md-2">
-            <div className="img-block right-column wow fadeInLeft">
-                <img className="img-fluid" src="/assets/images/img-06.png" alt="content-image" />
-            </div>
-        </div>
+							
+							<div className="col">
+								<div id="pt-3-2" className="p-table pricing-3-table bg--white-100 block-shadow r-12 wow fadeInUp" >
 
 
-    </div>	
+									
+									<div className="pricing-table-header">
+
+										
+										<h4 className="s-32">Business</h4>
+
+										<div className="price mt-25">								
+
+											
+											<div className="price2" >
+												<sup className="color--black">$</sup>								
+												<span className="color--black">14</span>
+												<sup className="coins color--black">99</sup>
+												<sup className="validity color--grey">Mo/5 Users</sup>
+											</div>
+
+								
+
+										</div>
+
+									</div>
 
 
-</div>	  
-</section>
+									
+									<a href="#" className="pt-btn btn btn--theme hover--theme">Start 14-day trial</a>
+									<p className="p-sm btn-txt color--grey">Start 7-day free trial</p>
+                                    <p className="p-sm btn-txt color--grey">Secure storage for emergency information</p>
+                                    <p className="p-sm btn-txt color--grey">Access to personal QR code</p>
+
+
+
+
+								</div>
+							</div>	
+
+
+							
+							<div className="col">
+								<div id="pt-3-3" className="p-table pricing-3-table bg--white-100 block-shadow r-12 wow fadeInUp">
+
+
+									
+									<div className="pricing-table-header">
+
+										
+										<h4 className="s-32">Business</h4>
+
+
+										<div className="price mt-25">								
+
+											
+											<div className="price2">
+												<sup className="color--black">$</sup>								
+												<span className="color--black">6</span>
+												<sup className="coins color--black">99</sup>
+												<sup className="validity color--grey">per month</sup>
+											</div>
+
+											
+
+										</div>
+
+									</div>	
+
+
+									
+									<a href="#" className="pt-btn btn btn--theme hover--theme">Start 7-day free trial</a>
+                                    <p className="p-sm btn-txt color--grey">Tailored for businesses and teams. </p>
+									<p className="p-sm btn-txt color--grey">Secure storage and sharing for business information</p>
+                                    <p className="p-sm btn-txt color--grey">Access to company and Individual employee’s QR code</p>
+                                    
+
+
+								</div>
+							</div>	
+
+
+						</div>
+					</div>
+
+
+				</div>	  
+			</section>
 </>
 
     );

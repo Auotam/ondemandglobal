@@ -20,9 +20,8 @@ const Header = () => {
             <div className="col-lg-5 col-md-5 col-6">
               <div className="header-left d-flex align-items-center">
                 <div className="menu-toggle-btn mr-15">
-                  <button id="menu-toggle" className="main-btn primary-btn btn-hover">
-                    <i className="lni lni-chevron-left me-2"></i> Menu
-                  </button>
+                <img className='logo' src="../assets/images/logo-white.png" alt="" />
+                  
                 </div>
                 <div className="header-search d-none d-md-flex">
                   <form action="#">
@@ -151,11 +150,11 @@ const Header = () => {
                     <div className="profile-info">
                       <div className="info">
                         <div className="image">
-                          <img src="assets/images/profile/profile-image.png" alt="" />
+                          <img src="assets/images/profile-image.png" alt="" />
                         </div>
                         <div>
-                          <h6 className="fw-500">Adam Joe</h6>
-                          <p>Admin</p>
+                          <h6 className="fw-500">{userData.user.name}</h6>
+                          <p>{userData.user.role}</p>
                         </div>
                       </div>
                     </div>
@@ -163,12 +162,10 @@ const Header = () => {
                   <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
                     <li>
                       <div className="author-info flex items-center !p-1">
-                        <div className="image">
-                          <img src="assets/images/profile/profile-image.png" alt="image" />
-                        </div>
+                      
                         <div className="content">
-                          <h4 className="text-sm">Adam Joe</h4>
-                          <a className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs" href="#">Email@gmail.com</a>
+                          <h4 className="text-sm">{userData.user.name}</h4>
+                          <a className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs" href="#">{userData.user.email}</a>
                         </div>
                       </div>
                     </li>

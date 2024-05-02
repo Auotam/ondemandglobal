@@ -8,19 +8,16 @@ const Sidebar = () => {
     <aside className="sidebar-nav-wrapper">
       <div className="navbar-logo">
         <a href="index.html">
-          <img src="assets/images/logo/logo.svg" alt="logo" />
+        <img className='logo' src="../assets/images/logo-white.png" alt="" />
         </a>
       </div>
       <nav className="sidebar-nav">
         <ul>
-          <li className="nav-item nav-item-has-children">
+          <li className="nav-item">
+            <Link   href="/mydashboard" >
             <a
-              href="#0"
-              data-bs-toggle="collapse"
-              data-bs-target="#ddmenu_1"
-              aria-controls="ddmenu_1"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+            
+            
             >
               <span className="icon">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,22 +29,12 @@ const Sidebar = () => {
               </span>
               <span className="text">Dashboard</span>
             </a>
-            <ul id="ddmenu_1" className="collapse show dropdown-nav">
-              <li>
-                <a href="index.html" className="active"> eCommerce </a>
-              </li>
-            </ul>
+            </Link>
+           
           </li>
-          <li className="nav-item nav-item-has-children">
-            <a
-              href="#0"
-              className="collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#ddmenu_2"
-              aria-controls="ddmenu_2"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
+          <li className="nav-item ">
+            <Link href="/mydashboard/lookup" >  
+                      <a>
               <span className="icon">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -56,67 +43,19 @@ const Sidebar = () => {
                     d="M13.125 2.29167L16.0417 5.20834H14.1667C13.5913 5.20834 13.125 4.74197 13.125 4.16667V2.29167Z" />
                 </svg>
               </span>
-              <span className="text">Pages</span>
+              <span className="text">Lookup</span>
             </a>
-            <ul id="ddmenu_2" className="collapse dropdown-nav">
-              <li>
-                <a href="settings.html"> Settings </a>
-              </li>
-              <li>
-                <a href="blank-page.html"> Blank Page </a>
-              </li>
-            </ul>
+            </Link>
+
+            
           </li>
-          <li className="nav-item">
-            <a href="invoice.html">
-              <span className="icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M3.33334 3.35442C3.33334 2.4223 4.07954 1.66666 5.00001 1.66666H15C15.9205 1.66666 16.6667 2.4223 16.6667 3.35442V16.8565C16.6667 17.5519 15.8827 17.9489 15.3333 17.5317L13.8333 16.3924C13.537 16.1673 13.1297 16.1673 12.8333 16.3924L10.5 18.1646C10.2037 18.3896 9.79634 18.3896 9.50001 18.1646L7.16668 16.3924C6.87038 16.1673 6.46298 16.1673 6.16668 16.3924L4.66668 17.5317C4.11731 17.9489 3.33334 17.5519 3.33334 16.8565V3.35442ZM4.79168 5.04218C4.79168 5.39173 5.0715 5.6751 5.41668 5.6751H10C10.3452 5.6751 10.625 5.39173 10.625 5.04218C10.625 4.69264 10.3452 4.40927 10 4.40927H5.41668C5.0715 4.40927 4.79168 4.69264 4.79168 5.04218ZM5.41668 7.7848C5.0715 7.7848 4.79168 8.06817 4.79168 8.41774C4.79168 8.76724 5.0715 9.05066 5.41668 9.05066H10C10.3452 9.05066 10.625 8.76724 10.625 8.41774C10.625 8.06817 10.3452 7.7848 10 7.7848H5.41668ZM4.79168 11.7932C4.79168 12.1428 5.0715 12.4262 5.41668 12.4262H10C10.3452 12.4262 10.625 12.1428 10.625 11.7932C10.625 11.4437 10.3452 11.1603 10 11.1603H5.41668C5.0715 11.1603 4.79168 11.4437 4.79168 11.7932ZM13.3333 4.40927C12.9882 4.40927 12.7083 4.69264 12.7083 5.04218C12.7083 5.39173 12.9882 5.6751 13.3333 5.6751H14.5833C14.9285 5.6751 15.2083 5.39173 15.2083 5.04218C15.2083 4.69264 14.9285 4.40927 14.5833 4.40927H13.3333ZM12.7083 8.41774C12.7083 8.76724 12.9882 9.05066 13.3333 9.05066H14.5833C14.9285 9.05066 15.2083 8.76724 15.2083 8.41774C15.2083 8.06817 14.9285 7.7848 14.5833 7.7848H13.3333C12.9882 7.7848 12.7083 8.06817 12.7083 8.41774ZM13.3333 11.1603C12.9882 11.1603 12.7083 11.4437 12.7083 11.7932C12.7083 12.1428 12.9882 12.4262 13.3333 12.4262H14.5833C14.9285 12.4262 15.2083 12.1428 15.2083 11.7932C15.2083 11.4437 14.9285 11.1603 14.5833 11.1603H13.3333Z" />
-                </svg>
-              </span>
-              <span className="text">Invoice</span>
-            </a>
-          </li>
-          <li className="nav-item nav-item-has-children">
-            <a
-              href="#0"
-              className="collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#ddmenu_3"
-              aria-controls="ddmenu_3"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M14.9211 10.1294C15.1652 9.88534 15.1652 9.48967 14.9211 9.24559L10.7544 5.0789C10.5103 4.83482 10.1147 4.83482 9.87057 5.0789C9.62649 5.32297 9.62649 5.71871 9.87057 5.96278L12.9702 9.06251H1.97916C1.63398 9.06251 1.35416 9.34234 1.35416 9.68751C1.35416 10.0327 1.63398 10.3125 1.97916 10.3125H12.9702L9.87057 13.4123C9.62649 13.6563 9.62649 14.052 9.87057 14.2961C10.1147 14.5402 10.5103 14.5402 10.7544 14.2961L14.9211 10.1294Z" />
-                  <path
-                    d="M11.6383 15.18L15.805 11.0133C16.5373 10.2811 16.5373 9.09391 15.805 8.36166L11.6383 4.195C11.2722 3.82888 10.7923 3.64582 10.3125 3.64582V3.02082C10.3125 2.10035 11.0587 1.35416 11.9792 1.35416H16.9792C17.8997 1.35416 18.6458 2.10035 18.6458 3.02082V16.3542C18.6458 17.2747 17.8997 18.0208 16.9792 18.0208H11.9792C11.0587 18.0208 10.3125 17.2747 10.3125 16.3542V15.7292C10.7923 15.7292 11.2722 15.5461 11.6383 15.18Z" />
-                </svg>
-              </span>
-              <span className="text">Auth</span>
-            </a>
-            <ul id="ddmenu_3" className="collapse dropdown-nav">
-              <li>
-                <a href="signin.html"> Sign In </a>
-              </li>
-              <li>
-                <a href="signup.html"> Sign Up </a>
-              </li>
-            </ul>
-          </li>
+          
           <span className="divider"><hr /></span>
-          <li className="nav-item nav-item-has-children">
+          <li className="nav-item ">
+            <Link   href="/mydashboard/account">
             <a
-              href="#0"
-              className="collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#ddmenu_4"
-              aria-controls="ddmenu_4"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+            
+
             >
               <span className="icon">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -130,32 +69,15 @@ const Sidebar = () => {
                     d="M10.8333 14.5834C10.8333 12.5123 12.5123 10.8334 14.5833 10.8334C16.6544 10.8334 18.3333 12.5123 18.3333 14.5834C18.3333 16.6545 16.6544 18.3334 14.5833 18.3334C12.5123 18.3334 10.8333 16.6545 10.8333 14.5834Z" />
                 </svg>
               </span>
-              <span className="text">UI Elements </span>
+              <span className="text">Account Setting</span>
             </a>
-            <ul id="ddmenu_4" className="collapse dropdown-nav">
-              <li>
-                <a href="alerts.html"> Alerts </a>
-              </li>
-              <li>
-                <a href="buttons.html"> Buttons </a>
-              </li>
-              <li>
-                <a href="cards.html"> Cards </a>
-              </li>
-              <li>
-                <a href="typography.html"> Typography </a>
-              </li>
-            </ul>
+            </Link>
+            
           </li>
-          <li className="nav-item nav-item-has-children">
+          <li className="nav-item ">
+            <Link  href="/mydashboard/help" >
             <a
-              href="#0"
-              className="collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#ddmenu_55"
-              aria-controls="ddmenu_55"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+             
             >
               <span className="icon">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -171,43 +93,17 @@ const Sidebar = () => {
                     d="M2.49999 16.6667C2.03976 16.6667 1.66666 17.0398 1.66666 17.5C1.66666 17.9602 2.03976 18.3334 2.49999 18.3334H14.1667C14.6269 18.3334 15 17.9602 15 17.5C15 17.0398 14.6269 16.6667 14.1667 16.6667H2.49999Z" />
                 </svg>
               </span>
-              <span className="text">Icons</span>
+              <span className="text">Help</span>
             </a>
-            <ul id="ddmenu_55" className="collapse dropdown-nav">
-              <li>
-                <a href="icons.html"> LineIcons </a>
-              </li>
-              <li>
-                <a href="mdi-icons.html"> MDI Icons </a>
-              </li>
-            </ul>
+
+            </Link>
+            
           </li>
-          <li className="nav-item nav-item-has-children">
-            <a
-              href="#0"
-              className="collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#ddmenu_5"
-              aria-controls="ddmenu_5"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M4.16666 3.33335C4.16666 2.41288 4.91285 1.66669 5.83332 1.66669H14.1667C15.0872 1.66669 15.8333 2.41288 15.8333 3.33335V16.6667C15.8333 17.5872 15.0872 18.3334 14.1667 18.3334H5.83332C4.91285 18.3334 4.16666 17.5872 4.16666 16.6667V3.33335ZM6.04166 5.00002C6.04166 5.3452 6.32148 5.62502 6.66666 5.62502H13.3333C13.6785 5.62502 13.9583 5.3452 13.9583 5.00002C13.9583 4.65485 13.6785 4.37502 13.3333 4.37502H6.66666C6.32148 4.37502 6.04166 4.65485 6.04166 5.00002ZM6.66666 6.87502C6.32148 6.87502 6.04166 7.15485 6.04166 7.50002C6.04166 7.8452 6.32148 8.12502 6.66666 8.12502H13.3333C13.6785 8.12502 13.9583 7.8452 13.9583 7.50002C13.9583 7.15485 13.6785 6.87502 13.3333 6.87502H6.66666ZM6.04166 10C6.04166 10.3452 6.32148 10.625 6.66666 10.625H9.99999C10.3452 10.625 10.625 10.3452 10.625 10C10.625 9.65485 10.3452 9.37502 9.99999 9.37502H6.66666C6.32148 9.37502 6.04166 9.65485 6.04166 10ZM9.99999 16.6667C10.9205 16.6667 11.6667 15.9205 11.6667 15C11.6667 14.0795 10.9205 13.3334 9.99999 13.3334C9.07949 13.3334 8.33332 14.0795 8.33332 15C8.33332 15.9205 9.07949 16.6667 9.99999 16.6667Z" />
-                </svg>
-              </span>
-              <span className="text"> Forms </span>
-            </a>
-            <ul id="ddmenu_5" className="collapse dropdown-nav">
-              <li>
-                <a href="form-elements.html"> From Elements </a>
-              </li>
-            </ul>
-          </li>
+          
+
           <li className="nav-item">
-            <a href="tables.html">
+            <Link href="/mydashboard/faq">
+            <a>
               <span className="icon">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -218,13 +114,15 @@ const Sidebar = () => {
                     d="M2.5 16.875C2.15483 16.875 1.875 17.1548 1.875 17.5C1.875 17.8452 2.15483 18.125 2.5 18.125H17.5C17.8452 18.125 18.125 17.8452 18.125 17.5C18.125 17.1548 17.8452 16.875 17.5 16.875H2.5Z" />
                 </svg>
               </span>
-              <span className="text">Tables</span>
+              <span className="text">Faq</span>
             </a>
+            </ Link>
           </li>
+          
           <span className="divider"><hr /></span>
 
           <li className="nav-item">
-            <a href="notification.html">
+            <a href="javascript:">
               <span className="icon">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -237,21 +135,12 @@ const Sidebar = () => {
                     d="M7.48901 17.1925C8.10004 17.8918 8.99841 18.3335 10 18.3335C11.0016 18.3335 11.9 17.8918 12.511 17.1925C10.8482 17.4634 9.15183 17.4634 7.48901 17.1925Z" />
                 </svg>
               </span>
-              <span className="text">Notifications</span>
+              <span className="text">Logout</span>
             </a>
           </li>
         </ul>
       </nav>
-      <div className="promo-box">
-        <div className="promo-icon">
-          <img className="mx-auto" src="./assets/images/logo/logo-icon-big.svg" alt="Logo" />
-        </div>
-        <h3>Upgrade to PRO</h3>
-        <p>Improve your development process and start doing more with PlainAdmin PRO!</p>
-        <a href="https://plainadmin.com/pro" target="_blank" rel="nofollow" className="main-btn primary-btn btn-hover">
-          Upgrade to PRO
-        </a>
-      </div>
+    
     </aside>
     
     

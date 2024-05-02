@@ -5,6 +5,7 @@ import useUserData from '@/utils/UseUserdata';
 import Layout from '@/components/dashboard/layout';
 import Wrapper from '@/layout/wrapper';
 import SEO from '@/components/seo';
+import DashboardMain from '@/components/dashboard';
 
 
 const Dashboard = () => {
@@ -28,15 +29,16 @@ const Dashboard = () => {
     checkAuthentication();
   }, []);
 
-  if (userData === null) {
-    return <p>Loading user data...</p>;
-  }
+  // if (userData === null) {
+  //   return <p>Loading user data...</p>;
+  // }
 
   return (
 
     <Wrapper>
     <SEO pageTitle={'About'} />
     <Layout>
+      <DashboardMain />
     
   </Layout>
   </Wrapper>

@@ -5,7 +5,7 @@ import HomeMain from '../components/home';
 const index = () => {
   return (
     <Wrapper>
-      <SEO pageTitle={'On Demand Global'} />
+      <SEO pageTitle={'OnDemand '} />
       <HomeMain />
     </Wrapper>
   );
