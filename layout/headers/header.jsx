@@ -60,7 +60,7 @@ const HeaderOne = () => {
   
       <header
         id="header"
-        className="tra-menu navbar-dark light-hero-header white-scroll"
+        className="tra-menu navbar-dark inner-page-header white-scroll"
       >
         <div className="header-wrapper">
           <div className="wsmobileheader clearfix">
