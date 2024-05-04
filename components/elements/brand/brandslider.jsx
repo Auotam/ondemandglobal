@@ -12,8 +12,8 @@ const BrandSlider = ({ brand_classA }) => {
         <div className="row justify-content-center">
             <div className="col-md-10 col-lg-9">
                 <div className="section-title mb-70">
-                    <h2 className="s-48 w-700">The Complete Solutions</h2>
-                    <p className="s-21 color--grey">Ligula risus auctor tempus magna feugiat lacinia.</p>
+                    <h2 className="s-48 w-700">Feature Highlights</h2>
+                    <p className="s-21 color--grey">Empowering Safety and Accessibility.</p>
                 </div>
             </div>
         </div>
@@ -32,9 +32,8 @@ const BrandSlider = ({ brand_classA }) => {
                             </div>
                         </div>
                         <div className="fbox-txt">
-                            <h6 className="s-22 w-700">Friendly Interface</h6>
-                            <p>Porta semper lacus cursus feugiat primis ultrice ligula risus ociis auctor and
-                                tempus feugiat impedit felis cursus auctor augue mauris blandit ipsum
+                            <h6 className="s-22 w-700">QR Code Access</h6>
+                            <p>Easily accessible QR code containing personal emergency details, accessible to first responders and medical personnel during emergencies.
                             </p>
                         </div>
                     </div>
@@ -52,9 +51,8 @@ const BrandSlider = ({ brand_classA }) => {
                             </div>
                         </div>
                         <div className="fbox-txt">
-                            <h6 className="s-22 w-700">Quick Access</h6>
-                            <p>Porta semper lacus cursus feugiat primis ultrice ligula risus ociis auctor and
-                                tempus feugiat impedit felis cursus auctor augue mauris blandit ipsum
+                            <h6 className="s-22 w-700">ID Cards</h6>
+                            <p>Users can create personalized ID cards with their QR code, photo, and additional details for easy identification and access to emergency information.
                             </p>
                         </div>
                     </div>
@@ -72,9 +70,9 @@ const BrandSlider = ({ brand_classA }) => {
                             </div>
                         </div>
                         <div className="fbox-txt">
-                            <h6 className="s-22 w-700">Extensions &amp; Addons</h6>
-                            <p>Porta semper lacus cursus feugiat primis ultrice ligula risus ociis auctor and
-                                tempus feugiat impedit felis cursus auctor augue mauris blandit ipsum
+                            <h6 className="s-22 w-700">Family Sharing</h6>
+                            <p>Family plan option allows users to include multiple family members under one account, with individual profiles and access to their own emergency details.
+
                             </p>
                         </div>
                     </div>
@@ -92,9 +90,8 @@ const BrandSlider = ({ brand_classA }) => {
                             </div>
                         </div>
                         <div className="fbox-txt">
-                            <h6 className="s-22 w-700">File Manager</h6>
-                            <p>Porta semper lacus cursus feugiat primis ultrice ligula risus ociis auctor and
-                                tempus feugiat impedit felis cursus auctor augue mauris blandit ipsum
+                            <h6 className="s-22 w-700">Business Integration</h6>
+                            <p>Business plan enables companies to manage emergency profiles for employees, facilitating quick access to vital information during workplace emergencies.
                             </p>
                         </div>
                     </div>
@@ -112,9 +109,8 @@ const BrandSlider = ({ brand_classA }) => {
                             </div>
                         </div>
                         <div className="fbox-txt">
-                            <h6 className="s-22 w-700">Convert Media Files</h6>
-                            <p>Porta semper lacus cursus feugiat primis ultrice ligula risus ociis auctor and
-                                tempus feugiat impedit felis cursus auctor augue mauris blandit ipsum
+                            <h6 className="s-22 w-700">Seamless User Experience</h6>
+                            <p>Intuitive user interface and user flow make it easy for users to sign up, fill in their personal details, and access their emergency information whenever needed.
                             </p>
                         </div>
                     </div>
@@ -132,9 +128,8 @@ const BrandSlider = ({ brand_classA }) => {
                             </div>
                         </div>
                         <div className="fbox-txt">
-                            <h6 className="s-22 w-700">Storage &amp; Backup</h6>
-                            <p>Porta semper lacus cursus feugiat primis ultrice ligula risus ociis auctor and
-                                tempus feugiat impedit felis cursus auctor augue mauris blandit ipsum
+                            <h6 className="s-22 w-700">Secure Data Encryption</h6>
+                            <p>Utilizes advanced encryption methods to safeguard sensitive personal emergency information from unauthorized access.
                             </p>
                         </div>
                     </div>
