@@ -12,7 +12,13 @@ const FoundationSection = () => {
         const savingsPercentage = isYearly ? 25 : 0;
         const price = isYearly ? yearlyPrice : monthlyPrice;
         const billingPeriod = isYearly ? 'year' : 'month';
-        const validity = isYearly ? 'forever' : 'mo';
+        const validity = isYearly ? 'yr' : 'mo';
+
+		const additionalFeatures = {
+            Basic: '4 User',
+            "Business+" : '5 Users' // Example advanced feature
+        };
+
 
         return (
             <div className="col">
@@ -24,28 +30,20 @@ const FoundationSection = () => {
                             </div>
                         )}
                         <h5 className="s-24 w-700">{title}</h5>
+						
+                        
                         <div className="price mt-25">
                             <sup className="color--black">$</sup>
                             <span className="color--black">{price}</span>
                             <sup className="coins color--black">.99</sup>
-                            <sup className="validity color--grey">&nbsp;/&nbsp;{validity}</sup>
+                            <sup className="validity color--grey">&nbsp;/&nbsp;{validity} {additionalFeatures[title] && (<font>&nbsp;/&nbsp;{additionalFeatures[title]}</font>
+                            )}</sup>
                         </div>
                     </div>
                     <a href="#" className="pt-btn btn btn--theme hover--theme">
                         {isYearly ? 'Start 14-day trial' : 'Start 7-day free trial'}
                     </a>
-                    <ul className="pricing-features color--black ico-10 ico--green mt-25">
-                        {features.map((feature, index) => (
-                            <li key={index}>
-                                <p>
-                                    <span>
-                                        <img src="/assets/images/check.png" alt="Check Icon" />
-                                    </span>
-                                    {feature}
-                                </p>
-                            </li>
-                        ))}
-                    </ul>
+                    
                 </div>
             </div>
         );
@@ -92,17 +90,18 @@ const FoundationSection = () => {
                                 title="Basic"
                                 monthlyPrice="14"
                                 yearlyPrice="125"
-                                features={[
+                                features={ '/ 4 Users'
                                    
-                                ]}
+                                }
                             />
                             <PricingCard
-                                title="Advanced"
+                                title="Business+"
                                 monthlyPrice="16"
                                 yearlyPrice="144"
-                                features={[
+                                features={
+									'5 Users'
                                    
-                                ]}
+                                }
                             />
                         </div>
                     </div>
@@ -116,9 +115,9 @@ const FoundationSection = () => {
                 <tr>
                     <th style={{ width: '34%', textAlign: "center" }}>Features</th>
 					
-                    <th style={{ width: '22%' }}>Individual Plan</th>
-                    <th style={{ width: '22%' }}>Family Plan</th>
-                    <th style={{ width: '22%' }}>Business Plan</th>
+                    <th style={{ width: '22%' }}>Starter</th>
+                    <th style={{ width: '22%' }}>Family</th>
+                    <th style={{ width: '22%' }}>Business+</th>
                 </tr>
             </thead>
             <tbody>
