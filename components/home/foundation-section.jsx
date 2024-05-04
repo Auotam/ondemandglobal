@@ -65,7 +65,7 @@ const FoundationSection = () => {
     );
 
     return (
-        <section id="pricing-3" className="gr--whitesmoke inner-page-hero pb-60 pricing-section">
+        <section id="pricing" className="gr--whitesmoke inner-page-hero pb-60 pricing-section">
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-10 col-lg-8">
@@ -88,7 +88,7 @@ const FoundationSection = () => {
                         />
                         <PricingCard
                             title="Family"
-                            price={isYearly ? '112' : '99'}
+                            price={isYearly ? '112' : '14'}
                             validity={isYearly ? 'Year/5 Users' : 'Month'}
                             features={[
                                 'Secure storage for emergency information',
@@ -97,7 +97,7 @@ const FoundationSection = () => {
                         />
                         <PricingCard
                             title="Business+"
-                            price={isYearly ? '153' : '99'}
+                            price={isYearly ? '153' : '16'}
                             validity={isYearly ? 'Year' : 'Month'}
                             features={[
                                 

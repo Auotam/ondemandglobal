@@ -112,7 +112,7 @@ const HeaderOne = () => {
                     <span className="wsmenu-click">
                       <i className="wsmenu-arrow"></i>
                     </span>
-                    <a href="#pricing-3" className="h-link">
+                    <a href="#pricing" className="h-link">
                       Pricing
                     </a>
                   </li>
