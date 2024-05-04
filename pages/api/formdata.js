@@ -1,7 +1,7 @@
 // api/formData.js
 
 import DBconnection from "@/utils/DBConnection";
-import FormData from "@/model/FormData"; // Assuming you have a FormData model
+// import FormData from "@/model/FormData"; // Assuming you have a FormData model
 
 export default async function handler(req, res) {
   await DBconnection();
