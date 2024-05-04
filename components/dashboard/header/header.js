@@ -2,13 +2,9 @@ import React from 'react'
 import useUserData from '@/utils/UseUserdata';
 
 const Header = () => {
-
-
   const userData = useUserData()
   console.log("data", userData)
-
-   
-   if (!userData) {
+ if (!userData) {
     return null; 
   }
   
@@ -104,44 +100,7 @@ const Header = () => {
                     </svg>
                     <span></span>
                   </button>
-                  <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="message">
-                    <li>
-                      <a href="#0">
-                        <div className="image">
-                          <img src="assets/images/lead/lead-5.png" alt="" />
-                        </div>
-                        <div className="content">
-                          <h6>Jacob Jones</h6>
-                          <p>Hey!I can across your profile and ...</p>
-                          <span>10 mins ago</span>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#0">
-                        <div className="image">
-                          <img src="assets/images/lead/lead-3.png" alt="" />
-                        </div>
-                        <div className="content">
-                          <h6>John Doe</h6>
-                          <p>Would you mind please checking out</p>
-                          <span>12 mins ago</span>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#0">
-                        <div className="image">
-                          <img src="assets/images/lead/lead-2.png" alt="" />
-                        </div>
-                        <div className="content">
-                          <h6>Anee Lee</h6>
-                          <p>Hey! are you available for freelance?</p>
-                          <span>1h ago</span>
-                        </div>
-                      </a>
-                    </li>
-                  </ul>
+                  
                 </div>
                 
                 <div className="profile-box ml-15">

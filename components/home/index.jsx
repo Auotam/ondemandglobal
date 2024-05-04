@@ -13,6 +13,7 @@ import PricingSection from './pricing-section';
 import ServiceSection from './service-section';
 import TestimonialSection from './testimonial-section';
 import WorkSection from './work-section';
+import Form from '../../pages/mydashboard/Form';
 
 
 const index = () => {
@@ -25,8 +26,10 @@ const index = () => {
 
 
 		<div id="page" className="page font--jakarta">
-      
 
+
+
+      
       <HeaderOne />
       <HeroSlider />
       <BlogSection />

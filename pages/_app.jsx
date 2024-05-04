@@ -12,6 +12,9 @@ import Preloader from '../components/preloader';
 import SEO from '../components/seo';
 import useUserData from '@/utils/UseUserdata';
 import "../styles/globals.css"
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css" 
+integrity="sha512-6f7HT84a/AplPkpSRSKWqbseRTG4aRrhadjZezYQ0oVk/B+nm/US5KzQkyyOyh0Mn9cyDdChRdS9qaxJRHayww==" 
+crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 let persistor = persistStore(store)
 

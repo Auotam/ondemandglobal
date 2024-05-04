@@ -1,15 +1,15 @@
-import DBconnection from "@/utils/DBConnection"; // Import database connection function
-import User from "@/model/User"; // Import the User model
+import DBconnection from "@/utils/DBConnection"; 
+import User from "@/model/User"; 
 import React, {useState} from "react";
-import jwt from 'jsonwebtoken'; // Import the JWT library
+import jwt from 'jsonwebtoken';
 
 export default async function handler(req, res) {
     await DBconnection();
 
     try {
-        // Check if the request method is GET
+        
         if (req.method === 'GET') {
-            // Get the authorization header from the request
+            
             const authHeader = req.headers.authorization;
 
             // Check if the authorization header is present
@@ -31,23 +31,23 @@ export default async function handler(req, res) {
                 return res.status(404).json({ success: false, message: 'User not found' });
             }
 
-            // Return the user's data in the response, including the role
+            
             return res.status(200).json({
                 success: true,
                 user: {
                     name: user.name,
                     email: user.email,
                     id: user._id,
-                    role: "user" // Include the user's role in the response
-                    // Add any other data you want to return
+                    role: "user" 
+                    
                 },
             });
         } else {
-            // If the request method is not GET, return a 405 Method Not Allowed response
+            
             return res.status(405).json({ success: false, message: 'Method Not Allowed' });
         }
     } catch (error) {
-        // Handle any errors that occurred during the request
+        
         console.error('Error fetching user data:', error);
         return res.status(500).json({ success: false, message: 'Internal Server Error' });
     }

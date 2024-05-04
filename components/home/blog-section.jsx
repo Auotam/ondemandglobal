@@ -22,14 +22,14 @@ const BlogSection = () => {
           </div>
         </div>
       </section>
-      <section className="pt-100 ct-02 content-section division">
+      <section className="pt-20 ct-02 content-section division">
         <div className="container">
           <div className="row d-flex align-items-center">
             <div className="col-md-6">
               <div className="img-block left-column wow fadeInRight">
                 <img
                   className="img-fluid"
-                  src="assets/images/img-10.png"
+                  src="assets/images/step.jpeg"
                   alt="content-image"
                 />
               </div>

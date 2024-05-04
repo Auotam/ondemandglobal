@@ -1,48 +1,56 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import axios from 'axios';
-import useUserData from '@/utils/UseUserdata';
 import Layout from '@/components/dashboard/layout';
 import Wrapper from '@/layout/wrapper';
 import SEO from '@/components/seo';
 import DashboardMain from '@/components/dashboard';
-
+import Form from './Form';
+// import { checkAuthentication, fetchFormData, saveFormData } from '@';
+import useUserData from '@/utils/UseUserdata';
 
 const Dashboard = () => {
-  const userData = useUserData(); // Using the custom hook to fetch user data
+  const userData = useUserData();
   const router = useRouter();
+  const [formData, setFormData] = useState(null);
 
   useEffect(() => {
-    const checkAuthentication = async () => {
+    const authenticateUser = async () => {
       try {
-        // Check if the user is authenticated
-        const response = await axios.get('/api/Auth/check'); // Example API route to check authentication status
-        if (!response.data.isAuthenticated) {
-          // Redirect the user to the login page if they are not authenticated
+        const isAuthenticated = await checkAuthentication();
+        if (!isAuthenticated) {
           router.push('/mydashboard');
+        } else {
+          const fetchedFormData = await fetchFormData(userData.email);
+          setFormData(fetchedFormData);
         }
       } catch (error) {
-        console.error('Error checking authentication status:', error);
+        console.error('Error handling authentication:', error);
       }
     };
 
-    checkAuthentication();
+    authenticateUser();
   }, []);
 
-  // if (userData === null) {
-  //   return <p>Loading user data...</p>;
-  // }
+  const handleSubmitForm = async (formData) => {
+    try {
+      await saveFormData(userData.email, formData);
+      setFormData(formData);
+    } catch (error) {
+      console.error('Error saving form data:', error);
+    }
+  };
 
   return (
+    <>
+  
+        <Wrapper>
+          <SEO pageTitle={'OnDemand'} />
+          <Layout>
+            <DashboardMain />
+          </Layout>
+        </Wrapper>
 
-    <Wrapper>
-    <SEO pageTitle={'About'} />
-    <Layout>
-      <DashboardMain />
-    
-  </Layout>
-  </Wrapper>
-    
+    </>
   );
 };
 

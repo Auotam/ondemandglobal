@@ -2941,7 +2941,7 @@
   .ico-35 [class*="flaticon-"]:before, .ico-35 [class*="flaticon-"]:after { font-size: 2.1875rem; }   /* 35px */
   .ico-40 [class*="flaticon-"]:before, .ico-40 [class*="flaticon-"]:after { font-size: 2.5rem; }      /* 40px */
   .ico-45 [class*="flaticon-"]:before, .ico-45 [class*="flaticon-"]:after { font-size: 2.8125rem; }   /* 45px */
-  .ico-50 [class*="flaticon-"]:before, .ico-50 [class*="flaticon-"]:after { font-size: 3.125rem; }    /* 50px */
+  .ico-50 [class*="flaticon-"]:before, .ico-50 [class*="flaticon-"]:after { font-size: 0rem; }    /* 50px */
   .ico-55 [class*="flaticon-"]:before, .ico-55 [class*="flaticon-"]:after { font-size: 3.4375rem; }   /* 55px */
   .ico-60 [class*="flaticon-"]:before, .ico-60 [class*="flaticon-"]:after { font-size: 3.75rem; }     /* 60px */
   .ico-65 [class*="flaticon-"]:before, .ico-65 [class*="flaticon-"]:after { font-size: 4.0625rem; }   /* 65px */
@@ -8006,6 +8006,8 @@
   .pricing-features.ico-10 li p span {
     top: 0;
     right: 4px;
+    float: left;
+    height: 30px;
   }
   
   .pricing-features.ico-5 [class*="flaticon-"]:before, 
@@ -10356,7 +10358,7 @@
     =========================================================================== */
   
   .inner-page-hero {
-    padding-top: 180px;
+    padding-top: 100px;
   }
   
   .page-hero-section-overlay {
@@ -12397,7 +12399,7 @@
   .shape-ico.color--theme path,
   .shape-ico.color--theme path,
   .shape-ico.color--theme path {
-    fill: #f7e4f1;
+    fill: #f6f6f6;
   }
   
   .newsletter-section .form-control:focus {
@@ -16300,15 +16302,12 @@ h6,
 }
 
 .main-wrapper {
-  -webkit-transition: all 0.3s ease-out 0s;
-  -moz-transition: all 0.3s ease-out 0s;
-  -ms-transition: all 0.3s ease-out 0s;
-  -o-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
-  margin-left: 250px;
+  margin-left: 139px;
   min-height: 100vh;
   padding-bottom: 85px;
   position: relative;
+  width: calc(100% - 42px);
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
   .main-wrapper {
@@ -18398,3 +18397,6 @@ h6,
 
 .header-left img{ width:200px }
 .sidebar-nav-wrapper img.logo{ width: 200px;}
+
+
+

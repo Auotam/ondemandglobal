@@ -29,10 +29,10 @@ const FooterOne = () => {
 
                       
                         <ul className="foo-links clearfix">
-                            <li><p><a href="about.html">About Us</a></p></li>
-                            <li><p><a href="blog-listing.html">Our Blog</a></p></li>						
-                            <li><p><a href="testimonials.html">Customers</a></p></li>	
-                            <li><p><a href="#">Community</a></p></li>			
+                            <li><p><a href="/">About Us</a></p></li>
+                            <li><p><a href="/">Our Blog</a></p></li>						
+                            <li><p><a href="/">Customers</a></p></li>	
+                            <li><p><a href="/">Community</a></p></li>			
                         </ul>
 
                     </div>
@@ -48,10 +48,10 @@ const FooterOne = () => {
 
                        
                         <ul className="foo-links clearfix">
-                            <li><p><a href="features.html">Integration</a></p></li>
-                            <li><p><a href="download.html">What's New</a></p></li>	
-                            <li><p><a href="pricing-1.html">Pricing</a></p></li>	
-                            <li><p><a href="help-center.html">Help Center</a></p></li>			
+                            <li><p><a href="/">Integration</a></p></li>
+                            <li><p><a href="/">What's New</a></p></li>	
+                            <li><p><a href="/">Pricing</a></p></li>	
+                            <li><p><a href="/">Help Center</a></p></li>			
                         </ul>
 
                     </div>	
@@ -67,10 +67,10 @@ const FooterOne = () => {
 
                    
                         <ul className="foo-links clearfix">
-                            <li><p><a href="terms.html">Terms of Use</a></p></li>										
-                            <li><p><a href="privacy.html">Privacy Policy</a></p></li>
-                            <li><p><a href="cookies.html">Cookie Policy</a></p></li>
-                            <li><p><a href="#">Site Map</a></p></li>
+                            <li><p><a href="/">Terms of Use</a></p></li>										
+                            <li><p><a href="/">Privacy Policy</a></p></li>
+                            <li><p><a href="/">Cookie Policy</a></p></li>
+                            <li><p><a href="/">Site Map</a></p></li>
                         </ul>
 
                     </div>	
@@ -91,7 +91,7 @@ const FooterOne = () => {
                                 <input type="email" className="form-control" placeholder="Email Address" required id="s-email" /> 								
                                 <span className="input-group-btn ico-15">
                                     <button type="submit" className="btn color--theme">
-                                        <span className="flaticon-right-arrow-1"></span>
+                                        <span className=""></span>
                                     </button>
                                 </span>
                             </div>
@@ -126,12 +126,12 @@ const FooterOne = () => {
 
                    
                     <div className="col">
-                        <ul className="bottom-footer-socials ico-20 text-end">
-                            <li><a href="#"><span className="flaticon-facebook"></span></a></li>
+                        {/* <ul className="bottom-footer-socials ico-20 text-end">
+                            <li><a href="#"><span className=""></span></a></li>
                             <li><a href="#"><span className="flaticon-twitter"></span></a></li>
                             <li><a href="#"><span className="flaticon-instagram"></span></a></li>
                             <li><a href="#"><span className="flaticon-youtube"></span></a></li>
-                        </ul>
+                        </ul> */}
                     </div>
 
 

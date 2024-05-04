@@ -1,172 +1,114 @@
-import Link from 'next/link';
-import React from 'react';
+// components/FoundationSection.js
+import { useState } from 'react';
 
 const FoundationSection = () => {
-    return (
-        <>
-        <section id="pricing-3" className="gr--whitesmoke inner-page-hero pb-60 pricing-section">
-				<div className="container">
+    const [isYearly, setIsYearly] = useState(false);
 
+    const handleToggle = () => {
+        setIsYearly(!isYearly);
+    };
+	
 
-					
-					<div className="row justify-content-center">	
-						<div className="col-md-10 col-lg-8">
-							<div className="section-title text-center mb-60">	
-
-								<h2 className="s-52 w-700">Simple, Flexible Pricing</h2>
-
-								
-								<div className="toggle-btn ext-toggle-btn toggle-btn-md mt-30">
-									<span className="toggler-txt">Billed monthly</span>
-							        <label className="switch-wrap">
-							          <input type="checkbox" id="checbox" onclick="check()" />
-							          <span className="switcher bg--grey switcher--theme">
-											<span className="show-annual"></span>
-								   			<span className="show-monthly"></span>
-							          </span>
-							        </label>
-							        <span className="toggler-txt">Billed yearly</span>
-
-							        
-							        <p className="color--theme">Save up to 25% with yearly billing</p>
-
-							    </div>
-
-
-							</div>	
-						</div>
-					</div>	
-
-
-					
-					<div className="pricing-3-wrapper text-center">
-						<div className="row row-cols-1 row-cols-md-3">
-
-
-							
-							<div className="col">
-								<div id="pt-3-1" className="p-table pricing-3-table bg--white-100 block-shadow r-12 wow fadeInUp" >
-
-
-									
-									<div className="pricing-table-header">
-
-										
-										<h4 className="s-32">Individual</h4>
-
-										
-										<div className="price mt-25">
-											<sup className="color--black">$</sup>								
-											<span className="color--black">4</span>
-											<sup className="coins color--black">99</sup>
-											<sup className="validity color--grey">Month</sup>
-										</div>
-
-									</div>	
-
-
-									
-									<a href="#" className="pt-btn btn btn--theme hover--theme">Start 14-day trial</a>
-									<p className="p-sm btn-txt color--grey">Start 7-day free trial</p>
-									<p className="p-sm btn-txt color--grey">Start 7-day free trial</p>
-                                    <p className="p-sm btn-txt color--grey">Secure storage for emergency information</p>
-                                    <p className="p-sm btn-txt color--grey">Access to personal QR code</p>
-
-
-								</div>
-							</div>	
-
-
-							
-							<div className="col">
-								<div id="pt-3-2" className="p-table pricing-3-table bg--white-100 block-shadow r-12 wow fadeInUp" >
-
-
-									
-									<div className="pricing-table-header">
-
-										
-										<h4 className="s-32">Business</h4>
-
-										<div className="price mt-25">								
-
-											
-											<div className="price2" >
-												<sup className="color--black">$</sup>								
-												<span className="color--black">14</span>
-												<sup className="coins color--black">99</sup>
-												<sup className="validity color--grey">Mo/5 Users</sup>
-											</div>
-
-								
-
-										</div>
-
-									</div>
-
-
-									
-									<a href="#" className="pt-btn btn btn--theme hover--theme">Start 14-day trial</a>
-									<p className="p-sm btn-txt color--grey">Start 7-day free trial</p>
-                                    <p className="p-sm btn-txt color--grey">Secure storage for emergency information</p>
-                                    <p className="p-sm btn-txt color--grey">Access to personal QR code</p>
-
-
-
-
-								</div>
-							</div>	
-
-
-							
-							<div className="col">
-								<div id="pt-3-3" className="p-table pricing-3-table bg--white-100 block-shadow r-12 wow fadeInUp">
-
-
-									
-									<div className="pricing-table-header">
-
-										
-										<h4 className="s-32">Business</h4>
-
-
-										<div className="price mt-25">								
-
-											
-											<div className="price2">
-												<sup className="color--black">$</sup>								
-												<span className="color--black">14</span>
-												<sup className="coins color--black">99</sup>
-												<sup className="validity color--grey">per month</sup>
-											</div>
-
-											
-
-										</div>
-
-									</div>	
-
-
-									
-									<a href="#" className="pt-btn btn btn--theme hover--theme">Start 7-day free trial</a>
-                                    <p className="p-sm btn-txt color--grey">Tailored for businesses and teams. </p>
-									<p className="p-sm btn-txt color--grey">Secure storage and sharing for business information</p>
-                                    <p className="p-sm btn-txt color--grey">Access to company and Individual employee’s QR code</p>
-                                    
-
-
-								</div>
-							</div>	
-
-
+	const PricingCard = ({ title, price, validity, features }) => {
+		const showDiscount = (title === "Family" || title === "Business+") && isYearly;
+	
+		return (
+			<div className="col">
+				<div className="p-table pricing-1-table bg--white-100 block-shadow r-12 wow fadeInUp">
+					<div className="pricing-table-header">
+						{showDiscount && (
+							<div className="pricing-discount bg--yellow-400 color--black r-36">
+								<h6 className="s-17">Save {isYearly ? '25%' : '0%'}</h6>
+							</div>
+						)}
+						<h5 className="s-24 w-700">{title}</h5>
+						<div className="price mt-25">
+							<sup className="color--black">$</sup>
+							<span className="color--black">{price}</span>
+							<sup className="coins color--black">.99</sup>
+							<sup className="validity color--grey">{validity}</sup>
 						</div>
 					</div>
+					<a href="#" className="pt-btn btn btn--theme hover--theme">
+						{isYearly ? 'Start 14-day trial' : 'Start 7-day free trial'}
+					</a>
+					<ul className="pricing-features color--black ico-10 ico--green mt-25">
+						{features.map((feature, index) => (
+							<li key={index}>
+								<p>
+									<span>
+										<img src="/assets/images/check.png" alt="Check Icon" />
+									</span>
+									{feature}
+								</p>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		);
+	};
+	
+    const ToggleButton = () => (
+        <div className="toggle-btn ext-toggle-btn toggle-btn-md mt-30">
+            <span className="toggler-txt">Billed monthly</span>
+            <label className="switch-wrap">
+                <input type="checkbox" id="checbox" onChange={handleToggle} checked={isYearly} />
+                <span className="switcher bg--grey switcher--theme">
+                    <span className="show-annual"></span>
+                    <span className="show-monthly"></span>
+                </span>
+            </label>
+            <span className="toggler-txt">Billed yearly</span>
+            <p className="color--theme">Save up to {isYearly ? '25%' : '0%'} with yearly billing</p>
+        </div>
+    );
 
-
-				</div>	  
-			</section>
-</>
-
+    return (
+        <section id="pricing-3" className="gr--whitesmoke inner-page-hero pb-60 pricing-section">
+            <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-md-10 col-lg-8">
+                        <div className="section-title text-center mb-60">
+                            <h2 className="s-52 w-700">Simple, Flexible Pricing</h2>
+                            <ToggleButton />
+                        </div>
+                    </div>
+                </div>
+                <div className="pricing-1-wrapper ">
+                    <div className="row row-cols-1 row-cols-md-3">
+                        <PricingCard
+                            title="Individual"
+                            price={isYearly ? '49' : '4'}
+                            validity={isYearly ? 'Year' : 'Month'}
+                            features={[
+                                'Secure storage for emergency information',
+                                'Access to personal QR code'
+                            ]}
+                        />
+                        <PricingCard
+                            title="Family"
+                            price={isYearly ? '112' : '99'}
+                            validity={isYearly ? 'Year/5 Users' : 'Month'}
+                            features={[
+                                'Secure storage for emergency information',
+                                'Access to personal QR code'
+                            ]}
+                        />
+                        <PricingCard
+                            title="Business+"
+                            price={isYearly ? '153' : '99'}
+                            validity={isYearly ? 'Year' : 'Month'}
+                            features={[
+                                
+                                'Secure storage and sharing for business information',
+                                'Access to company and individual employee’s QR code'
+                            ]}
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
     );
 };
 
