@@ -18398,5 +18398,234 @@ h6,
 .header-left img{ width:200px }
 .sidebar-nav-wrapper img.logo{ width: 200px;}
 
+.widthimage{ width: 50px;}
+.id-card-holder {
+  width: 225px;
+    padding: 4px;
+    margin: 0 auto;
+    background-color: #1f1f1f;
+    border-radius: 5px;
+    position: relative;
+}
+.id-card-holder:after {
+    content: '';
+    width: 7px;
+    display: block;
+    background-color: #0a0a0a;
+    height: 100px;
+    position: absolute;
+    top: 105px;
+    border-radius: 0 5px 5px 0;
+}
+.id-card-holder:before {
+    content: '';
+    width: 7px;
+    display: block;
+    background-color: #0a0a0a;
+    height: 100px;
+    position: absolute;
+    top: 105px;
+    left: 222px;
+    border-radius: 5px 0 0 5px;
+}
+.id-card {
+  
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 1.5px 0px #b9b9b9;
+}
+.id-card img {
+  margin: 0 auto;
+}
+.header img {
+  width: 100px;
+    margin-top: 15px;
+}
+.photo img {
+  width: 80px;
+    margin-top: 15px;
+}
+h2 {
+  font-size: 15px;
+  margin: 5px 0;
+}
+h3 {
+  font-size: 12px;
+  margin: 2.5px 0;
+  font-weight: 300;
+}
+.qr-code img {
+  width: 50px;
+}
+p {
+  font-size: 5px;
+  margin: 2px;
+}
+.id-card-hook {
+  background-color: black;
+    width: 70px;
+    margin: 0 auto;
+    height: 15px;
+    border-radius: 5px 5px 0 0;
+}
+.id-card-hook:after {
+  content: '';
+    background-color: white;
+    width: 47px;
+    height: 6px;
+    display: block;
+    margin: 0px auto;
+    position: relative;
+    top: 6px;
+    border-radius: 4px;
+}
+.id-card-tag-strip {
+  width: 45px;
+    height: 40px;
+    background-color: #02045f ;
+    margin: 0 auto;
+    border-radius: 5px;
+    position: relative;
+    top: 9px;
+    z-index: 1;
+    border: 1px solid #02045f ;
+}
+.id-card-tag-strip:after {
+  content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #02045f ;
+    position: relative;
+    top: 10px;
+}
+.id-card-tag {
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-top: 100px solid #02045f ;
+  margin: -10px auto -30px auto;
+  
+}
+.id-card-tag:after {
+  content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 100px solid white;
+    margin: -10px auto -30px auto;
+    position: relative;
+    top: -130px;
+    left: -50px;
+}
 
 
+.btnuserform { background-color: #00a14e; color:#fff;  border:2px solid transparent;  }
+.btnuserform:hover { border:2px solid #00a14e; color:#00a14e; }
+
+
+
+.breadcrumb{ align-items: flex-end; justify-content: flex-end; padding-right:20px ;}
+
+
+.user-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 40px;
+	width: 650px;
+	position: relative;
+	overflow: hidden;
+	box-shadow: 0 2px 20px -5px rgba(0,0,0,0.5);
+}
+ 
+.user-card:before {
+   content: '';
+   position: absolute;
+   height: 300%;
+   width: 173px;
+   background: #262626;
+   top: -60px;
+   left: -125px;
+   z-index: 0;
+   transform: rotate(17deg);
+ }
+ 
+ .user-card-img {
+   display: flex;
+   justify-content: center;
+   align-items: center;   
+   z-index: 3;
+ }
+ 
+ .user-card-img img {
+   width: 200px;
+   height: 200px;
+   object-fit: cover;
+   	border-radius: 50%;
+ }
+ 
+ .user-card-info {
+   text-align: center;
+ }
+ 
+ .user-card-info h2 {
+   font-size: 24px;
+   margin: 0;
+   margin-bottom: 10px;
+   font-family: 'Bebas Neue', sans-serif;
+   letter-spacing: 3px;
+ }
+ 
+ .user-card-info p {
+   font-size: 14px;
+   margin-bottom: 2px;
+ }
+ .user-card-info p span {
+	font-weight: 700;
+	margin-right: 10px;
+}
+ @media only screen and (min-width: 768px) {
+   .user-card {
+     flex-direction: row;
+     align-items: flex-start;
+   }   
+   .user-card-img {
+     margin-right: 20px;
+     margin-bottom: 0;
+   }
+ 
+   .user-card-info {
+     text-align: left;
+   }
+ }
+
+ @media (max-width: 767px){
+   .wrapper{
+      padding-top: 3%;
+   }
+   .user-card:before {
+      width: 300%;
+      height: 200px;
+      transform: rotate(0);
+   }
+   .user-card-info h2 {
+      margin-top: 25px;
+      font-size: 35px;
+   }
+   .user-card-info p span {
+      display: block;
+      margin-bottom: 15px;
+      font-size: 18px;
+   }
+ }
+ 
+ 

@@ -10,7 +10,7 @@ const schema = Joi.object({
     password: Joi.string().min(8).required(),
 });
 
-console.log("code working")
+
 
 export default async (req, res) => {
 

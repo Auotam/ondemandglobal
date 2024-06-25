@@ -6,7 +6,7 @@ import Wrapper from "@/layout/wrapper";
 import SEO from "@/components/seo";
 import { Card } from "@mui/material";
 
-const Idcardmanagement = () => {
+const Qrcode = () => {
   const [formData, setFormData] = useState(null);
   const [loadingFormData, setLoadingFormData] = useState(true);
   const [error, setError] = useState(null);
@@ -55,44 +55,27 @@ const Idcardmanagement = () => {
   }
 
   return (
-    
 
-    <Wrapper>
-    <SEO pageTitle={'OnDemand'} />
-    <Layout>
-      <div class="id-card-tag"></div>
-      	<div class="id-card-tag-strip"></div>
-        	<div class="id-card-hook"></div>
-	          <div class="id-card-holder">
-		<div class="id-card">
-			<div class="header">
-				<img src="/assets/images/logo-white.png" />
-			</div>
-			<div class="photo">
-				<img src="https://i.imgur.com/5WmGvAG.png" />
-			</div>
-			<h2>  <h2>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h2></h2>
-			<div class="qr-code">
-				
-			</div>
-			<h3> {formData.email || "N/A"}</h3>
-      <h3><span>Phone:</span>{formData.emergencyPhone || "N/A"}</h3>
-			<hr />
-			<h6><span>Insurance Provider:</span>{formData.InsuranceProvider || "N/A"}</h6>
-                <p></p>
-               
+    <Card >
+                       
+    <div className="user-card">
+              <div className="user-card-img">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxivAs4UknzmDfLBXGMxQkayiZDhR2ftB4jcIV7LEnIEStiUyMygioZnbLXCAND-I_xWQpVp0jv-dv9NVNbuKn4sNpXYtLIJk2-IOdWQNpC2Ldapnljifu0pnQqAWU848Ja4lT9ugQex-nwECEh3a96GXwiRXlnGEE6FFF_tKm66IGe3fzmLaVIoNL/s1600/img_avatar.png" alt="" />
+              </div>
+              <div className="user-card-info">
+                <h2>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h2>
+                <p><span>Email:</span> {formData.email || "N/A"}</p>
+                <p><span>Insurance Provider:</span>{formData.InsuranceProvider || "N/A"}</p>
+                <p><span>Emergency Phone:</span>{formData.emergencyPhone || "N/A"}</p>
+                <p><span>Medical Alert</span> {formData.medicalAlert || "N/A"}</p>
+                <p><span>Covid19 Tested</span>{formData.Covid19Tested || "N/A"}</p>
+                <p><span>Covid 19 Vaccinated</span> {formData.Covid19vaccinated || "N/A"}</p>
+              </div>
+          </div>
+          </Card>
+      
 
-		
-	</div>
-           </div>
-  
+  );
+};
 
-
-
-    </Layout>
-  </Wrapper>
-
-  )
-}
-
-export default Idcardmanagement
+export default Qrcode;

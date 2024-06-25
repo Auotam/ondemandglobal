@@ -1,11 +1,30 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const FoundationSection = () => {
+
+    const router = useRouter();
     const [isYearly, setIsYearly] = useState(false);
 
     const handleToggle = () => {
         setIsYearly(!isYearly);
     };
+    const handleButtonClick = (title, price) => {
+        const planDetails = {
+            title,
+            price,
+            isYearly
+        };
+
+        console.log(planDetails)
+
+        // Navigate to '/register' with planDetails as query parameters
+        router.push({
+            pathname: '/register',
+            query: planDetails
+        });
+    };
+    
 
     const PricingCard = ({ title, monthlyPrice, yearlyPrice, features }) => {
         // Calculate savings percentage based on the billing frequency
@@ -40,9 +59,9 @@ const FoundationSection = () => {
                             )}</sup>
                         </div>
                     </div>
-                    <a href="#" className="pt-btn btn btn--theme hover--theme">
+                    <button  className="pt-btn btn btn--theme hover--theme"  onClick={() => handleButtonClick(title, price)} >
                         {isYearly ? 'Start 14-day trial' : 'Start 7-day free trial'}
-                    </a>
+                    </button>
                     
                 </div>
             </div>
@@ -98,10 +117,7 @@ const FoundationSection = () => {
                                 title="Business+"
                                 monthlyPrice="16"
                                 yearlyPrice="144"
-                                features={
-									'5 Users'
-                                   
-                                }
+                                features={	'5 Users' }
                             />
                         </div>
                     </div>

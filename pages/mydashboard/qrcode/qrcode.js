@@ -55,9 +55,7 @@ const FormDataComponent = () => {
   }
 
   return (
-    <Wrapper>
-      <SEO pageTitle={"Billing "} />
-      <Layout>
+  
         <div className="main-wrapper  pl-20">
           <div className="container-fluid">
             <div className="title-wrapper pt-30">
@@ -99,8 +97,7 @@ const FormDataComponent = () => {
             </div>
           </div>
         </div>
-      </Layout>
-    </Wrapper>
+   
   );
 };
 

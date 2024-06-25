@@ -16,7 +16,8 @@ export const fetchFormData = async (email) => {
 
 export const saveFormData = async (email, formData) => {
   try {
-    await axios.post(`${BASE_URL}/formData`, { email, formData });
+    const response = await axios.post(`${BASE_URL}/saveFormData`, { email, formData });
+    return response.data; // Optionally return response data if needed
   } catch (error) {
     console.error('Error saving form data:', error);
     throw error;

@@ -13,7 +13,7 @@ import PricingSection from './pricing-section';
 import ServiceSection from './service-section';
 import TestimonialSection from './testimonial-section';
 import WorkSection from './work-section';
-import Form from '../../pages/mydashboard/Form';
+import Form from '../../pages/mydashboard/add-details';
 
 
 const index = () => {

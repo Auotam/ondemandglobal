@@ -38,7 +38,8 @@ export default async function handler(req, res) {
                     name: user.name,
                     email: user.email,
                     id: user._id,
-                    role: "user" 
+                    role: "user" ,
+                    plan:user.plan
                     
                 },
             });

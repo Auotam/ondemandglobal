@@ -5,36 +5,8 @@ const Invoice = () => {
     <div className='main-wrapper'>
     <section>
         <div className="container-fluid">
-          
-          <div className="title-wrapper pt-30">
-            <div className="row align-items-center">
-              <div className="col-md-6">
-                <div className="title d-flex align-items-center flex-wrap">
-                  <h2 className="mr-40">Invoice</h2>
-                  <a href="#0" className="main-btn primary-btn btn-hover btn-sm">
-                    <i className="lni lni-plus mr-5"></i> New Invoice</a>
-                </div>
-              </div>
-              
-              <div className="col-md-6">
-                <div className="breadcrumb-wrapper">
-                  <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                      <li className="breadcrumb-item">
-                        <a href="#0">Dashboard</a>
-                      </li>
-                      <li className="breadcrumb-item active" aria-current="page">
-                        Invoice
-                      </li>
-                    </ol>
-                  </nav>
-                </div>
-              </div>
-              
-            </div>
-            
-          </div>
-          <div className="invoice-wrapper">
+         
+          <div className="invoice-wrapper mt-50">
             <div className="row">
               <div className="col-12">
                 <div className="invoice-card card-style mb-30">
