@@ -3415,6 +3415,9 @@ body.wsactive {
     right: 0;
     left: 0;
     z-index: 1030;
+    background-color: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+
   }
   
   .headerwp {
@@ -3457,12 +3460,14 @@ body.wsactive {
   }
   
   .tra-menu .wsmainfull {
-    padding: 20px 0;
+    padding: 0px 0;
     background-color: transparent!important;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
   }
+
+  .hero-video { position: absolute; top: -2px; height:100vh;   }
   
   .white-menu .wsmainfull {
     padding: 6px 0;

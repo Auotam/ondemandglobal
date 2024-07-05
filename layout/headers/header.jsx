@@ -166,7 +166,7 @@ const HeaderOne = () => {
                       <li className="nl-simple" aria-haspopup="true">
                         <a
                           href="/register"
-                          class="btn r-04 btn--theme hover--tra-white"
+                          className="btn r-04 btn--theme hover--tra-white"
                         >
                           Sign Up
                         </a>

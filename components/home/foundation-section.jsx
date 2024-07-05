@@ -9,6 +9,7 @@ const FoundationSection = () => {
     const handleToggle = () => {
         setIsYearly(!isYearly);
     };
+
     const handleButtonClick = (title, price) => {
         const planDetails = {
             title,
@@ -16,15 +17,12 @@ const FoundationSection = () => {
             isYearly
         };
 
-        console.log(planDetails)
-
         // Navigate to '/register' with planDetails as query parameters
         router.push({
             pathname: '/register',
             query: planDetails
         });
     };
-    
 
     const PricingCard = ({ title, monthlyPrice, yearlyPrice, features }) => {
         // Calculate savings percentage based on the billing frequency
@@ -32,12 +30,6 @@ const FoundationSection = () => {
         const price = isYearly ? yearlyPrice : monthlyPrice;
         const billingPeriod = isYearly ? 'year' : 'month';
         const validity = isYearly ? 'yr' : 'mo';
-
-		const additionalFeatures = {
-            Basic: '4 User',
-            "Business+" : '5 Users' // Example advanced feature
-        };
-
 
         return (
             <div className="col">
@@ -49,20 +41,21 @@ const FoundationSection = () => {
                             </div>
                         )}
                         <h5 className="s-24 w-700">{title}</h5>
-						
-                        
                         <div className="price mt-25">
                             <sup className="color--black">$</sup>
                             <span className="color--black">{price}</span>
                             <sup className="coins color--black">.99</sup>
-                            <sup className="validity color--grey">&nbsp;/&nbsp;{validity} {additionalFeatures[title] && (<font>&nbsp;/&nbsp;{additionalFeatures[title]}</font>
-                            )}</sup>
+                            <sup className="validity color--grey">&nbsp;/&nbsp;{validity}</sup>
                         </div>
                     </div>
-                    <button  className="pt-btn btn btn--theme hover--theme"  onClick={() => handleButtonClick(title, price)} >
+                    <button className="pt-btn btn btn--theme hover--theme" onClick={() => handleButtonClick(title, price)}>
                         {isYearly ? 'Start 14-day trial' : 'Start 7-day free trial'}
                     </button>
-                    
+                    <ul className="pricing-features color--black ico-10 ico--green mt-25">
+                        {features.map((feature, index) => (
+                            <li key={index}><p>{feature}</p></li>
+                        ))}
+                    </ul>
                 </div>
             </div>
         );
@@ -102,167 +95,44 @@ const FoundationSection = () => {
                                 monthlyPrice="4"
                                 yearlyPrice="58"
                                 features={[
-                                   
+                                    '✔️ QR Code Access',
+                                    '✔️ ID Cards (Non-Customizable) ',
+                                    '✔️ Secure Data Encryption',
+                                    '✔️ Emergency Notifications',
+                                    '❌ Family Sharing',
+                                    '❌ Business Integration'
                                 ]}
                             />
                             <PricingCard
                                 title="Basic"
-                                monthlyPrice="14"
-                                yearlyPrice="125"
-                                features={ '/ 4 Users'
-                                   
-                                }
+                                monthlyPrice="9"
+                                yearlyPrice="108"
+                                features={[
+                                    '✔️ QR Code Access',
+                                    '✔️ ID Cards (Customizable)',
+                                    '✔️ Secure Data Encryption',
+                                    '✔️ Emergency Notifications',
+                                    '✔️ (4 members, $2.99/additional)',
+                                    '❌ Business Integration'
+                                ]}
                             />
                             <PricingCard
                                 title="Business+"
-                                monthlyPrice="16"
+                                monthlyPrice="14"
                                 yearlyPrice="144"
-                                features={	'5 Users' }
+                                features={[
+                                    '✔️ QR Code Access',
+                                    '✔️ ID Cards (Customizable)',
+                                    '✔️ Secure Data Encryption',
+                                    '✔️ Emergency Notifications',
+                                    '✔️ (5 users, $2.99/additional)',
+                                    '✔️ Business Integration'
+                                ]}
                             />
                         </div>
                     </div>
                 </div>
             </section>
-
-			<section id="comp-table" className="pt-0 pb-60 pricing-section division">
-    <div className="container">
-        <table className="table text-center">
-            <thead>
-                <tr>
-                    <th style={{ width: '34%', textAlign: "center" }}>Features</th>
-					
-                    <th style={{ width: '22%' }}>Starter</th>
-                    <th style={{ width: '22%' }}>Family</th>
-                    <th style={{ width: '22%' }}>Business+</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row" className="text-center">QR Code Access</th>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Customizable ID Cards</th>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Family Sharing</th>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Business Integration</th>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Emergency Notifications</th>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Secure Data Encryption</th>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Offline Access</th>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Medical Records Integration</th>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Multi-language Support</th>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Real-time Location Sharing</th>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Emergency Contact Notifications</th>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Secure Document Storage</th>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Advanced User Management</th>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Remote Device Wipe</th>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Priority Customer Support</th>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">On-Demand Training Resources</th>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Data Usage Analytics</th>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Scheduled Backups</th>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Multi-device Sync</th>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                <tr>
-                    <th scope="row" className="text-center">Multi-level Access Controls</th>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">❌</td>
-                    <td className="color--black">✔️</td>
-                </tr>
-                {/* Add more rows as needed */}
-            </tbody>
-        </table>
-    </div>
-</section>
-
 
             {/* Additional sections and content here */}
         </>

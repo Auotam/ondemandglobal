@@ -4332,8 +4332,8 @@
   .white-menu.white-scroll .wsmainfull.scroll {
     padding: 0;
     background-color: rgba(255, 255, 255, .7)!important;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    // backdrop-filter: blur(20px);
+    // -webkit-backdrop-filter: blur(20px);
     -webkit-box-shadow: 0 2px 3px rgba(96, 96, 96, .1);
     -moz-box-shadow: 0 2px 3px rgba(96, 96, 96, .1);
     box-shadow: 0 2px 3px rgba(96, 96, 96, .1);
@@ -4543,6 +4543,7 @@
   
   .hero-section h2 {
     margin-bottom: 28px;
+    color: #fff;
   }
   
   .hero-section h2.s-48,
@@ -4849,12 +4850,13 @@
   
   #hero-10 {
     position: relative;
-    background-image: url(../images/hero-10.jpg);
+    background:transparent; 
     padding-top: 170px;
     padding-bottom: 100px;
   }
   
   .hero-10-txt h4 {
+    color:#fff;  
     line-height: 1.45;
     font-weight: 300;
     padding-right: 5%;
@@ -18459,10 +18461,7 @@ h3 {
 .qr-code img {
   width: 50px;
 }
-p {
-  font-size: 5px;
-  margin: 2px;
-}
+
 .id-card-hook {
   background-color: black;
     width: 70px;

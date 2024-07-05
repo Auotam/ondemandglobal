@@ -24,7 +24,7 @@ const index = () => {
             <TestimonialSliderFour />
             <TeamSection />
             <NewsletterSectionFour />
-            <BlogSectionTwo blog_area_class="blog-area-4 pt-120 pb-75" blog_single_class="style-4 mb-45" />
+            <BlogSectionTwo blog_area_className="blog-area-4 pt-120 pb-75" blog_single_className="style-4 mb-45" />
             <FooterFour />
         </main>
     );

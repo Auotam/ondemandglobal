@@ -23,14 +23,14 @@ const NavMenu = () => {
                 })}
 
 
-							    	<li class="nl-simple reg-fst-link mobile-last-link" aria-haspopup="true">
-							    		<a href="/login" class="h-link">Sign in</a>
+							    	<li className="nl-simple reg-fst-link mobile-last-link" aria-haspopup="true">
+							    		<a href="/login" className="h-link">Sign in</a>
 							    	</li>
 
 
 								    
-								    <li class="nl-simple" aria-haspopup="true">
-								    	<a href="/signup" class="btn r-04 btn--theme hover--tra-white last-link">Sign up</a>
+								    <li className="nl-simple" aria-haspopup="true">
+								    	<a href="/signup" className="btn r-04 btn--theme hover--tra-white last-link">Sign up</a>
 								    </li> 
 
             </ul>

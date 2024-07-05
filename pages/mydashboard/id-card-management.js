@@ -60,19 +60,19 @@ const Idcardmanagement = () => {
     <Wrapper>
     <SEO pageTitle={'OnDemand'} />
     <Layout>
-      <div class="id-card-tag"></div>
-      	<div class="id-card-tag-strip"></div>
-        	<div class="id-card-hook"></div>
-	          <div class="id-card-holder">
-		<div class="id-card">
-			<div class="header">
+      <div className="id-card-tag"></div>
+      	<div className="id-card-tag-strip"></div>
+        	<div className="id-card-hook"></div>
+	          <div className="id-card-holder">
+		<div className="id-card">
+			<div className="header">
 				<img src="/assets/images/logo-white.png" />
 			</div>
-			<div class="photo">
+			<div className="photo">
 				<img src="https://i.imgur.com/5WmGvAG.png" />
 			</div>
 			<h2>  <h2>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h2></h2>
-			<div class="qr-code">
+			<div className="qr-code">
 				
 			</div>
 			<h3> {formData.email || "N/A"}</h3>

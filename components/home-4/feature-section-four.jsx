@@ -78,7 +78,7 @@ const FeatureSectionFour = () => {
                      </div>
                   </div>
                </div>
-               <BrandSliderTwo brand_class="style-4" brand_classA="" />
+               <BrandSliderTwo brand_className="style-4" brand_classA="" />
             </div>
          </div>
       </section>
