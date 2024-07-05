@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 
+
 export default function Home() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const router = useRouter();
@@ -95,53 +96,28 @@ export default function Home() {
 
 
 						
-						<div className="col-lg-11">
+						<div className="col-lg-6">
 							<div className="register-page-wrapper r-16 bg--fixed">	
 								<div className="row">
 
 
-									
-									<div className="col-md-6">
-										<div className="register-page-txt color--white">
-
-											
-											<img className="img-fluid filter-white" src="assets/images/logo-white.png" alt="logo-image" />		
-
-											
-											<h2 className="s-42 w-700">Welcome</h2>
-											<h2 className="s-42 w-700">back to OnDemand</h2>
-
-											
-											<p className="p-md mt-25">Integer congue sagittis and velna augue egestas magna 
-											   suscipit purus aliquam
-											</p>
-
-											
-											<div className="register-page-copyright">
-												<p className="p-sm">© 2023 OnDemand. <span>All Rights Reserved</span></p>
-											</div>
-
-										</div>
-									</div>	
-
 
 									
-									<div className="col-md-6">
+									<div className="col-md-12">
+                    
 										<div className="register-page-form">
+                    <div className="col-md-12 text-center">	
+                    <img className='logologin' src="/assets/images/logo-white.png" alt="Logo" />
+                     </div>
+
+                      
 											<form name="signinform" className="row sign-in-form" onSubmit={handleSubmit}>
 
 												
-												<div className="col-md-12">
-													<a href="#" className="btn btn-google ico-left">
-														<img src="assets/images/png_icons/google.png" alt="google-icon" /> Sign in with Google
-													</a>
-												</div>  
+												
 
 												
-												<div className="col-md-12 text-center">	
-													<div className="separator-line">Or, sign in with your email</div>
-												</div>
-
+										
 												
 												<div className="col-md-12">
 													<p className="p-sm input-header">Email address</p>
@@ -178,6 +154,12 @@ export default function Home() {
 														Don't have an account? <Link href="/register"><a  className="color--theme">Sign up</a></Link>
 													</p>
 												</div>  
+
+                        {/* <div className="col-md-12 mt-4">
+													<a href="#" className="btn btn-google ico-left">
+														<img src="assets/images/png_icons/google.png" alt="google-icon" /> Sign in with Google
+													</a>
+												</div>   */}
 
 											</form> 
 										</div>

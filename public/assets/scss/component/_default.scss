@@ -10569,18 +10569,16 @@
     -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .12); 
     -moz-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .12); 
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .12); 
+    background-color: #fff;
   }
+
+  .color-white {  color: #fff;}
+
+
+  .mx-auto {  margin: auto;}
+
   
-  #login .register-page-wrapper {
-    background: url(../images/login-wrapper.jpg);
-    background-position: left top;
-  }
-  
-  #signup .register-page-wrapper {
-    background: url(../images/login-wrapper.jpg);
-    background-position: right center;
-  }
-  
+
   #login .register-page-wrapper:after,
   #signup .register-page-wrapper:after {
     position: absolute;
@@ -10692,13 +10690,16 @@
     margin-top: 25px;
     margin-bottom: 0;
   }
+
+  .logologin { width: 200px; margin-bottom: 20px;}
   
   /*------------------------------------------*/
   /*  REGISTER PAGE FORM
   /*------------------------------------------*/
   
   .register-page-form {
-    padding: 60px;
+    padding: 20px 40px;
+    background-color: #fff;
   }
   
   .login-1 .register-page-form,
@@ -12119,7 +12120,7 @@
   /*------------------------------------------*/
   
   .theme--dark #login, .theme--dark #signup {
-    background: url(../images/login_dark.jpg);
+   
   }
   
   .theme--dark #reset-password {

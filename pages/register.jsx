@@ -58,10 +58,14 @@ const Register = () => {
       <div id="signup" className="bg--scroll login-section division">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-11">
-              <div className="register-page-wrapper r-16 bg--fixed">
+            <div className="col-lg-6">
+              <div className="register-page-wrapper r-16 bg--fixed pt-4">
+              <div className="col-md-12 text-center">	
+                    <img className='logologin' src="/assets/images/logo-white.png" alt="Logo" />
+                     </div>
+
                 <div className="row">
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <div className="register-page-form">
                       <form
                         name="signupform"

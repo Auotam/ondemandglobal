@@ -44,7 +44,7 @@ const FoundationSection = () => {
                         <div className="price mt-25">
                             <sup className="color--black">$</sup>
                             <span className="color--black">{price}</span>
-                            <sup className="coins color--black">.99</sup>
+                            <sup className="coins color--black"></sup>
                             <sup className="validity color--grey">&nbsp;/&nbsp;{validity}</sup>
                         </div>
                     </div>
@@ -91,9 +91,9 @@ const FoundationSection = () => {
                     <div className="pricing-1-wrapper">
                         <div className="row row-cols-1 row-cols-md-3">
                             <PricingCard
-                                title="Starter"
-                                monthlyPrice="4"
-                                yearlyPrice="58"
+                                title="Individual"
+                                monthlyPrice="0"
+                                yearlyPrice="0"
                                 features={[
                                     '✔️ QR Code Access',
                                     '✔️ ID Cards (Non-Customizable) ',
@@ -104,9 +104,9 @@ const FoundationSection = () => {
                                 ]}
                             />
                             <PricingCard
-                                title="Basic"
-                                monthlyPrice="9"
-                                yearlyPrice="108"
+                                title="Family"
+                                monthlyPrice="4.99"
+                                yearlyPrice="44.91"
                                 features={[
                                     '✔️ QR Code Access',
                                     '✔️ ID Cards (Customizable)',
@@ -117,9 +117,9 @@ const FoundationSection = () => {
                                 ]}
                             />
                             <PricingCard
-                                title="Business+"
-                                monthlyPrice="14"
-                                yearlyPrice="144"
+                                title="Business"
+                                monthlyPrice="14.99"
+                                yearlyPrice="134.91"
                                 features={[
                                     '✔️ QR Code Access',
                                     '✔️ ID Cards (Customizable)',
