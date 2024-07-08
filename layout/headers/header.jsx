@@ -33,19 +33,19 @@ const HeaderOne = () => {
   //for mobile menu
   const { setShowSidebar } = useGlobalContext();
 
-  window.addEventListener("scroll", function () {
-    "use strict";
+  // window.addEventListener("scroll", function () {
+  //   "use strict";
 
-    var b = window.scrollY;
+  //   var b = window.scrollY;
 
-    if (b > 80) {
-      var wsmainfull = document.querySelector(".wsmainfull");
-      wsmainfull.classList.add("scroll");
-    } else {
-      var wsmainfull = document.querySelector(".wsmainfull");
-      wsmainfull.classList.remove("scroll");
-    }
-  });
+  //   if (b > 80) {
+  //     var wsmainfull = document.querySelector(".wsmainfull");
+  //     wsmainfull.classList.add("scroll");
+  //   } else {
+  //     var wsmainfull = document.querySelector(".wsmainfull");
+  //     wsmainfull.classList.remove("scroll");
+  //   }
+  // });
 
 
   const sticky = (e) => {

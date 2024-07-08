@@ -17,7 +17,18 @@ const schema = Joi.object({
   city: Joi.string().required(),
   county: Joi.string().required(),
   zipCode: Joi.string().required(),
+  userId: Joi.string().alphanum().length(5) // Ensure userId is a 5-character alphanumeric string
 });
+
+// Utility function to generate a random 5-character alphanumeric string
+const generateUserId = () => {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let userId = '';
+  for (let i = 0; i < 5; i++) {
+    userId += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return userId;
+};
 
 export default async function handler(req, res) {
   const { method } = req;
@@ -43,12 +54,13 @@ export default async function handler(req, res) {
           // Update the existing form entry
           formEntry = await FormEntry.findOneAndUpdate(
             { email },
-            { $set: req.body },
+            { $set: { ...req.body } }, // Include userId in the update if already present in req.body
             { new: true }
           );
         } else {
-          // Create new form entry
-          formEntry = await FormEntry.create(req.body);
+          // Create new form entry with generated userId if not present in req.body
+          const userId = req.body.userId || generateUserId();
+          formEntry = await FormEntry.create({ ...req.body, userId });
         }
 
         return res.status(201).json({ success: true, data: formEntry });

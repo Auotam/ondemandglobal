@@ -7,10 +7,21 @@ import Layout from '@/components/dashboard/layout';
 import Wrapper from '@/layout/wrapper';
 import SEO from '@/components/seo';
 
+// Utility function to generate a random 5-character alphanumeric string
+const generateUserId = () => {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let userId = '';
+  for (let i = 0; i < 5; i++) {
+    userId += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return userId;
+};
+
 const Form = () => {
   const userData = useUserData();
   
   const [formData, setFormData] = useState({
+    userId: generateUserId(), // Generate userId initially
     firstName: '',
     lastName: '',
     email: '',
@@ -34,6 +45,7 @@ const Form = () => {
       setFormData((prevFormData) => ({
         ...prevFormData,
         email: userData.user.email,
+        userId: prevFormData.userId || generateUserId(), // Ensure userId is set
       }));
     }
   }, [userData]);
@@ -54,12 +66,16 @@ const Form = () => {
     e.preventDefault();
     setLoading(true);
 
+    // Log dataToSubmit for debugging
+    console.log('Data to submit:', formData);
+
     try {
       const response = await axios.post('/api/Auth/submitForm', formData);
       console.log('Response:', response.data);
       toast.success('Form submitted successfully!');
       // Reset form after successful submission
       setFormData({
+        userId: generateUserId(), // Generate new userId for the next submission
         firstName: '',
         lastName: '',
         email: userData.user.email,
@@ -81,6 +97,7 @@ const Form = () => {
       setLoading(false);
     }
   };
+  console.log("new form", formData)
 
   return (
     <Wrapper>

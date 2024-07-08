@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const MONGO_URI = process.env.MONGODB_URI;
 
 if (!MONGO_URI) {
-    throw new Error('Please define the MONGO_URI environment variable');
+    throw new Error('Please define the MONGODB_URI environment variable');
 }
 
 let cached = global.mongoose;
@@ -23,7 +23,7 @@ async function dbConnect() {
             useUnifiedTopology: true,
         };
 
-        cached.promise = mongoose.connect(MONGO_URI, opts).then(mongoose => mongoose);
+        cached.promise = mongoose.connect(MONGO_URI, opts).then((mongoose) => mongoose);
     }
     cached.conn = await cached.promise;
     return cached.conn;

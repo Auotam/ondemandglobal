@@ -4,14 +4,15 @@ import useUserData from "@/utils/UseUserdata"; // Import useUserData
 import Layout from "@/components/dashboard/layout";
 import Wrapper from "@/layout/wrapper";
 import SEO from "@/components/seo";
-import QRCode from "qrcode.react"; // Import QRCode component
+import { Card } from "@mui/material";
 
-const FormDataComponent = () => {
+const Idcardmanagement = () => {
   const [formData, setFormData] = useState(null);
   const [loadingFormData, setLoadingFormData] = useState(true);
   const [error, setError] = useState(null);
 
   const userData = useUserData(); // Get user data using useUserData
+  console.log("id card managemnt ", userData)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,9 +20,10 @@ const FormDataComponent = () => {
         if (userData && userData.user && userData.user.email) {
           setLoadingFormData(true);
           const userEmail = userData.user.email;
-          const response = await axios.post("/api/Auth/formvalue", {
+          const response = await axios.post("/api/Auth/formvalue/formvalue", {
             email: userEmail,
           });
+          console.log(response)
           setFormData(response.data.data);
           setLoadingFormData(false);
         } else {
@@ -55,50 +57,44 @@ const FormDataComponent = () => {
   }
 
   return (
-  
-        <div className="main-wrapper  pl-20">
-          <div className="container-fluid">
-            <div className="title-wrapper pt-30">
-              <div className="row align-items-center">
-                <div className="col-md-6">
-                  <div className="title">
-                    <h2>QR Management</h2>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="">
-                    <nav aria-label="breadcrumb">
-                      <ol className="breadcrumb">
-                        <li className="breadcrumb-item">
-                          <a href="#0">Dashboard</a>
-                        </li>
-                        <li className="breadcrumb-item active" aria-current="page">
-                          Qr Management
-                        </li>
-                      </ol>
-                    </nav>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="user-card">
-              <div className="user-card-img">
-                <QRCode value={JSON.stringify(formData)} /> {/* Generate QR code */}
-              </div>
-              <div className="user-card-info">
-                <h2>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h2>
-                <p><span>Email:</span> {formData.email || "N/A"}</p>
-                <p><span>Insurance Provider:</span>{formData.InsuranceProvider || "N/A"}</p>
-                <p><span>Emergency Phone:</span>{formData.emergencyPhone || "N/A"}</p>
-                <p><span>Medical Alert</span> {formData.medicalAlert || "N/A"}</p>
-                <p><span>Covid19 Tested</span>{formData.Covid19Tested || "N/A"}</p>
-                <p><span>Covid 19 Vaccinated</span> {formData.Covid19vaccinated || "N/A"}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-   
-  );
-};
+    
 
-export default FormDataComponent;
+    <Wrapper>
+    <SEO pageTitle={'OnDemand'} />
+    <Layout>
+      <div className="id-card-tag"></div>
+      	<div className="id-card-tag-strip"></div>
+        	<div className="id-card-hook"></div>
+	          <div className="id-card-holder">
+		<div className="id-card">
+			<div className="header">
+				<img src="/assets/images/logo-white.png" />
+			</div>
+			<div className="photo">
+				<img src="https://i.imgur.com/5WmGvAG.png" />
+			</div>
+			<h2>  <h2>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h2></h2>
+			<div className="qr-code">
+				
+			</div>
+			<h3> {formData.email || "N/A"}</h3>
+      <h3><span>Phone:</span>{formData.emergencyPhone || "N/A"}</h3>
+			<hr />
+			<h6><span>Insurance Provider:</span>{formData.InsuranceProvider || "N/A"}</h6>
+                <p></p>
+               
+
+		
+	</div>
+           </div>
+  
+
+
+
+    </Layout>
+  </Wrapper>
+
+  )
+}
+
+export default Idcardmanagement

@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
-// Define the schema for form entries
 const FormEntrySchema = new mongoose.Schema({
+  userId: { type: String, required: true, unique: true }, // Add userId field
+  email: { type: String, required: true, unique: true }, // Ensure email remains unique and required
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  email: { type: String, required: true, unique: true }, // Ensure email is unique
   emergencyPhone: { type: String, required: true },
   medicalAlert: { type: String, required: true },
   Covid19Tested: { type: String, required: true },
@@ -15,9 +15,12 @@ const FormEntrySchema = new mongoose.Schema({
   city: { type: String, required: true },
   county: { type: String, required: true },
   zipCode: { type: String, required: true },
+  image: { 
+    data: Buffer,
+    contentType: String
+  }
 }, { timestamps: true });
 
-// Use the existing compiled model if it exists, otherwise compile a new one
 const FormEntry = mongoose.models.FormEntry || mongoose.model('FormEntry', FormEntrySchema);
 
 export default FormEntry;

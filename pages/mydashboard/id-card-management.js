@@ -5,6 +5,7 @@ import Layout from "@/components/dashboard/layout";
 import Wrapper from "@/layout/wrapper";
 import SEO from "@/components/seo";
 import { Card } from "@mui/material";
+import QRCodeWithLogoComponent from "@/components/qrcodelogo";
 
 const Idcardmanagement = () => {
   const [formData, setFormData] = useState(null);
@@ -12,6 +13,7 @@ const Idcardmanagement = () => {
   const [error, setError] = useState(null);
 
   const userData = useUserData(); // Get user data using useUserData
+  console.log("id card management ", userData);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,9 +21,10 @@ const Idcardmanagement = () => {
         if (userData && userData.user && userData.user.email) {
           setLoadingFormData(true);
           const userEmail = userData.user.email;
-          const response = await axios.post("/api/Auth/formvalue", {
+          const response = await axios.post("/api/Auth/formvalue/formvalue", {
             email: userEmail,
           });
+          console.log(response);
           setFormData(response.data.data);
           setLoadingFormData(false);
         } else {
@@ -54,45 +57,43 @@ const Idcardmanagement = () => {
     return <div>No form data found for the user</div>;
   }
 
+  // Construct the QR code value dynamically using only the part before '@'
+  const emailParts = formData.email.split('@');
+  const userid = formData.userId;
+  console.log("formdata", formData);
+
+  const qrCodeValue = `http://localhost:3000/user/${emailParts[0]}-${userid}`;
+  console.log("qrmana", qrCodeValue);
+
   return (
-    
-
     <Wrapper>
-    <SEO pageTitle={'OnDemand'} />
-    <Layout>
-      <div className="id-card-tag"></div>
-      	<div className="id-card-tag-strip"></div>
-        	<div className="id-card-hook"></div>
-	          <div className="id-card-holder">
-		<div className="id-card">
-			<div className="header">
-				<img src="/assets/images/logo-white.png" />
-			</div>
-			<div className="photo">
-				<img src="https://i.imgur.com/5WmGvAG.png" />
-			</div>
-			<h2>  <h2>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h2></h2>
-			<div className="qr-code">
-				
-			</div>
-			<h3> {formData.email || "N/A"}</h3>
-      <h3><span>Phone:</span>{formData.emergencyPhone || "N/A"}</h3>
-			<hr />
-			<h6><span>Insurance Provider:</span>{formData.InsuranceProvider || "N/A"}</h6>
-                <p></p>
-               
+      <SEO pageTitle={'OnDemand'} />
+      <Layout>
+        <div className="id-card-tag"></div>
+        <div className="id-card-tag-strip"></div>
+        <div className="id-card-hook"></div>
+        <div className="id-card-holder">
+          <div className="id-card">
+            <div className="header">
+              <img src="/assets/images/logo-white.png" />
+            </div>
+            <h2>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h2>
+            <div className="qr-code">
+              <QRCodeWithLogoComponent value={qrCodeValue} />
+            </div>
+            <h3>{formData.email || "N/A"}</h3>
+            <h3><span>Phone:</span>{formData.emergencyPhone || "N/A"}</h3>
+            <hr />
+            <h6><span>Insurance Provider:</span>{formData.InsuranceProvider || "N/A"}</h6>
+          </div>
+        </div>
+        { formData.userId.length > 0 && (
+          <button>Edit Details</button>
 
-		
-	</div>
-           </div>
-  
+        )}
+      </Layout>
+    </Wrapper>
+  );
+};
 
-
-
-    </Layout>
-  </Wrapper>
-
-  )
-}
-
-export default Idcardmanagement
+export default Idcardmanagement;

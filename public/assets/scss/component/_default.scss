@@ -16326,8 +16326,8 @@ h6,
   margin-left: 0;
 }
 .main-wrapper .container-fluid {
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 @media (max-width: 767px) {
   .main-wrapper .container-fluid {
@@ -18627,5 +18627,29 @@ h3 {
       font-size: 18px;
    }
  }
+
+
+ .rounded-top { background-color: #0a58ca; height:200px;}
+ .imgcontainer{  width: 150px;}
+ .margin-130 { margin-top:35px;  }
+ .bgf8f9fa { background-color: #f8f9fa;}
+.fontzie18{ font-size: 18px;}
+ .callnumber{    width: 247px;
+  background: #fff;
+  color: #000 !important;
+  height: 50px;}
+
+  .width200{ width: 200px;}
+
+  .gradient-custom {
+    /* fallback for old browsers */
+    background: #f6d365;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+  }
  
  
