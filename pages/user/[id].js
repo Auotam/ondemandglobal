@@ -200,7 +200,7 @@ const FormDataComponent = () => {
                      <p className="text-muted">{formData.county || "N/A"} {formData.zipCode || "N/A"}</p>
                    </div>
 
-                   
+                   <QRCodeWithLogoComponent value={qrCodeValue} width="200" />
                     
                   </div>
                
