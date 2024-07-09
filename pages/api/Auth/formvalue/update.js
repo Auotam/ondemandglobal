@@ -2,7 +2,7 @@
 
 import { getSession } from 'next-auth/react';
 import dbConnect from '@/utils/DBConnection';
-import FormEntry from '@/models/FormEntry';
+import FormEntry from '../../../../model/FormData';
 
 const handler = async (req, res) => {
   const session = await getSession({ req });
