@@ -96,7 +96,11 @@ const Dask = () => {
   return (
     <div className='main-wrapper'>
 
-    
+{formData.userId && formData.userId.length > 0 ? (
+                      <a href='mydashboard/edit-details' className='btn btnuserform ml-2'>Edit Details</a>
+                    ) : (
+                      <a href='mydashboard/add-details' className='btn btnuserform'>Add Details</a>
+                    )}
 
       <section className="section">
         <div className="container-fluid">
