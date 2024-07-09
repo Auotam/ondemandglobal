@@ -88,13 +88,16 @@ const Dask = () => {
   const userid = formData.userId;
   console.log("formdata", formData);
 
-  const qrCodeValue = `http://localhost:3000/user/${emailParts[0]}-${userid}`;
+  const qrCodeValue = `https://ondemand.global/user/${emailParts[0]}-${userid}`;
   console.log("qrmana", qrCodeValue);
 
   console.log("data on desk page", userData);
 
   return (
     <div className='main-wrapper'>
+
+    
+
       <section className="section">
         <div className="container-fluid">
           <div className="title-wrapper pt-30 mb-10">

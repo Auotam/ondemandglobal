@@ -32,7 +32,7 @@ const FormDataComponent = () => {
   }, [id]);
 
   // Generate QR code value based on formData
-  const qrCodeValue = formData ? `http://localhost:3000/user/${formData.email.split('@')[0]}-${formData.userId}` : "";
+  const qrCodeValue = formData ? `https://ondemand.global/user/${formData.email.split('@')[0]}-${formData.userId}` : "";
 
   if (loadingFormData) {
     return <div>Loading form data...</div>;

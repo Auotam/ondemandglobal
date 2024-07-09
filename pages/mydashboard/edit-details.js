@@ -86,7 +86,7 @@ const FormDataComponent = () => {
 
   // Construct the QR code value dynamically using only the part before '@'
   const emailParts = formData.email.split('@');
-  const qrCodeValue = `http://localhost:3000/user/${emailParts[0]}-${formData.userId}`;
+  const qrCodeValue = `https://ondemand.global/user/${emailParts[0]}-${formData.userId}`;
   console.log("qrmana", qrCodeValue);
 
   return (
