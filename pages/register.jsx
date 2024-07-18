@@ -133,7 +133,7 @@ const Register = () => {
                           />
                           </div></div>
                           <div className="col-md-12">
-                          <p className="p-sm input-header">Full Name</p>
+                          {/* <p className="p-sm input-header">Full Name</p> */}
                           <div className="wrap-input">
                       
                           <input
@@ -144,11 +144,11 @@ const Register = () => {
                             placeholder="Price"
                             value={formData.price}
                             required
-                            readOnly
+                            readOnly hidden
                           />
                           </div></div>
                           <div className="col-md-12">
-                          <p className="p-sm input-header">Full Name</p>
+                          {/* <p className="p-sm input-header">Full Name</p> */}
                           <div className="wrap-input">
                       
                           <input
@@ -163,7 +163,7 @@ const Register = () => {
                           />
                           </div>
                           </div>
-                          <button className="btn btn-primary w-100" type="submit">
+                          <button className="btn btn--theme hover--theme submit" type="submit">
                             Register
                           </button>
                         </form>
