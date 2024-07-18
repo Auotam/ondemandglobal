@@ -67,8 +67,8 @@ const HeaderOne = () => {
             <span className="smllogo">
               <img src="/assets/images/logo-white.png" alt="mobile-logo" />
             </span>
-            <a id="wsnavtoggle" className="wsanimated-arrow">
-              <span></span>
+            <a href="/login" id="wsnavtoggle" className="wsanimated-arrow mt-0 mr-0 pr-2">
+              <button className="btn btn--theme hover--theme">Signin</button>
             </a>
           </div>
 

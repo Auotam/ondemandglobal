@@ -58,7 +58,7 @@ const Register = () => {
     <>
       {!planSelected ? (
         <>
-          <h1 className="d-flex align-items-center justify-content-center mt-40">Please Select the plan Before Registration</h1>
+          <h1 className="d-flex align-items-center justify-content-center mt-40 text-center">Please Select the plan Before Registration</h1>
           <FoundationSection onPlanSelect={handlePlanSelect} />
         </>
       ) : (

@@ -1146,6 +1146,7 @@ body.wsactive {
   margin-top: 12px;
   padding-left: 18px;
 }
+.wsmobileheader .smllogo img{ width: 150px;}
 
 /* Mobile Search Bar*/
 .wsmenu > .wsmenu-list > li.rightmenu > .topmenusearch {
@@ -3103,13 +3104,14 @@ body.wsactive {
   top: 0;
   right: 0;
   z-index: 10002;
-  height: 54px;
+  height: 76px;
   -webkit-transition: all 0.25s ease-in-out;
   -moz-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;
   -ms-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
   box-shadow: 0 0 1px rgba(0, 0, 0, .3);
+  background-color: #fff;
 }
 
 .wsactive .wsmobileheader {

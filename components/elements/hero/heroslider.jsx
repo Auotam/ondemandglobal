@@ -1,4 +1,3 @@
-// Import Swiper styles
 import 'swiper/css/bundle';
 
 const HeroSlider = () => {
@@ -30,18 +29,19 @@ const HeroSlider = () => {
     ];
 
     return (
-        <div className="hero-video-container">
-              <video autoPlay loop muted className="hero-video w-100">
-                                <source src="/assets/images/video2.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                       
-           
-
-            </video>
+        <div className="hero-slider-container">
+                <div className="hero-background-image"></div>
+            <div className="hero-video-container hero-video">
+                <video autoPlay loop muted className='hero-video' >
+                    <source src="/assets/images/video2.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            
+            </div>
 
             <section id="hero-10" className="bg--scroll hero-section">
                 <div className="container">
-                    <div className="row d-flex align-items-center mx-auto justify-content-center ">
+                    <div className="row d-flex align-items-center mx-auto justify-content-center">
                         <div className="col-md-6 order-md-2 mt-4 text-center">
                             <div className="hero-10-txt wow fadeInRight">
                                 <h2 className="s-52 w-700">Your Information, One Scan Away</h2>
@@ -52,7 +52,6 @@ const HeroSlider = () => {
                                 </div>
                             </div>
                         </div>
-                       
                     </div>
                 </div>
             </section>

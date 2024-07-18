@@ -146,9 +146,9 @@ export default function Home() {
                         </div>
                       </form>
                       {error && <div className="alert alert-danger mt-3">{error}</div>}
-                      {loadingFormData && <div className="spinner-border text-primary mt-3" role="status">
+                      {/* {loadingFormData && <div className="spinner-border text-primary mt-3" role="status">
                         <span className="sr-only">Loading...</span>
-                      </div>}
+                      </div>} */}
                     </div>
                   </div>
                 </div>
