@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 import 'react-toastify/dist/ReactToastify.css';
 import useUserData from '@/utils/UseUserdata';
 import Layout from '@/components/dashboard/layout';
 import Wrapper from '@/layout/wrapper';
 import SEO from '@/components/seo';
 
-// Utility function to generate a random 5-character alphanumeric string
 const generateUserId = () => {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let userId = '';
@@ -17,87 +18,81 @@ const generateUserId = () => {
   return userId;
 };
 
+const validationSchema = yup.object({
+  firstName: yup.string().required('First Name is required'),
+  lastName: yup.string().required('Last Name is required'),
+  email: yup.string().email('Invalid email format').required('Email is required'),
+  emergencyPhone: yup.string().required('Emergency Phone is required'),
+  medicalAlert: yup.string().required('Medical Alert is required'),
+  Covid19Tested: yup.string().required('Covid19 Tested is required'),
+  Covid19vaccinated: yup.string().required('Covid19 Vaccinated is required'),
+  InsuranceProvider: yup.string().required('Insurance Provider is required'),
+  nonprescribedrugs: yup.string().required('Non-prescribed Drugs is required'),
+  allergies: yup.string().required('Allergies is required'),
+  city: yup.string().required('City is required'),
+  county: yup.string().required('County is required'),
+  zipCode: yup.string().required('Zip Code is required'),
+});
+
 const Form = () => {
   const userData = useUserData();
-  
-  const [formData, setFormData] = useState({
-    userId: generateUserId(), // Generate userId initially
-    firstName: '',
-    lastName: '',
-    email: '',
-    emergencyPhone: '',
-    medicalAlert: '',
-    Covid19Tested: '',
-    Covid19vaccinated: '',
-    InsuranceProvider: '',
-    nonprescribedrugs: '',
-    allergies: '',
-    city: '',
-    county: '',
-    zipCode: ''
+
+  const formik = useFormik({
+    initialValues: {
+      userId: generateUserId(),
+      firstName: '',
+      lastName: '',
+      email: '',
+      emergencyPhone: '',
+      medicalAlert: '',
+      Covid19Tested: '',
+      Covid19vaccinated: '',
+      InsuranceProvider: '',
+      nonprescribedrugs: '',
+      allergies: '',
+      city: '',
+      county: '',
+      zipCode: ''
+    },
+    validationSchema: validationSchema,
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
+      console.log('Data to submit:', values);
+      try {
+        const response = await axios.post('/api/Auth/submitForm', values);
+        console.log('Response:', response.data);
+        toast.success('Form submitted successfully!');
+        resetForm({
+          values: {
+            ...values,
+            userId: generateUserId(),
+            email: userData.user.email,
+          },
+        });
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        toast.error('Error submitting form!');
+      } finally {
+        setSubmitting(false);
+      }
+    },
   });
 
-  const [loading, setLoading] = useState(false);
-
-  // Update form data with user's email once userData is available
   useEffect(() => {
     if (userData && userData.user.email) {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        email: userData.user.email,
-        userId: prevFormData.userId || generateUserId(), // Ensure userId is set
-      }));
+      formik.setFieldValue('email', userData.user.email);
+    }
+    if (userData && userData.userDataAvailable) {
+      // Assuming userData contains form data structure matching initialValues
+      formik.setValues({
+        ...formik.values,
+        ...userData.formData
+      });
     }
   }, [userData]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  };
-
   if (!userData) {
-    return null; 
+    return null;
   }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    // Log dataToSubmit for debugging
-    console.log('Data to submit:', formData);
-
-    try {
-      const response = await axios.post('/api/Auth/submitForm', formData);
-      console.log('Response:', response.data);
-      toast.success('Form submitted successfully!');
-      // Reset form after successful submission
-      setFormData({
-        userId: generateUserId(), // Generate new userId for the next submission
-        firstName: '',
-        lastName: '',
-        email: userData.user.email,
-        emergencyPhone: '',
-        medicalAlert: '',
-        Covid19Tested: '',
-        Covid19vaccinated: '',
-        InsuranceProvider: '',
-        nonprescribedrugs: '',
-        allergies: '',
-        city: '',
-        county: '',
-        zipCode: ''
-      });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast.error('Error submitting form!');
-    } finally {
-      setLoading(false);
-    }
-  };
-  console.log("new form", formData)
 
   return (
     <Wrapper>
@@ -129,144 +124,196 @@ const Form = () => {
                 </div>
               </div>
             </div>
-            <form onSubmit={handleSubmit} className="container">
+            <form onSubmit={formik.handleSubmit} className="container">
               <div className="row">
                 <div className="col-md-4 input-style-1">
                   <input
                     type="text"
                     name="firstName"
                     placeholder="First Name"
-                    value={formData.firstName}
-                    onChange={handleChange}
+                    value={formik.values.firstName}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     className="form-control"
                   />
+                  {formik.touched.firstName && formik.errors.firstName ? (
+                    <div className="error">{formik.errors.firstName}</div>
+                  ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
                   <input
                     type="text"
                     name="lastName"
                     placeholder="Last Name"
-                    value={formData.lastName}
-                    onChange={handleChange}
+                    value={formik.values.lastName}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     className="form-control"
                   />
+                  {formik.touched.lastName && formik.errors.lastName ? (
+                    <div className="error">{formik.errors.lastName}</div>
+                  ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
                   <input
                     type="text"
                     name="email"
                     placeholder="Email"
-                    value={formData.email}
-                    onChange={handleChange}
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     className="form-control"
                     readOnly
                   />
+                  {formik.touched.email && formik.errors.email ? (
+                    <div className="error">{formik.errors.email}</div>
+                  ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
                   <input
                     type="text"
                     name="emergencyPhone"
                     placeholder="Emergency Phone"
-                    value={formData.emergencyPhone}
-                    onChange={handleChange}
+                    value={formik.values.emergencyPhone}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     className="form-control"
                   />
+                  {formik.touched.emergencyPhone && formik.errors.emergencyPhone ? (
+                    <div className="error">{formik.errors.emergencyPhone}</div>
+                  ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
                   <input
                     type="text"
                     name="medicalAlert"
                     placeholder="Medical Alert"
-                    value={formData.medicalAlert}
-                    onChange={handleChange}
+                    value={formik.values.medicalAlert}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     className="form-control"
                   />
+                  {formik.touched.medicalAlert && formik.errors.medicalAlert ? (
+                    <div className="error">{formik.errors.medicalAlert}</div>
+                  ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
                   <input
                     type="text"
                     name="Covid19Tested"
                     placeholder="Covid19 Tested"
-                    value={formData.Covid19Tested}
-                    onChange={handleChange}
+                    value={formik.values.Covid19Tested}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     className="form-control"
                   />
+                  {formik.touched.Covid19Tested && formik.errors.Covid19Tested ? (
+                    <div className="error">{formik.errors.Covid19Tested}</div>
+                  ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
                   <input
                     type="text"
                     name="Covid19vaccinated"
                     placeholder="Covid19 Vaccinated"
-                    value={formData.Covid19vaccinated}
-                    onChange={handleChange}
+                    value={formik.values.Covid19vaccinated}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     className="form-control"
                   />
+                  {formik.touched.Covid19vaccinated && formik.errors.Covid19vaccinated ? (
+                    <div className="error">{formik.errors.Covid19vaccinated}</div>
+                  ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
                   <input
                     type="text"
                     name="InsuranceProvider"
                     placeholder="Insurance Provider"
-                    value={formData.InsuranceProvider}
-                    onChange={handleChange}
+                    value={formik.values.InsuranceProvider}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     className="form-control"
                   />
+                  {formik.touched.InsuranceProvider && formik.errors.InsuranceProvider ? (
+                    <div className="error">{formik.errors.InsuranceProvider}</div>
+                  ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
                   <input
                     type="text"
                     name="nonprescribedrugs"
                     placeholder="Non-prescribed Drugs"
-                    value={formData.nonprescribedrugs}
-                    onChange={handleChange}
+                    value={formik.values.nonprescribedrugs}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     className="form-control"
                   />
+                  {formik.touched.nonprescribedrugs && formik.errors.nonprescribedrugs ? (
+                    <div className="error">{formik.errors.nonprescribedrugs}</div>
+                  ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
                   <input
                     type="text"
                     name="allergies"
                     placeholder="Allergies"
-                    value={formData.allergies}
-                    onChange={handleChange}
+                    value={formik.values.allergies}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     className="form-control"
                   />
+                  {formik.touched.allergies && formik.errors.allergies ? (
+                    <div className="error">{formik.errors.allergies}</div>
+                  ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
                   <input
                     type="text"
                     name="city"
                     placeholder="City"
-                    value={formData.city}
-                    onChange={handleChange}
+                    value={formik.values.city}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     className="form-control"
                   />
+                  {formik.touched.city && formik.errors.city ? (
+                    <div className="error">{formik.errors.city}</div>
+                  ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
                   <input
                     type="text"
                     name="county"
                     placeholder="County"
-                    value={formData.county}
-                    onChange={handleChange}
+                    value={formik.values.county}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     className="form-control"
                   />
+                  {formik.touched.county && formik.errors.county ? (
+                    <div className="error">{formik.errors.county}</div>
+                  ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
                   <input
                     type="text"
                     name="zipCode"
                     placeholder="Zip Code"
-                    value={formData.zipCode}
-                    onChange={handleChange}
+                    value={formik.values.zipCode}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     className="form-control"
                   />
+                  {formik.touched.zipCode && formik.errors.zipCode ? (
+                    <div className="error">{formik.errors.zipCode}</div>
+                  ) : null}
                 </div>
               </div>
               <div className="row">
                 <div className="col-md-12">
-                  <button type="submit" className="main-btn primary-btn btn-hover" disabled={loading}>
-                    {loading ? 'Sending...' : 'Send Details'}
+                  <button type="submit" className="main-btn primary-btn btn-hover" disabled={formik.isSubmitting}>
+                    {formik.isSubmitting ? 'Sending...' : 'Send Details'}
                   </button>
                 </div>
               </div>

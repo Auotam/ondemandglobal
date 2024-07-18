@@ -13959,11 +13959,13 @@ h6,
 /* ======= icon-card ======== */
 .icon-card {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background: #fff;
   padding: 30px 20px;
   box-shadow: 0px 12px 24px -4px rgba(145, 158, 171, 0.12), 0px 0px 2px 0px rgba(145, 158, 171, 0.2);
   border-radius: 7px;
+
+  justify-content: flex-start;
 }
 .icon-card.icon-card-3 {
   display: block;
@@ -15137,7 +15139,7 @@ h6,
   background: #fff;
   position: sticky;
   top: 0;
-  z-index: 99;
+  z-index: 99; margin-left: 250px;
 }
 .header .header-left .menu-toggle-btn .main-btn {
   padding: 10px 16px;
@@ -16067,7 +16069,7 @@ h6,
   padding: 20px 0px;
   height: 100vh;
   position: fixed;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   top: 0;
   left: 0;
@@ -18403,7 +18405,7 @@ h6,
 
 .widthimage{ width: 50px;}
 .id-card-holder {
-  width: 225px;
+  width: 367px;
     padding: 4px;
     margin: 0 auto;
     background-color: #1f1f1f;
@@ -18428,7 +18430,7 @@ h6,
     height: 100px;
     position: absolute;
     top: 105px;
-    left: 222px;
+right:0;
     border-radius: 5px 0 0 5px;
 }
 .id-card {
@@ -18444,7 +18446,7 @@ h6,
 }
 .header img {
   width: 100px;
-    margin-top: 15px;
+
 }
 .photo img {
   width: 80px;
@@ -18652,4 +18654,14 @@ h3 {
     background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
   }
  
+
+  
  
+.content h2{ font-size: 18px;}
+.content h3{ font-size: 22px;}
+
+#uncontrolled-tab-example .nav-item { border-bottom:1px solid #02045f ; width: 200px;}
+#uncontrolled-tab-example .nav-item button { width: 200px;}
+#uncontrolled-tab-example .nav-item button.active{ background-color: #02045f; color:#fff; width:200px;  }
+
+.submitbtn{ background-color:#02045f; color:#fff;}

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
-const FoundationSection = () => {
-
+const FoundationSection = ({ onPlanSelect }) => {
     const router = useRouter();
     const [isYearly, setIsYearly] = useState(false);
 
@@ -17,6 +16,9 @@ const FoundationSection = () => {
             isYearly
         };
 
+        // Call the callback function passed from the parent component
+        onPlanSelect(planDetails);
+
         // Navigate to '/register' with planDetails as query parameters
         router.push({
             pathname: '/register',
@@ -25,7 +27,6 @@ const FoundationSection = () => {
     };
 
     const PricingCard = ({ title, monthlyPrice, yearlyPrice, features }) => {
-        // Calculate savings percentage based on the billing frequency
         const savingsPercentage = isYearly ? 25 : 0;
         const price = isYearly ? yearlyPrice : monthlyPrice;
         const billingPeriod = isYearly ? 'year' : 'month';
@@ -133,8 +134,6 @@ const FoundationSection = () => {
                     </div>
                 </div>
             </section>
-
-            {/* Additional sections and content here */}
         </>
     );
 };

@@ -75,7 +75,7 @@ const FormDataComponent = () => {
     return <div>No form data found for the user</div>;
   }
 
-  // Construct the QR code value dynamically using only the part before '@'
+  
   const emailParts = formData.email.split('@');
   const userid = formData.userId;
   const qrCodeValue = formData ? `https://ondemand.global/user/${formData.email.split('@')[0]}-${formData.userId}` : "";
@@ -89,7 +89,7 @@ const FormDataComponent = () => {
         <div className="main-wrapper">
           <div className="container-fluid">
 
-          <div class="row">
+          {/* <div class="row">
         <div class="col">
           <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4 mt-2">
             <ol class="breadcrumb mb-0">
@@ -99,9 +99,9 @@ const FormDataComponent = () => {
             </ol>
           </nav>
         </div>
-      </div>
+      </div> */}
          
-            <div className="card">
+            <div className="card mt-4">
               <Tabs defaultActiveKey="Genrate QR" id="uncontrolled-tab-example" className="mb-3">
               <Tab eventKey="Genrate QR" title="Genrate QR">
                 <div className="row   mt-0 py-2 px-2 mr-4">
@@ -201,7 +201,7 @@ const FormDataComponent = () => {
                       />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" className="submitbtn mt-4" type="submit">
                       Submit
                     </Button>
                   </Form>

@@ -1,5 +1,80 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import useUserData from "@/utils/UseUserdata";
+import QRCode from "qrcode.react";
+import Qrcode from "@/components/qrpage/qrcode";
+import QRCodeWithLogoComponent from "@/components/qrcodelogo";
+import Daskqr from "@/components/qrpage/dashqr";
+import dayjs from "dayjs";
+import Link from "next/link";
+import EventBusyIcon from '@mui/icons-material/EventBusy';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import { Bar } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
 const Invoice = () => {
+
+  const [formData, setFormData] = useState(null);
+  const [loadingFormData, setLoadingFormData] = useState(true);
+  const [error, setError] = useState(null);
+  const [countdown, setCountdown] = useState("");
+
+  const userData = useUserData();
+  console.log("id card management ", userData);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (userData && userData.user && userData.user.email) {
+          setLoadingFormData(true);
+          const userEmail = userData.user.email;
+          const response = await axios.post("/api/Auth/formvalue/formvalue", {
+            email: userEmail,
+          });
+          console.log(response);
+          setFormData(response.data.data);
+          setLoadingFormData(false);
+        } else {
+          throw new Error("User data not available");
+        }
+      } catch (error) {
+        setError(error.response ? error.response.data.error : error.message);
+        setLoadingFormData(false);
+      }
+    };
+
+    if (userData) {
+      fetchData();
+    }
+  }, [userData]);
+
+  useEffect(() => {
+    if (formData) {
+      const interval = setInterval(() => {
+        const createdAt = dayjs(formData.createdAt);
+        const expirationDate = createdAt.add(7, "day");
+        const now = dayjs();
+        const diff = expirationDate.diff(now);
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [formData]);
+
+  if (!userData) {
+    return <div>Loading user data...</div>;
+  }
+
+  if (loadingFormData) {
+    return <div>Loading form data...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!formData) {
+    return <div>No form data found for the user</div>;
+  }
   return (
 
     <div className='main-wrapper'>
@@ -9,44 +84,40 @@ const Invoice = () => {
           <div className="invoice-wrapper mt-50">
             <div className="row">
               <div className="col-12">
-                <div className="invoice-card card-style mb-30">
+                <div className="invoice-card card-style mb-20">
                   <div className="invoice-header">
                     <div className="invoice-for">
                       <h2 className="mb-10">Invoice</h2>
                       <p className="text-sm">
-                        Admin Dashboard Design &amp; Development
+                       Ondemand Global 
                       </p>
                     </div>
                     <div className="invoice-logo">
                       <img src="assets/images/invoice/uideck-logo.svg" alt="" />
                     </div>
-                    <div className="invoice-date">
-                      <p><span>Date Issued:</span> 20/02/2024</p>
-                      <p><span>Date Due:</span> 20/02/2028</p>
-                      <p><span>Order ID:</span> #5467</p>
-                    </div>
+                   
                   </div>
                   <div className="invoice-address">
                     <div className="address-item">
                       <h5 className="text-bold">From</h5>
-                      <h1>John Doe</h1>
+                      <h1>Ondemand Global</h1>
                       <p className="text-sm">
-                        3891 Ranchview Dr. Richardson, California 62639
+                      Minneapolis | Minnesota | 55303
                       </p>
                       <p className="text-sm">
                         <span className="text-medium">Email:</span>
-                        admin@example.com
+                        invoice@ondemand.global
                       </p>
                     </div>
                     <div className="address-item">
                       <h5 className="text-bold">To</h5>
-                      <h1>Santa Gosh</h1>
+                      <h1 className="text-capitalize">{userData.user.name}</h1>
                       <p className="text-sm">
-                        2972 Westheimer Rd. Santa Ana, Illinois 85486
+                    {formData.address}
                       </p>
                       <p className="text-sm">
                         <span className="text-medium">Email:</span>
-                        admin@example.com
+                      {formData.email}
                       </p>
                     </div>
                   </div>
@@ -55,7 +126,7 @@ const Invoice = () => {
                       <thead>
                         <tr>
                           <th className="service">
-                            <h6 className="text-sm text-medium">Service</h6>
+                            <h6 className="text-sm text-medium">Plan</h6>
                           </th>
                           <th className="desc">
                             <h6 className="text-sm text-medium">Descriptions</h6>
@@ -71,52 +142,21 @@ const Invoice = () => {
                       <tbody>
                         <tr>
                           <td>
-                            <p className="text-sm">Admin Dashboard</p>
+                            <p className="text-sm">   {userData.user.plan}</p>
                           </td>
                           <td>
                             <p className="text-sm">
-                              Design and Development Service
-                            </p>
-                          </td>
-                          <td>
-                            <p className="text-sm">3</p>
-                          </td>
-                          <td>
-                            <p className="text-sm">$700</p>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <p className="text-sm">Landing Page</p>
-                          </td>
-                          <td>
-                            <p className="text-sm">
-                              Landing Page Ui kit design and Development
+                            -
                             </p>
                           </td>
                           <td>
                             <p className="text-sm">1</p>
                           </td>
                           <td>
-                            <p className="text-sm">$1000</p>
+                            <p className="text-sm">4.99</p>
                           </td>
                         </tr>
-                        <tr>
-                          <td>
-                            <p className="text-sm">Web design</p>
-                          </td>
-                          <td>
-                            <p className="text-sm">
-                              Web Design and Development and Seo
-                            </p>
-                          </td>
-                          <td>
-                            <p className="text-sm">2</p>
-                          </td>
-                          <td>
-                            <p className="text-sm">$4000</p>
-                          </td>
-                        </tr>
+                       
                         <tr>
                           <td></td>
                           <td></td>
@@ -124,7 +164,7 @@ const Invoice = () => {
                             <h6 className="text-sm text-medium">Subtotal</h6>
                           </td>
                           <td>
-                            <h6 className="text-sm text-bold">$5700</h6>
+                            <h6 className="text-sm text-bold">$4.99</h6>
                           </td>
                         </tr>
                         <tr>
@@ -134,7 +174,7 @@ const Invoice = () => {
                             <h6 className="text-sm text-medium">Discount</h6>
                           </td>
                           <td>
-                            <h6 className="text-sm text-bold">45%</h6>
+                            <h6 className="text-sm text-bold">0%</h6>
                           </td>
                         </tr>
                         <tr>
@@ -144,7 +184,7 @@ const Invoice = () => {
                             <h6 className="text-sm text-medium">Shipping Charge</h6>
                           </td>
                           <td>
-                            <h6 className="text-sm text-bold">Free</h6>
+                            <h6 className="text-sm text-bold">$3.00</h6>
                           </td>
                         </tr>
                         <tr>
@@ -154,7 +194,7 @@ const Invoice = () => {
                             <h4>Total</h4>
                           </td>
                           <td>
-                            <h4>$3135</h4>
+                            <h4>$7.99</h4>
                           </td>
                         </tr>
                       </tbody>

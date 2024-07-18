@@ -6,6 +6,8 @@ import Wrapper from "@/layout/wrapper";
 import SEO from "@/components/seo";
 import QRCode from "qrcode.react"; // Import QRCode component
 import QRCodeWithLogoComponent from "@/components/qrcodelogo";
+import Link from "next/link";
+import { Card } from "@mui/material";
 
 const DashQR = () => {
   const [formData, setFormData] = useState(null);
@@ -83,46 +85,64 @@ const DashQR = () => {
 
 
 <section >
-    <div className="container  h-100">
+
+
       <div className="row d-flex justify-content-start align-items-start h-100 w-100">
-        <div className="col col-lg-8 mb-4 mb-lg-0">
-          <div className="card mb-3" >
+        <div className="col col-lg-12 mb-4 mb-lg-0">
+          <Card className=" mb-3" >
             <div className="row g-0">
-              <div className="col-md-4 gradient-custom text-center text-white" >
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                  alt="Avatar"
-                  className="img-fluid my-5"
-                
-                />
-                <h5>Marie Horwitz</h5>
-                <p>Web Designer</p>
-                <i className="far fa-edit mb-5"></i>
+
+              {/* <div className="">
+              {formData.userId && formData.userId.length > 0 ? (
+  
+  <Link href='mydashboard/edit-details'className='btn btnuserform ml-2'>Edit Details</Link>
+ ) : (
+   <a href='mydashboard/add-details' className='btn btnuserform'>Add Details</a>
+ )} 
+
+              </div> */}
+      
+              <div className="col-md-12  text-center text-white p-5" >
+              <div className="col col-lg-12 mb-4 mb-lg-0"> <QRCodeWithLogoComponent value={qrCodeValue} /></div>
+               
               </div>
-              <div className="col-md-8">
+             
+            </div>
+          </Card>
+          <Card>
+          <div className="col-md-12">
                 <div className="card-body p-4">
-                  <h6>Information</h6>
-                  <hr className="mt-0 mb-4" />
+                
+                  <div className="row pt-1">
+                    <div className="col-6 mb-3">
+                      <h6>First Name</h6>
+                      <p className="text-muted">{formData.firstName}</p>
+                    </div>
+                    <div className="col-6 mb-3">
+                      <h6>Last Name</h6>
+                      <p className="text-muted"> {formData.lastName}</p>
+                    </div>
+                  </div>
                   <div className="row pt-1">
                     <div className="col-6 mb-3">
                       <h6>Email</h6>
-                      <p className="text-muted">info@example.com</p>
+                      <p className="text-muted">{formData.email}</p>
                     </div>
                     <div className="col-6 mb-3">
                       <h6>Phone</h6>
-                      <p className="text-muted">123 456 789</p>
+                      <p className="text-muted">{formData.emergencyPhone}</p>
                     </div>
                   </div>
-                  <h6>Projects</h6>
+                  <h6>Medical Information</h6>
                   <hr className="mt-0 mb-4" />
                   <div className="row pt-1">
                     <div className="col-6 mb-3">
-                      <h6>Recent</h6>
-                      <p className="text-muted">Lorem ipsum</p>
+                      <h6>Medical Alerts</h6>
+                      <p className="text-muted">{formData.medicalAlert}</p>
                     </div>
                     <div className="col-6 mb-3">
-                      <h6>Most Viewed</h6>
-                      <p className="text-muted">Dolor sit amet</p>
+                      <h6></h6>Insurance
+                      <p className="text-muted">{formData.InsuranceProvider}</p>
                     </div>
                   </div>
                   <div className="d-flex justify-content-start">
@@ -132,13 +152,12 @@ const DashQR = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+          </Card>
         </div>
-        <div className="col col-lg-4 mb-4 mb-lg-0"> <QRCodeWithLogoComponent value={qrCodeValue} /></div>
+        
 
       </div>
-    </div>
+ 
   </section>
             
             {/* <section className="w-100 px-4 py-5" >

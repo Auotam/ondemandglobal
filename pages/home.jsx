@@ -12,6 +12,7 @@ export default function Home() {
   }, [])
 
   const logout = () => {
+    console.log("logout work")
     Cookies.remove('token')
     Router.push('/')
   }

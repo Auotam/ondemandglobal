@@ -1,5 +1,3 @@
-// /pages/api/Auth/formvalue/updateFormData.js
-
 import { getSession } from 'next-auth/react';
 import dbConnect from '@/utils/DBConnection';
 import FormEntry from '../../../../model/FormData';

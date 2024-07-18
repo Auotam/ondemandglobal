@@ -1,17 +1,48 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { login_user, check_auth } from '@/services';
 import Head from 'next/head';
-import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
-
+import useUserData from '@/utils/UseUserdata';
+import axios from 'axios';
+import { login_user, check_auth } from '@/services';
 
 export default function Home() {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState(null);
+  const [loadingFormData, setLoadingFormData] = useState(true);
+  const [error, setError] = useState(null);
+  const [countdown, setCountdown] = useState('');
+
+  const userData = useUserData();
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (userData && userData.user && userData.user.email) {
+          setLoadingFormData(true);
+          const userEmail = userData.user.email;
+          const response = await axios.post("/api/Auth/formvalue/formvalue", {
+            email: userEmail,
+          });
+          console.log(response);
+          setFormData(response.data.data);
+          setLoadingFormData(false);
+        } else {
+          throw new Error("User data not available");
+        }
+      } catch (error) {
+        setError(error.response ? error.response.data.error : error.message);
+        setLoadingFormData(false);
+      }
+    };
+
+    if (userData) {
+      fetchData();
+    }
+  }, [userData]);
 
   useEffect(() => {
     const checkAuthentication = async () => {
@@ -22,28 +53,32 @@ export default function Home() {
     };
 
     checkAuthentication();
-  }, []); 
+  }, [router]); // Ensure router is added as a dependency if needed
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await login_user(formData);
+    console.log("form data on login", formData);
     if (res.success) {
       toast.success(res.message);
       localStorage.setItem("authToken", res.token);
-      setTimeout(() => {
-        console.log("this is work 1")
-          router.push("/mydashboard");
-      }, 1000);
-
       Cookies.set("token", res.token);
+
       setTimeout(() => {
-        console.log("this is work 1")
-        router.push("/mydashboard");
+        if (formData.userId && formData.userId.length > 0) {
+          router.push("/mydashboard");
+        } else {
+          router.push("/mydashboard/add-details");
+        }
       }, 1000);
     } else {
       toast.error(res.message);
     }
   };
+
+
+
+
 
   return (
     <>
@@ -53,127 +88,52 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <section className="vh-100 d-flex align-items-center justify-content-center">
+      <ToastContainer />
+      <div id="login" className="bg--scroll login-section division">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-md-6">
-              <div className="card shadow-lg">
-                <div className="card-body">
-                  <h2 className="card-title text-center mb-4">Sign in to your account</h2>
-                  <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                      <label htmlFor="email" className="form-label">Your email</label>
-                      <input onChange={(e) => setFormData({ ...formData, email: e.target.value })} type="email" name="email" id="email" className="form-control" placeholder="name@company.com" required />
+            <div className="col-lg-6">
+              <div className="register-page-wrapper r-16 bg--fixed">
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="register-page-form">
+                      <div className="col-md-12 text-center">
+                        <img className='logologin' src="/assets/images/logo-white.png" alt="Logo" />
+                      </div>
+                      <form name="signinform" className="row sign-in-form" onSubmit={handleSubmit}>
+                        <div className="col-md-12">
+                          <p className="p-sm input-header">Email address</p>
+                          <input onChange={(e) => setFormData({ ...formData, email: e.target.value })} type="email" name="email" id="email" className="form-control email" placeholder="name@company.com" required />
+                        </div>
+                        <div className="col-md-12">
+                          <p className="p-sm input-header">Password</p>
+                          <div className="wrap-input">
+                            <span className="btn-show-pass ico-20"><span className="flaticon-visibility eye-pass"></span></span>
+                            <input onChange={(e) => setFormData({ ...formData, password: e.target.value })} type="password" name="password" id="password" placeholder="••••••••" className="form-control password" required />
+                          </div>
+                        </div>
+                        <div className="col-md-12">
+                          <div className="reset-password-link">
+                            <p className="p-sm"><a href="reset-password.html" className="color--theme">Forgot your password?</a></p>
+                          </div>
+                        </div>
+                        <div className="col-md-12">
+                          <button type="submit" className="btn btn--theme hover--theme submit">Log In</button>
+                        </div>
+                        <div className="col-md-12">
+                          <p className="create-account text-center">
+                            Don't have an account? <Link href="/register"><a className="color--theme">Sign up</a></Link>
+                          </p>
+                        </div>
+                      </form>
                     </div>
-                    <div className="mb-3">
-                      <label htmlFor="password" className="form-label">Password</label>
-                      <input onChange={(e) => setFormData({ ...formData, password: e.target.value })} type="password" name="password" id="password" placeholder="••••••••" className="form-control" required />
-                    </div>
-                    <div className="mb-3 form-check">
-                      <input type="checkbox" id="remember" name="remember" className="form-check-input" />
-                      <label htmlFor="remember" className="form-check-label">Remember me</label>
-                    </div>
-                    <div className="mb-3 text-end">
-                      <a href="#" className="text-primary">Forgot password?</a>
-                    </div>
-                    <button type="submit" className="btn btn-primary w-100">Sign in</button>
-                  </form>
-                  <p className="text-center mt-3">
-                    Don’t have an account yet? <Link href="/register" className="text-primary">Sign up</Link>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section> */}
-      <ToastContainer />
-
-
-      <div id="login" className="bg--scroll login-section division">
-				<div className="container">
-					<div className="row justify-content-center">
-
-
-						
-						<div className="col-lg-6">
-							<div className="register-page-wrapper r-16 bg--fixed">	
-								<div className="row">
-
-
-
-									
-									<div className="col-md-12">
-                    
-										<div className="register-page-form">
-                    <div className="col-md-12 text-center">	
-                    <img className='logologin' src="/assets/images/logo-white.png" alt="Logo" />
-                     </div>
-
-                      
-											<form name="signinform" className="row sign-in-form" onSubmit={handleSubmit}>
-
-												
-												
-
-												
-										
-												
-												<div className="col-md-12">
-													<p className="p-sm input-header">Email address</p>
-													{/* <input className="form-control email" type="email" name="email" placeholder="example@example.com" />  */}
-                          <input onChange={(e) => setFormData({ ...formData, email: e.target.value })} type="email" name="email" id="email" className="form-control email" placeholder="name@company.com" required />
-												</div>
-
-												
-												<div className="col-md-12">
-													<p className="p-sm input-header">Password</p>
-													<div className="wrap-input">
-														<span className="btn-show-pass ico-20"><span className="flaticon-visibility eye-pass"></span></span>
-														{/* <input className="form-control password" type="password" name="password" placeholder="* * * * * * * * *" />  */}
-                            <input onChange={(e) => setFormData({ ...formData, password: e.target.value })} type="password" name="password" id="password" placeholder="••••••••" className="form-control password" required />
-													</div>
-												</div>
-
-												
-												<div className="col-md-12">
-													<div className="reset-password-link">
-														<p className="p-sm"><a href="reset-password.html" className="color--theme">Forgot your password?</a></p>
-													</div>
-												</div>
-
-												
-												<div className="col-md-12">
-													<button type="submit" className="btn btn--theme hover--theme submit">Log In</button>
-                          
-												</div> 
-
-												
-												<div className="col-md-12">
-													<p className="create-account text-center">
-														Don't have an account? <Link href="/register"><a  className="color--theme">Sign up</a></Link>
-													</p>
-												</div>  
-
-                        {/* <div className="col-md-12 mt-4">
-													<a href="#" className="btn btn-google ico-left">
-														<img src="assets/images/png_icons/google.png" alt="google-icon" /> Sign in with Google
-													</a>
-												</div>   */}
-
-											</form> 
-										</div>
-									</div>
-
-
-								</div>  
-							</div>
-						</div>
-
-
-			 		</div>	 
-			 	</div>	   
-			</div>
+      </div>
     </>
   );
 }

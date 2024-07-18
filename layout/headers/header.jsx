@@ -22,7 +22,7 @@ const HeaderOne = () => {
   }, []);
 
   const logout = () => {
-    Cookies.remove("token");
+    Cookies.remove(token);
     Router.push("/");
   };
 
