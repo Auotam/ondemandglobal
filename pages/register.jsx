@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { register_user } from "@/services";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import FoundationSection from "@/components/home/foundation-section"; // Import FoundationSection
+import FoundationSection from "@/components/home/foundation-section";
 import { useRouter } from "next/router";
 
 const Register = () => {
@@ -12,18 +12,18 @@ const Register = () => {
     name: "",
     email: "",
     password: "",
-    price:"",
-    plan: "", // Plan selection state
-    role: "user", // Default role for new users
+    price: "",
+    plan: "",
+    role: "user",
   });
 
-  const [planSelected, setPlanSelected] = useState(false); // State to track if plan is selected
+  const [planSelected, setPlanSelected] = useState(false);
 
   useEffect(() => {
     const { title, price, isYearly } = router.query;
     if (title && price && isYearly) {
       const planName = `${title}`;
-      setFormData({ ...formData, plan: planName });
+      setFormData({ ...formData, plan: planName, price });
       setPlanSelected(true);
     }
   }, [router.query]);
@@ -35,7 +35,7 @@ const Register = () => {
       const res = await register_user(formData);
       if (res.success) {
         toast.success(res.message);
-        router.push("/login"); // Redirect to login page on successful registration
+        router.push("/login");
       } else {
         toast.error(res.message);
       }
@@ -50,7 +50,7 @@ const Register = () => {
   };
 
   const handlePlanSelect = (planDetails) => {
-    setFormData({ ...formData, plan: planDetails.title });
+    setFormData({ ...formData, plan: planDetails.title, price: planDetails.price });
     setPlanSelected(true);
   };
 
@@ -58,8 +58,8 @@ const Register = () => {
     <>
       {!planSelected ? (
         <>
-        <h1 className="d-flex align-items-center justify-content-center mt-40">Please Select the plan Before Registration</h1>
-        <FoundationSection onPlanSelect={handlePlanSelect} />
+          <h1 className="d-flex align-items-center justify-content-center mt-40">Please Select the plan Before Registration</h1>
+          <FoundationSection onPlanSelect={handlePlanSelect} />
         </>
       ) : (
         <div id="signup" className="bg--scroll login-section division">
@@ -74,6 +74,11 @@ const Register = () => {
                     <div className="col-md-12">
                       <div className="register-page-form">
                         <form name="signupform" className="row sign-up-form" onSubmit={handleSubmit}>
+
+                          <div className="col-md-12">
+                          <p className="p-sm input-header">Full Name</p>
+                          <div className="wrap-input">
+                      
                           <input
                             onChange={handleInputChange}
                             type="text"
@@ -82,6 +87,13 @@ const Register = () => {
                             placeholder="Enter your full name"
                             required
                           />
+                          </div>
+                          </div>
+
+                          <div className="col-md-12">
+                          <p className="p-sm input-header">Enter Email</p>
+                          <div className="wrap-input">
+                      
                           <input
                             onChange={handleInputChange}
                             type="email"
@@ -90,6 +102,12 @@ const Register = () => {
                             placeholder="Enter your email id"
                             required
                           />
+                          </div>
+                          </div>
+                          <div className="col-md-12">
+                          <p className="p-sm input-header">Enter Password</p>
+                          <div className="wrap-input">
+                      
                           <input
                             onChange={handleInputChange}
                             type="password"
@@ -98,6 +116,11 @@ const Register = () => {
                             placeholder="••••••••"
                             required
                           />
+                          </div></div>
+                          <div className="col-md-12 d-none">
+                          <p className="p-sm input-header">Plan</p>
+                          <div className="wrap-input">
+                      
                           <input
                             onChange={handleInputChange}
                             type="text"
@@ -108,22 +131,57 @@ const Register = () => {
                             required
                             readOnly
                           />
-                          <div className="col-md-12 text-center">
-                            <button type="submit" className="btn btn-md btn--theme btn--black-hover">
-                              Sign Up
-                            </button>
+                          </div></div>
+                          <div className="col-md-12">
+                          <p className="p-sm input-header">Full Name</p>
+                          <div className="wrap-input">
+                      
+                          <input
+                            onChange={handleInputChange}
+                            type="text"
+                            name="price"
+                            className="form-control price"
+                            placeholder="Price"
+                            value={formData.price}
+                            required
+                            readOnly
+                          />
+                          </div></div>
+                          <div className="col-md-12">
+                          <p className="p-sm input-header">Full Name</p>
+                          <div className="wrap-input">
+                      
+                          <input
+                            onChange={handleInputChange}
+                            type="text"
+                            name="role"
+                            className="form-control role"
+                            placeholder="Role"
+                            value="user"
+                            required
+                            hidden
+                          />
                           </div>
+                          </div>
+                          <button className="btn btn-primary w-100" type="submit">
+                            Register
+                          </button>
                         </form>
                       </div>
+                    </div>
+                    <div className="col-md-12 text-center">
+                      <p className="more-options">
+                        Have an account? <a href="/login">Login Here</a>
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <ToastContainer />
         </div>
       )}
+      <ToastContainer />
     </>
   );
 };

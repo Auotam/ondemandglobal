@@ -6,7 +6,7 @@ import "../../public/assets/images/tablet-01.png";
 const BlogSection = () => {
   return (
     <>
-      <section id="how-to-use" className="pt-100 ct-02 content-section division">
+      <section id="how-to-use" className="pt-100 ct-02 mt-100 content-section division">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-8">

@@ -10,10 +10,9 @@ import axios from 'axios';
 import { login_user, check_auth } from '@/services';
 
 export default function Home() {
-  const [formData, setFormData] = useState(null);
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [loadingFormData, setLoadingFormData] = useState(true);
   const [error, setError] = useState(null);
-  const [countdown, setCountdown] = useState('');
 
   const userData = useUserData();
   const router = useRouter();
@@ -53,32 +52,34 @@ export default function Home() {
     };
 
     checkAuthentication();
-  }, [router]); // Ensure router is added as a dependency if needed
+  }, [router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await login_user(formData);
-    console.log("form data on login", formData);
-    if (res.success) {
-      toast.success(res.message);
-      localStorage.setItem("authToken", res.token);
-      Cookies.set("token", res.token);
 
-      setTimeout(() => {
-        if (formData.userId && formData.userId.length > 0) {
-          router.push("/mydashboard");
-        } else {
-          router.push("/mydashboard/add-details");
-        }
-      }, 1000);
-    } else {
-      toast.error(res.message);
+    try {
+      const res = await login_user(formData);
+      console.log("form data on login", formData);
+      if (res.success) {
+        toast.success(res.message);
+        localStorage.setItem("authToken", res.token);
+        Cookies.set("token", res.token);
+
+        setTimeout(() => {
+          if (formData.userId && formData.userId.length > 0) {
+            router.push("/mydashboard");
+          } else {
+            router.push("/mydashboard/add-details");
+          }
+        }, 1000);
+      } else {
+        toast.error(res.message);
+      }
+    } catch (error) {
+      toast.error("Login failed. Please try again.");
+      console.error("Error during login:", error);
     }
   };
-
-
-
-
 
   return (
     <>
@@ -103,18 +104,36 @@ export default function Home() {
                       <form name="signinform" className="row sign-in-form" onSubmit={handleSubmit}>
                         <div className="col-md-12">
                           <p className="p-sm input-header">Email address</p>
-                          <input onChange={(e) => setFormData({ ...formData, email: e.target.value })} type="email" name="email" id="email" className="form-control email" placeholder="name@company.com" required />
+                          <input 
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            type="email" 
+                            name="email" 
+                            id="email" 
+                            className="form-control email" 
+                            placeholder="name@company.com" 
+                            required 
+                            value={formData.email} 
+                          />
                         </div>
                         <div className="col-md-12">
                           <p className="p-sm input-header">Password</p>
                           <div className="wrap-input">
                             <span className="btn-show-pass ico-20"><span className="flaticon-visibility eye-pass"></span></span>
-                            <input onChange={(e) => setFormData({ ...formData, password: e.target.value })} type="password" name="password" id="password" placeholder="••••••••" className="form-control password" required />
+                            <input 
+                              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                              type="password" 
+                              name="password" 
+                              id="password" 
+                              placeholder="••••••••" 
+                              className="form-control password" 
+                              required 
+                              value={formData.password} 
+                            />
                           </div>
                         </div>
                         <div className="col-md-12">
                           <div className="reset-password-link">
-                            <p className="p-sm"><a href="reset-password.html" className="color--theme">Forgot your password?</a></p>
+                            <p className="p-sm"><Link href="/reset-password"><a className="color--theme">Forgot your password?</a></Link></p>
                           </div>
                         </div>
                         <div className="col-md-12">
@@ -126,6 +145,10 @@ export default function Home() {
                           </p>
                         </div>
                       </form>
+                      {error && <div className="alert alert-danger mt-3">{error}</div>}
+                      {loadingFormData && <div className="spinner-border text-primary mt-3" role="status">
+                        <span className="sr-only">Loading...</span>
+                      </div>}
                     </div>
                   </div>
                 </div>
