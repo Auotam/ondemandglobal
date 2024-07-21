@@ -9,6 +9,7 @@ import QRCodeWithLogoComponent from "@/components/qrcodelogo";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Form, Button } from 'react-bootstrap';
+import { Card } from "@mui/material";
 
 const FormDataComponent = () => {
   const [formData, setFormData] = useState(null);
@@ -105,13 +106,7 @@ const FormDataComponent = () => {
               <Tabs defaultActiveKey="Genrate QR" id="uncontrolled-tab-example" className="mb-3">
               <Tab eventKey="Genrate QR" title="Genrate QR">
                 <div className="row   mt-0 py-2 px-2 mr-4">
-                  <div className="col-md-12 col-xs-12 align-items-end justify-content-end d-flex">
-                  {formData.userId && formData.userId.length > 0 ? (
-                      <a href='mydashboard/edit-details' className='btn btnuserform ml-2'>Edit Details</a>
-                    ) : (
-                      <a href='mydashboard/add-details' className='btn btnuserform'>Add Details</a>
-                    )}
-                  </div>
+                 
                 </div>
                 <section className="py-4 px-4" >
 
@@ -121,26 +116,96 @@ const FormDataComponent = () => {
 
                     <div class="card py-2 px-2 shadow-sm p-3 mb-5 bg-white rounded">
   <div class="card-body">
-  <QRCodeWithLogoComponent value={qrCodeValue} width="200" />
-  </div>
+
+        <div className="id-card-tag"></div>
+        <div className="id-card-tag-strip"></div>
+        <div className="id-card-hook"></div>
+        <div className="id-card-holder">
+          <div className="id-card">
+            <div className="header">
+              <img src="/assets/images/logo-white.png" />
+            </div>
+            <h1>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h1>
+            <h2>{formData.email || "N/A"} </h2>
+            <div className="qr-code">
+              <QRCodeWithLogoComponent value={qrCodeValue} />
+            </div>
+            <h3>{formData.email || "N/A"}</h3>
+            <h3><span>Phone:</span>{formData.emergencyPhone || "N/A"}</h3>
+            <hr />
+            <h6><span>Insurance Provider:</span>{formData.InsuranceProvider || "N/A"}</h6>
+          </div>
+        </div>
+        </div>
+  
+
 </div>
+
+
                     </div>
 
                     <div className="col-md-8  ">
 
+   <Card>
+              <div className="col-md-12">
+                <div className="card-body p-4">
+                  <div className="row pt-1">
+                    <div className="col-6 mb-3">
+                      <h6>First Name</h6>
+                      <p className="text-muted">{formData.firstName}</p>
+                    </div>
+                    <div className="col-6 mb-3">
+                      <h6>Last Name</h6>
+                      <p className="text-muted"> {formData.lastName}</p>
+                    </div>
+                  </div>
+                  <div className="row pt-1">
+                    <div className="col-6 mb-3">
+                      <h6>Email</h6>
+                      <p className="text-muted">{formData.email}</p>
+                    </div>
+                    <div className="col-6 mb-3">
+                      <h6>Phone</h6>
+                      <p className="text-muted">{formData.emergencyPhone}</p>
+                    </div>
+                  </div>
+                  <h6>Medical Information</h6>
+                  <hr className="mt-0 mb-4" />
+                  <div className="row pt-1">
+                    <div className="col-6 mb-3">
+                      <h6>Medical Alerts</h6>
+                      <p className="text-muted">{formData.medicalAlert}</p>
+                    </div>
+                    <div className="col-6 mb-3">
+                      <h6>Insurance</h6>
+                      <p className="text-muted">{formData.InsuranceProvider}</p>
+                    </div>
+                  </div>
 
-<div class="card py-2 px-2 shadow-sm p-3 mb-5 bg-white rounded">
-<div class="card-body">
-<h2>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h2>
-                      <p><span>Email:</span> {formData.email || "N/A"}</p>
-                      <p><span>Insurance Provider:</span>{formData.InsuranceProvider || "N/A"}</p>
-                      <p><span>Emergency Phone:</span>{formData.emergencyPhone || "N/A"}</p>
-                      {/* <p><span>Medical Alert</span> {formData.medicalAlert || "N/A"}</p> */}
-                      <p><span>Covid19 Tested</span>{formData.Covid19Tested || "N/A"}</p>
-                      <p><span>Covid 19 Vaccinated</span> {formData.Covid19vaccinated || "N/A"}</p>
-               
-</div>
-</div>
+                  <h6>Address</h6>
+                  <hr className="mt-0 mb-4" />
+                  <div className="row pt-1">
+                    <div className="col-4 mb-3">
+                      <h6>City</h6>
+                      <p className="text-muted">{formData.city}</p>
+                    </div>
+                    <div className="col-4 mb-3">
+                      <h6>Country</h6>
+                      <p className="text-muted">{formData.county}</p>
+                    </div>
+                    <div className="col-4 mb-3">
+                      <h6>Zip Code</h6>
+                      <p className="text-muted">{formData.zipCode}</p>
+                    </div>
+                  </div>
+                  {formData.userId && formData.userId.length > 0 ? (
+                      <a href='mydashboard/edit-details' className='btn btnuserform ml-2'>Edit Details</a>
+                    ) : (
+                      <a href='mydashboard/add-details' className='btn btnuserform'>Add Details</a>
+                    )}
+                </div>
+              </div>
+            </Card>
 </div>
 
                   </div>
@@ -153,7 +218,7 @@ const FormDataComponent = () => {
                  
                      
                 </Tab>
-                <Tab eventKey="Shipping QR" title="Shipping QR">
+                {/* <Tab eventKey="Shipping QR" title="Shipping QR">
                   <div className="row p-4">
                     <div className="col-md-12">
                     <Form onSubmit={handleShippingSubmit}>
@@ -209,7 +274,7 @@ const FormDataComponent = () => {
                 
                   </div>
                 
-                </Tab>
+                </Tab> */}
                 
               </Tabs>
             </div>

@@ -171,7 +171,7 @@ import React, { useState, useEffect } from 'react';
                     </div>
                   </div>
                   <div className="profile-meta">
-                    <h5 className="text-bold text-dark mb-10">{userData.user.name}</h5>
+                    <h5 className="text-bold text-dark mb-10 text-capitalize">{userData.user.name}</h5>
                     <p className="text-sm text-gray">{formData.userId}</p>
                   </div>
                 </div>
@@ -185,10 +185,16 @@ import React, { useState, useEffect } from 'react';
                   <input type="text" placeholder="www.uideck.com" value={formData.emergencyPhone} />
                 </div>
                 <div className="input-style-1">
-                  <label>Bio</label>
-                  <textarea placeholder="Write your bio here" rows="4">
-    Crafted for – Business, Startup, SaaS, Apps, Event, Software, Agency, Resume and Portfolio. All Landing Pages comes with clean design and responsive layout. Also packed with all essential sections, elements, and features you need to launch</textarea>
+                  <label>Medical Alert</label>
+                  <textarea placeholder="Write your bio here" rows="4"
+                  value={formData.medicalAlert}></textarea>
                 </div>
+
+                {formData.userId && formData.userId.length > 0 ? (
+                      <a href='mydashboard/edit-details' className='btn btnuserform ml-2'>Edit Details</a>
+                    ) : (
+                      <a href='mydashboard/add-details' className='btn btnuserform'>Add Details</a>
+                    )}
               </div>
             </div>
           </div>
@@ -243,12 +249,7 @@ import React, { useState, useEffect } from 'react';
                     </div>
                   </div>
                   
-                  <div className="col-12">
-                    <div className="input-style-1">
-                      <label>Medical Alert</label>
-                      <textarea placeholder="Type here" rows="6" value={formData.medicalAlert}></textarea>
-                    </div>
-                  </div>
+                
                   {/* <div className="col-12">
                     <button className="main-btn primary-btn btn-hover">
                       Update Profile

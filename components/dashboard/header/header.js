@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import useUserData from '@/utils/UseUserdata';
 import Cookies from 'js-cookie'
 import Router from 'next/router'
+import { Upgrade } from '@mui/icons-material';
 
 const Header = () => {
   const userData = useUserData()
@@ -24,10 +25,7 @@ const Header = () => {
 
     <>
     
-    
-    
-    
-    <header className="header">
+    <header className="header  headermarleft">
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-5 col-md-5 col-6">
@@ -40,8 +38,52 @@ const Header = () => {
               </div>
             </div>
             <div className="col-lg-7 col-md-7 col-6">
+              
               <div className="header-right">
+              {/* <div className="notification-box ml-15 d-none d-md-flex">
+              <button    id="upgrade" data-bs-toggle="dropdown"
+                    aria-expanded="false" className="btn dropdown-toggle btn-primary btn-lg main-btn primary-btn w-auto rounded border border-primary">
+                     <Upgrade />     Upgrade Your Plan
+                        </button>
+
+                        <ul className="dropdown-menu dropdown-menu-end rounded" aria-labelledby="upgrade">
+                        <li>
+                      <div className="author-info flex items-center !p-1">
+                      
+                        <div className="content">
+                          <h2>Plans</h2>
+                        </div>
+                      </div>
+                    </li>
+                    
+                    <li>
+                      <a href="#0">
+                        <i className="lni lni-user"></i> Indivisual  <div type="button" class="btn btn-primary btn-rounded btn-lg main-btn primary-btn rounded">
+  Profile
+
+</div>
+                      </a>
+                    </li>
+                    
+                   
+                    <li>
+                      <a href="mydashboard/account"> <i className="lni lni-cog"></i> Family </a>  <div type="button" class="btn btn-primary btn-rounded btn-lg main-btn primary-btn rounded">
+  Profile
+
+</div>
+                    </li>
+                    <li className="divider"></li>
+                    <li >
+                      <a > <i className="lni lni-exit"></i> Business </a>
+                      <div type="button" class="btn btn-primary btn-rounded btn-lg main-btn primary-btn rounded w-auto">
+  Profile
+
+</div>
+                    </li>
+    
+                 </ul>
                 
+                </div> */}
                 <div className="notification-box ml-15 d-none d-md-flex">
                   <button className="dropdown-toggle" type="button" id="notification" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -55,6 +97,7 @@ const Header = () => {
                     </svg>
                     <span></span>
                   </button>
+                  
                   <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="notification">
                    
                     <li>
@@ -62,7 +105,7 @@ const Header = () => {
                         <div className="image">
                           <img src="assets/images/lead/lead-1.png" alt="" />
                         </div>
-                        <div className="content">
+                        {/* <div className="content">
                           <h6>
                             Ondemand 
                             <span className="text-regular">
@@ -73,7 +116,7 @@ const Header = () => {
                          Welcome to ondemand global and complete your profile to go for Add details create your Qr code for free. 
                           </p>
                          
-                        </div>
+                        </div> */}
                       </a>
                     </li>
                   </ul>
@@ -81,6 +124,8 @@ const Header = () => {
               
                 
                 <div className="profile-box ml-15">
+
+                  
                   <button className="dropdown-toggle bg-transparent border-0" type="button" id="profile"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <div className="profile-info">
@@ -92,8 +137,8 @@ const Header = () => {
                     />
                         </div>
                         <div>
-                          <h6 className="fw-500">{userData.user.name}</h6>
-                          <p>{userData.user.role}</p>
+                          <h6 className="fw-500 text-capitalize">{userData.user.name}</h6>
+                          <p className='text-capitalize'>{userData.user.role}</p>
                         </div>
                       </div>
                     </div>

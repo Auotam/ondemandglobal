@@ -69,6 +69,11 @@ const Idcardmanagement = () => {
     <Wrapper>
       <SEO pageTitle={'OnDemand'} />
       <Layout>
+      <div className="main-wrapper">
+          <div className="container-fluid">
+
+         
+            <div className="card mt-4 px-4 py-4">
         <div className="id-card-tag"></div>
         <div className="id-card-tag-strip"></div>
         <div className="id-card-hook"></div>
@@ -77,7 +82,8 @@ const Idcardmanagement = () => {
             <div className="header">
               <img src="/assets/images/logo-white.png" />
             </div>
-            <h2>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h2>
+            <h1>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h1>
+            <h2>{formData.email || "N/A"} </h2>
             <div className="qr-code">
               <QRCodeWithLogoComponent value={qrCodeValue} />
             </div>
@@ -87,11 +93,10 @@ const Idcardmanagement = () => {
             <h6><span>Insurance Provider:</span>{formData.InsuranceProvider || "N/A"}</h6>
           </div>
         </div>
-        { formData.userId.length > 0 && (
-          <button>Edit Details</button>
-
-        )}
-      </Layout>
+        </div>
+        </div>
+        </div>
+              </Layout>
     </Wrapper>
   );
 };

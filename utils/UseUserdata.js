@@ -24,7 +24,7 @@ function useUserData() {
         };
         
         fetchData();
-    }, []); // Empty dependency array to run only once when the component mounts
+    }, []); 
     
     return userData;
 }

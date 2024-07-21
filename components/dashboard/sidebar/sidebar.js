@@ -16,10 +16,10 @@ const Sidebar = () => {
   // Define navigation items with href, text, and icon
   const navItems = [
     { href: '/mydashboard', text: 'Dashboard', icon: <DashboardIcon /> },
-    { href: '/mydashboard/qr-management', text: 'Qr Management', icon: <QrCodeIcon /> },
-    { href: '/mydashboard/id-card-management', text: 'Id Card Management', icon: <AssignmentIndIcon /> },
+    { href: '/mydashboard/qr-management', text: 'QR Code Management', icon: <QrCodeIcon /> },
+    // { href: '/mydashboard/id-card-management', text: 'Id Card Management', icon: <AssignmentIndIcon /> },
     { href: '/mydashboard/billing', text: 'Subscription & Billing', icon: <CardMembershipIcon /> },
-    { href: '/mydashboard/feedback', text: 'Feedback & Suggestions', icon: <AssistantIcon /> },
+    // { href: '/mydashboard/feedback', text: 'Feedback & Suggestions', icon: <AssistantIcon /> },
     { href: '/mydashboard/account', text: 'Account Setting', icon: <AccountBalanceIcon /> },
     { href: '/mydashboard/help', text: 'Help & Support', icon: <HelpIcon /> },
   ];

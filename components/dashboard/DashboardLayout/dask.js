@@ -88,7 +88,7 @@ const Dask = () => {
         borderWidth: 2,
         hoverBackgroundColor: 'rgba(75,192,192,0.4)',
         hoverBorderColor: 'rgba(75,192,192,1)',
-        data: [65, 59, 80, 81, 56, 55, 40],
+        data: [0, 0, 0, 0, 0, 0, 6],
       },
     ],
   };
@@ -127,11 +127,11 @@ const Dask = () => {
                
                 <div className="icon-card mb-30 flex-column">
                 <div className="content ">
-                  <h3 className="mb-20">Welcome to Ondemand Global</h3>
+                  <h3 className="mb-20">Welcome to OnDemand Global</h3>
                     
                 </div>
                 <div className="d-flex">
-                <div className="mr-10 rounded-md col-md-2">
+                <div className="mr-10 rounded-md col-md-1">
                   {/* { formData.gender === "male" ?  <img
                       className="widthimage mr-2 w-100"
                       src="/assets/images/man.png"
@@ -148,8 +148,8 @@ const Dask = () => {
                   <div className="content col-md-8">
                 
                
-                    <h2 className="text-bold mb-10 mt-10 text-capitalize ">{formData.lastName}</h2>
-                    <h3 className="text-bold mb-10 mt-10 text-capitalize ">{formData.firstName}</h3>
+                    <h2 className="text-bold mb-10 mt-0 text-capitalize ">{formData.lastName} {formData.firstName}</h2>
+ 
                     <p className="text-sm text-success">
                       <i className="lni lni-arrow-up"></i>
                       <span className="text-gray">{userData.user.email}</span>
@@ -159,7 +159,7 @@ const Dask = () => {
                
                 </div>
               </div>
-              <div className="col-xl-6 col-lg-4 col-sm-6">
+              <div className="col-xl-4 col-lg-4 col-sm-6">
                 <div className="icon-card mb-30">
                   <div className="icon primary">
                     <i className="lni lni-credit-cards"><EventBusyIcon /></i>
@@ -176,7 +176,7 @@ const Dask = () => {
                 </div>
               </div>
 
-              <div className="col-xl-6 col-lg-4 col-sm-6">
+              <div className="col-xl-4 col-lg-4 col-sm-6">
                 <div className="icon-card mb-30">
                   <div className="icon primary">
                     <i className="lni lni-credit-cards">
@@ -191,7 +191,7 @@ const Dask = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-xl-6 col-lg-4 col-sm-6 ">
+              <div className="col-xl-4 col-lg-4 col-sm-6 ">
                 <div className="icon-card mb-30  ">
                   <div className="icon orange">
                     <i className="lni lni-user"><MonetizationOnIcon /></i>
@@ -200,18 +200,15 @@ const Dask = () => {
                     <h6 className="mb-10 text-success">Price</h6>
 
                     <p className="text-sm text-danger font-md">
-                      <i className="lni lni-arrow-down"></i> 4.99 $
-                      <a
-                        href=""
-                        className="color--green-500,"
-                      >
-                        <span className="text-gray ml-10">Pay Now</span>
-                      </a>
+                    <h3 className="text-bold mb-10 font-md fontzie18">
+                      {userData.user.price}
+                    </h3>
+                      
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="col-xl-6 col-lg-4 col-sm-6">
+              {/* <div className="col-xl-6 col-lg-4 col-sm-6">
                 <div className="icon-card mb-30">
                   <div className="icon orange">
                     <i className="lni lni-user">
@@ -232,7 +229,7 @@ const Dask = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <div className="col-xl-12 col-lg-12 col-sm-12">
                 <div className="icon-card">

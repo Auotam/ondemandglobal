@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import useUserData from "@/utils/UseUserdata"; // Import useUserData
-import Layout from "@/components/dashboard/layout";
-import Wrapper from "@/layout/wrapper";
-import SEO from "@/components/seo";
-import QRCode from "qrcode.react"; // Import QRCode component
+import useUserData from "@/utils/UseUserdata";
+import { Card, Button, Menu, MenuItem } from "@mui/material";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+import { saveAs } from "file-saver";
 import QRCodeWithLogoComponent from "@/components/qrcodelogo";
-import Link from "next/link";
-import { Card } from "@mui/material";
 
 const DashQR = () => {
   const [formData, setFormData] = useState(null);
   const [loadingFormData, setLoadingFormData] = useState(true);
   const [error, setError] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const userData = useUserData(); // Get user data using useUserData
+  const userData = useUserData();
+  const qrCodeRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,12 +41,50 @@ const DashQR = () => {
     }
   }, [userData]);
 
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const downloadPNG = () => {
+    if (qrCodeRef.current) {
+      html2canvas(qrCodeRef.current).then((canvas) => {
+        canvas.toBlob((blob) => {
+          saveAs(blob, "qrcode.png");
+        });
+      });
+    }
+  };
+
+  const downloadSVG = () => {
+    const svgElement = qrCodeRef.current.querySelector("svg");
+    if (svgElement) {
+      const serializer = new XMLSerializer();
+      const svgData = serializer.serializeToString(svgElement);
+      const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+      saveAs(blob, "qrcode.svg");
+    }
+  };
+
+  const downloadPDF = () => {
+    const input = qrCodeRef.current;
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, "PNG", 10, 10);
+      pdf.save("qrcode.pdf");
+    });
+  };
+
   if (!userData) {
-    return <div>Loading user data...</div>;
+    return <div className="d-flex align-items-center justify-content-center w-100">Loading user data...</div>;
   }
 
   if (loadingFormData) {
-    return <div>Loading form data...</div>;
+    return <div className="d-flex align-items-center justify-content-center">Loading user data...</div>;
   }
 
   if (error) {
@@ -54,65 +92,40 @@ const DashQR = () => {
   }
 
   if (!formData) {
-    return <div>No form data found for the user</div>;
+    return <div className="d-flex align-items-center justify-content-center">Loading user data...</div>;
   }
 
-  // Construct the QR code value dynamically using only the part before '@'
   const emailParts = formData.email.split('@');
-  const userid = formData.userId
+  const userid = formData.userId;
   const qrCodeValue = `https://ondemand.global/user/${emailParts[0]}-${userid}`;
-  console.log("qrmana",qrCodeValue)
 
   return (
     <>
+      <section>
+        <div className="row d-flex justify-content-start align-items-start vh-100 w-100">
+          <div className="col col-lg-12 mb-4 mb-lg-0">
+            <Card className="mb-3">
+              <div className="row g-0">
+                <div className="col-md-12 text-center text-white p-5" ref={qrCodeRef} id="qrCodeContainer">
+                  <div className="col col-lg-12 mb-4 mb-lg-0">
+                    <QRCodeWithLogoComponent value={qrCodeValue} />
 
-{/* 
-     <div className="user-card">
-              <div className="user-card-img">
-                <QRCode value={qrCodeValue} /> 
-                <QRCodeWithLogoComponent value={qrCodeValue} />
+                    
+                  </div>
+                  <Button className="mt-4" variant="contained" onClick={handleClick}>
+              Download QR Code
+            </Button>
+            <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+              <MenuItem onClick={() => { handleClose(); downloadPDF(); }}>Download PDF</MenuItem>
+              <MenuItem onClick={() => { handleClose(); downloadPNG(); }}>Download PNG</MenuItem>
+              <MenuItem onClick={() => { handleClose(); downloadSVG(); }}>Download SVG</MenuItem>
+            </Menu>
+                </div>
               </div>
-              <div className="user-card-info">
-                <h2>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h2>
-                <p><span>Email:</span> {formData.email || "N/A"}</p>
-                <p><span>Insurance Provider:</span>{formData.InsuranceProvider || "N/A"}</p>
-                <p><span>Emergency Phone:</span>{formData.emergencyPhone || "N/A"}</p>
-                <p><span>Medical Alert</span> {formData.medicalAlert || "N/A"}</p>
-                <p><span>Covid19 Tested</span>{formData.Covid19Tested || "N/A"}</p>
-                <p><span>Covid 19 Vaccinated</span> {formData.Covid19vaccinated || "N/A"}</p>
-              </div>
-            </div> */}
-
-
-<section >
-
-
-      <div className="row d-flex justify-content-start align-items-start h-100 w-100">
-        <div className="col col-lg-12 mb-4 mb-lg-0">
-          <Card className=" mb-3" >
-            <div className="row g-0">
-
-              {/* <div className="">
-              {formData.userId && formData.userId.length > 0 ? (
-  
-  <Link href='mydashboard/edit-details'className='btn btnuserform ml-2'>Edit Details</Link>
- ) : (
-   <a href='mydashboard/add-details' className='btn btnuserform'>Add Details</a>
- )} 
-
-              </div> */}
-      
-              <div className="col-md-12  text-center text-white p-5" >
-              <div className="col col-lg-12 mb-4 mb-lg-0"> <QRCodeWithLogoComponent value={qrCodeValue} /></div>
-               
-              </div>
-             
-            </div>
-          </Card>
-          <Card>
-          <div className="col-md-12">
+            </Card>
+            {/* <Card>
+              <div className="col-md-12">
                 <div className="card-body p-4">
-                
                   <div className="row pt-1">
                     <div className="col-6 mb-3">
                       <h6>First Name</h6>
@@ -141,60 +154,18 @@ const DashQR = () => {
                       <p className="text-muted">{formData.medicalAlert}</p>
                     </div>
                     <div className="col-6 mb-3">
-                      <h6></h6>Insurance
+                      <h6>Insurance</h6>
                       <p className="text-muted">{formData.InsuranceProvider}</p>
                     </div>
                   </div>
-                  <div className="d-flex justify-content-start">
-                    <a href="#!"><i className="fab fa-facebook-f fa-lg me-3"></i></a>
-                    <a href="#!"><i className="fab fa-twitter fa-lg me-3"></i></a>
-                    <a href="#!"><i className="fab fa-instagram fa-lg"></i></a>
-                  </div>
                 </div>
               </div>
-          </Card>
-        </div>
-        
-
-      </div>
- 
-  </section>
-            
-            {/* <section className="w-100 px-4 py-5" >
-  <div className="row d-flex justify-content-center">
-    <div className="col col-md-9 col-lg-7 col-xl-6">
-      <div className="card">
-        <div className="card-body p-4">
-          <div className="d-flex">
-            <div className="flex-shrink-0">
-            <QRCodeWithLogoComponent value={qrCodeValue} />
-            </div>
-            <div className="flex-grow-1 ms-3">
-              <h5 className="mb-1">   <h2>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h2></h5>
-              <p className="mb-2 pb-1">{formData.email || "N/A"}</p>
-              <div className="d-flex justify-content-start rounded-3 p-2 mb-2 bg-body-tertiary">
-                <div>
-                  <p className="small text-muted mb-1"><h2>hkhj</h2></p>
-                  <p className="mb-0">41</p>
-                </div>
-                <div className="px-3">
-                  <p className="small text-muted mb-1">Emg Number</p>
-                  <p className="mb-0">{formData.emergencyPhone || "N/A"}</p>
-                </div>
-                <div>
-                  <p className="small text-muted mb-1">Rating</p>
-                  <p className="mb-0">8.5</p>
-                </div>
-              </div>
-             
-            </div>
+            </Card> */}
+           
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section> */}
-            </>
+      </section>
+    </>
   );
 };
 

@@ -30,7 +30,7 @@ const HeroSlider = () => {
 
     return (
         <div className="hero-slider-container">
-                <div className="hero-background-image"></div>
+            <div className="hero-background-image"></div>
             <div className="hero-video-container hero-video">
                 <video autoPlay loop muted className='hero-video' >
                     <source src="/assets/images/video2.mp4" type="video/mp4" />

@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import useUserData from "@/utils/UseUserdata";
-import QRCode from "qrcode.react";
-import Qrcode from "@/components/qrpage/qrcode";
-import QRCodeWithLogoComponent from "@/components/qrcodelogo";
-import Daskqr from "@/components/qrpage/dashqr";
-import dayjs from "dayjs";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+import { saveAs } from "file-saver";
 import Link from "next/link";
 import EventBusyIcon from '@mui/icons-material/EventBusy';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-const Invoice = () => {
 
+const Invoice = () => {
   const [formData, setFormData] = useState(null);
   const [loadingFormData, setLoadingFormData] = useState(true);
   const [error, setError] = useState(null);
-  const [countdown, setCountdown] = useState("");
 
   const userData = useUserData();
-  console.log("id card management ", userData);
+  const invoiceRef = useRef();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +27,6 @@ const Invoice = () => {
           const response = await axios.post("/api/Auth/formvalue/formvalue", {
             email: userEmail,
           });
-          console.log(response);
           setFormData(response.data.data);
           setLoadingFormData(false);
         } else {
@@ -47,18 +43,28 @@ const Invoice = () => {
     }
   }, [userData]);
 
-  useEffect(() => {
-    if (formData) {
-      const interval = setInterval(() => {
-        const createdAt = dayjs(formData.createdAt);
-        const expirationDate = createdAt.add(7, "day");
-        const now = dayjs();
-        const diff = expirationDate.diff(now);
-      }, 1000);
+  const handleDownloadPDF = () => {
+    const input = invoiceRef.current;
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, 'PNG', 0, 0);
+      pdf.save("invoice.pdf");
+    });
+  };
 
-      return () => clearInterval(interval);
-    }
-  }, [formData]);
+  const handleSendInvoice = async () => {
+    const input = invoiceRef.current;
+    html2canvas(input).then(async (canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      // Send the image data to your server to handle email sending
+      await axios.post('/api/send-invoice', {
+        image: imgData,
+        email: formData.email
+      });
+      alert("Invoice sent!");
+    });
+  };
 
   if (!userData) {
     return <div>Loading user data...</div>;
@@ -75,34 +81,21 @@ const Invoice = () => {
   if (!formData) {
     return <div>No form data found for the user</div>;
   }
-  return (
 
+  return (
     <div className='main-wrapper'>
-    <section>
+      <section>
         <div className="container-fluid">
-         
-          <div className="invoice-wrapper mt-50">
+          <div className="invoice-wrapper mt-50" ref={invoiceRef}>
             <div className="row">
               <div className="col-12">
                 <div className="invoice-card card-style mb-20">
-                  <div className="invoice-header">
-                    <div className="invoice-for">
-                      <h2 className="mb-10">Invoice</h2>
-                      <p className="text-sm">
-                       Ondemand Global 
-                      </p>
-                    </div>
-                    <div className="invoice-logo">
-                      <img src="assets/images/invoice/uideck-logo.svg" alt="" />
-                    </div>
-                   
-                  </div>
                   <div className="invoice-address">
                     <div className="address-item">
                       <h5 className="text-bold">From</h5>
                       <h1>Ondemand Global</h1>
                       <p className="text-sm">
-                      Minneapolis | Minnesota | 55303
+                        Minneapolis | Minnesota | 55303
                       </p>
                       <p className="text-sm">
                         <span className="text-medium">Email:</span>
@@ -113,11 +106,11 @@ const Invoice = () => {
                       <h5 className="text-bold">To</h5>
                       <h1 className="text-capitalize">{userData.user.name}</h1>
                       <p className="text-sm">
-                    {formData.address}
+                        {formData.address}
                       </p>
                       <p className="text-sm">
                         <span className="text-medium">Email:</span>
-                      {formData.email}
+                        {formData.email}
                       </p>
                     </div>
                   </div>
@@ -146,7 +139,7 @@ const Invoice = () => {
                           </td>
                           <td>
                             <p className="text-sm">
-                            -
+                              -
                             </p>
                           </td>
                           <td>
@@ -156,7 +149,6 @@ const Invoice = () => {
                             <p className="text-sm">4.99</p>
                           </td>
                         </tr>
-                       
                         <tr>
                           <td></td>
                           <td></td>
@@ -216,30 +208,21 @@ const Invoice = () => {
                   <div className="invoice-action">
                     <ul className="d-flex flex-wrap align-items-center justify-content-center">
                       <li className="m-2">
-                        <a href="#0" className="main-btn primary-btn-outline btn-hover">
+                        <button className="main-btn primary-btn-outline btn-hover" onClick={handleDownloadPDF}>
                           Download Invoice
-                        </a>
+                        </button>
                       </li>
-                      <li className="m-2">
-                        <a href="#0" className="main-btn primary-btn btn-hover">
-                          Send Invoice
-                        </a>
-                      </li>
+                     
                     </ul>
                   </div>
                 </div>
-                
               </div>
-              
             </div>
-            
           </div>
-          
         </div>
-        
       </section>
-      </div>
-  )
-}
+    </div>
+  );
+};
 
-export default Invoice
+export default Invoice;

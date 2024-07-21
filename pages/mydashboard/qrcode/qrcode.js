@@ -6,7 +6,16 @@ import Wrapper from "@/layout/wrapper";
 import SEO from "@/components/seo";
 import { Card } from "@mui/material";
 
-const Idcardmanagement = () => {
+
+const Idcardmanagement = ( { value }, ref) => {
+
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    if (ref) {
+      ref.current = canvasRef.current.querySelector("canvas");
+    }
+  }, [ref]);  
   const [formData, setFormData] = useState(null);
   const [loadingFormData, setLoadingFormData] = useState(true);
   const [error, setError] = useState(null);

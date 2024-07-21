@@ -15086,6 +15086,7 @@ h6,
   font-weight: 600;
   margin-right: 15px;
 }
+.w-100px{ width:250px;  }
 @media (max-width: 767px) {
   .single-notification .notification .image {
     margin-bottom: 15px;
@@ -15114,6 +15115,12 @@ h6,
     display: none;
   }
 }
+
+.error {
+  color: red;
+  font-size: 0.875rem; /* Adjust font size as needed */
+  margin-top: 0.25rem; /* Add space between input and error message */
+}
 .single-notification .action button {
   border: none;
   background: transparent;
@@ -15139,8 +15146,9 @@ h6,
   background: #fff;
   position: sticky;
   top: 0;
-  z-index: 99; margin-left: 250px;
+  z-index: 99; 
 }
+.headermarleft{  margin-left: 250px;}
 .header .header-left .menu-toggle-btn .main-btn {
   padding: 10px 16px;
   border-radius: 8px;
@@ -15186,8 +15194,7 @@ h6,
   justify-content: flex-end;
 }
 .header .header-right button {
-  border: 1px solid #F6F6F6;
-  background: #F6F6F6;
+
   border-radius: 50%;
   height: 46px;
   width: 46px;
@@ -15195,7 +15202,7 @@ h6,
   justify-content: center;
   align-items: center;
   position: relative;
-  color: #1A2142;
+ 
 }
 .header .header-right button svg {
   fill: currentColor;
@@ -18514,16 +18521,17 @@ h3 {
 }
 .id-card-tag:after {
   content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-top: 100px solid white;
-    margin: -10px auto -30px auto;
-    position: relative;
-    top: -130px;
-    left: -50px;
+
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 51px solid transparent;
+  border-right: 42px solid transparent;
+  border-top: 72px solid white;
+  margin: -10px auto -30px auto;
+  position: relative;
+  top: -94px;
+  left: -50px;
 }
 
 
