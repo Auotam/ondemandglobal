@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
-const FoundationSection = ({ onPlanSelect }) => {
+const FoundationSection = ({ onPlanSelect = () => {} }) => {
     const router = useRouter();
     const [isYearly, setIsYearly] = useState(false);
 
@@ -27,9 +27,7 @@ const FoundationSection = ({ onPlanSelect }) => {
     };
 
     const PricingCard = ({ title, monthlyPrice, yearlyPrice, features, isDisabled }) => {
-        const savingsPercentage = isYearly ? 25 : 0;
         const price = isYearly ? yearlyPrice : monthlyPrice;
-        const billingPeriod = isYearly ? 'year' : 'month';
         const validity = isYearly ? 'yr' : 'mo';
 
         return (
@@ -49,15 +47,13 @@ const FoundationSection = ({ onPlanSelect }) => {
                             <sup className="validity color--grey">&nbsp;/&nbsp;{validity}</sup>
                         </div>
                     </div>
-                    {isDisabled ? (
-                        <button className="pt-btn btn btn--theme hover--theme" disabled>
-                            Notify Soon
-                        </button>
-                    ) : (
-                        <button className="pt-btn btn btn--theme hover--theme" onClick={() => handleButtonClick(title, price)}>
-                            {isYearly ? 'Start 14-day trial' : 'Start 7-day free trial'}
-                        </button>
-                    )}
+                    <button
+                        className="pt-btn btn btn--theme hover--theme"
+                        onClick={() => !isDisabled && handleButtonClick(title, price)}
+                        disabled={isDisabled}
+                    >
+                        {isDisabled ? 'Notify Soon' : (isYearly ? 'Start 14-day trial' : 'Start 7-day free trial')}
+                    </button>
                     <ul className="pricing-features color--black ico-10 ico--green mt-25">
                         {features.map((feature, index) => (
                             <li key={index}><p>{feature}</p></li>
