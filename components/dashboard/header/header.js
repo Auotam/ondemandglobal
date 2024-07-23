@@ -141,7 +141,7 @@ const Header = () => {
                         <div>
                           <h6 className="fw-500 text-capitalize">{userData.user.name}</h6>
                           <div className='d-flex'>
-                          <p className='text-capitalize'>{userData.user.role}</p> <div href="javascript:" class="badge badge-primary verified">Verified</div> </div>
+                           <div href="javascript:" class="badge badge-primary verified">Verified</div> </div>
                         </div>
                       </div>
                     </div>

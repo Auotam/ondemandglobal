@@ -67,11 +67,11 @@ export default function Home() {
 
         setTimeout(() => {
           if ( !formData) {
-            router.push("/mydashboard");
-          } else {
             router.push("/mydashboard/add-details");
+          } else {
+            router.push("/mydashboard");
           }
-        }, 1000);
+        }, 1000 );
       } else {
         toast.error(res.message);
       }

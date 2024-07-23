@@ -52,7 +52,7 @@ const FoundationSection = ({ onPlanSelect = () => {} }) => {
                         onClick={() => !isDisabled && handleButtonClick(title, price)}
                         disabled={isDisabled}
                     >
-                        {isDisabled ? 'Notify Soon' : (isYearly ? 'Start 14-day trial' : 'Start 7-day free trial')}
+                        {isDisabled ? 'Coming Soon...' : (isYearly ? 'Start 14-day trial' : 'Start 7-day free trial')}
                     </button>
                     <ul className="pricing-features color--black ico-10 ico--green mt-25">
                         {features.map((feature, index) => (

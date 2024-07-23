@@ -10,10 +10,7 @@ import AccountPage from '@/components/dashboard/account/accountPage';
 
 
 const Dashboard = () => {
-  
-  // if (userData === null) {
-  //   return <p>Loading user data...</p>;
-  // }
+
 
   return (
 

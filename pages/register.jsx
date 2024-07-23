@@ -68,7 +68,7 @@ const Register = () => {
               <div className="col-lg-6">
                 <div className="register-page-wrapper r-16 bg--fixed pt-4">
                   <div className="col-md-12 text-center">
-                    <img className="logologin" src="/assets/images/logo-white.png" alt="Logo" />
+                   <a href="/"> <img className="logologin" src="/assets/images/logo-white.png" alt="Logo" /></a>
                   </div>
                   <div className="row">
                     <div className="col-md-12">
@@ -169,7 +169,7 @@ const Register = () => {
                         </form>
                       </div>
                     </div>
-                    <div className="col-md-12 text-center">
+                    <div className="col-md-12 text-center pb-4">
                       <p className="more-options">
                         Have an account? <a href="/login">Login Here</a>
                       </p>
