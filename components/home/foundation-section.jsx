@@ -26,7 +26,7 @@ const FoundationSection = ({ onPlanSelect }) => {
         });
     };
 
-    const PricingCard = ({ title, monthlyPrice, yearlyPrice, features }) => {
+    const PricingCard = ({ title, monthlyPrice, yearlyPrice, features, isDisabled }) => {
         const savingsPercentage = isYearly ? 25 : 0;
         const price = isYearly ? yearlyPrice : monthlyPrice;
         const billingPeriod = isYearly ? 'year' : 'month';
@@ -38,7 +38,7 @@ const FoundationSection = ({ onPlanSelect }) => {
                     <div className="pricing-table-header">
                         {isYearly && (
                             <div className="pricing-discount bg--yellow-400 color--black r-36">
-                                <h6 className="s-17">Save 25 %</h6>
+                                <h6 className="s-17">Save 25%</h6>
                             </div>
                         )}
                         <h5 className="s-24 w-700">{title}</h5>
@@ -49,9 +49,15 @@ const FoundationSection = ({ onPlanSelect }) => {
                             <sup className="validity color--grey">&nbsp;/&nbsp;{validity}</sup>
                         </div>
                     </div>
-                    <button className="pt-btn btn btn--theme hover--theme" onClick={() => handleButtonClick(title, price)}>
-                        {isYearly ? 'Start 14-day trial' : 'Start 7-day free trial'}
-                    </button>
+                    {isDisabled ? (
+                        <button className="pt-btn btn btn--theme hover--theme" disabled>
+                            Notify Soon
+                        </button>
+                    ) : (
+                        <button className="pt-btn btn btn--theme hover--theme" onClick={() => handleButtonClick(title, price)}>
+                            {isYearly ? 'Start 14-day trial' : 'Start 7-day free trial'}
+                        </button>
+                    )}
                     <ul className="pricing-features color--black ico-10 ico--green mt-25">
                         {features.map((feature, index) => (
                             <li key={index}><p>{feature}</p></li>
@@ -103,6 +109,7 @@ const FoundationSection = ({ onPlanSelect }) => {
                                     '❌ Family Sharing',
                                     '❌ Business Integration'
                                 ]}
+                                isDisabled={false}
                             />
                             <PricingCard
                                 title="Family"
@@ -116,6 +123,7 @@ const FoundationSection = ({ onPlanSelect }) => {
                                     '✔️ (4 members, $2.99/additional)',
                                     '❌ Business Integration'
                                 ]}
+                                isDisabled={true}
                             />
                             <PricingCard
                                 title="Business"
@@ -129,6 +137,7 @@ const FoundationSection = ({ onPlanSelect }) => {
                                     '✔️ (5 users, $2.99/additional)',
                                     '✔️ Business Integration'
                                 ]}
+                                isDisabled={true}
                             />
                         </div>
                     </div>
