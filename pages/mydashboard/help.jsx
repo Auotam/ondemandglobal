@@ -113,7 +113,7 @@ const Dashboard = () => {
                     <div className="card-style mb-30">
                       <section className="vh-100">
                         <div className="">
-                          <div className="row d-flex justify-content-center align-items-center h-100">
+                          <div className="row d-flex justify-content-center align-items-center h-auto">
                             <div className="col-md-12 col-xl-12">
                               <div className="card">
                                 <div className="card-body text-center">
@@ -121,7 +121,7 @@ const Dashboard = () => {
                                     <img className="img-fluid w-100px" src="../assets/images/logo-white.png" alt="" />
                                   </div>
                                   <h4 className="mb-2">OnDemand Global</h4>
-                                  <p className="text-muted mb-4">support@ondemand.global <span className="mx-2">|</span> <a href="#!">(888)723-0786</a></p>
+                                  <p className="text-muted mb-4">support@ondemand.global</p>
                                   <div className="mb-4 pb-2">
                                     Minneapolis | Minnesota | 55303
                                   </div>
@@ -130,7 +130,7 @@ const Dashboard = () => {
                                   </button>
                                 </div>
                               </div>
-                              <div className="card mb-4 mt-20">
+                              {/* <div className="card mb-4 mt-20">
                                 <div className="card-body p-0">
                                   <ul className="list-group list-group-flush rounded-3">
                                     <li className="list-group-item d-flex justify-content-between align-items-center p-3">
@@ -155,7 +155,7 @@ const Dashboard = () => {
                                     </li>
                                   </ul>
                                 </div>
-                              </div>
+                              </div> */}
                             </div>
                           </div>
                         </div>

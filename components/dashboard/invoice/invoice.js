@@ -66,20 +66,23 @@ const Invoice = () => {
     });
   };
 
+  
   if (!userData) {
-    return <div>Loading user data...</div>;
+    return <div className='d-flex align-items-center justify-content-center vh-100'>Loading user data...</div>;
   }
 
   if (loadingFormData) {
-    return <div>Loading form data...</div>;
+    return <div className='d-flex align-items-center justify-content-center vh-100'>Loading form data...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className='d-flex align-items-center justify-content-center vh-100'>Error: {error}</div>;
   }
 
+
+ 
   if (!formData) {
-    return <div>No form data found for the user</div>;
+    return <div className="d-flex align-items-center justify-content-center vh-100">No form data found for the user</div>;
   }
 
   return (
@@ -98,8 +101,8 @@ const Invoice = () => {
                         Minneapolis | Minnesota | 55303
                       </p>
                       <p className="text-sm">
-                        <span className="text-medium">Email:</span>
-                        invoice@ondemand.global
+                        <span className="text-medium  mlr">Email: </span>
+                        <span className="ml-2">{" "}support@ondemand.global</span>
                       </p>
                     </div>
                     <div className="address-item">
@@ -109,8 +112,8 @@ const Invoice = () => {
                         {formData.address}
                       </p>
                       <p className="text-sm">
-                        <span className="text-medium">Email:</span>
-                        {formData.email}
+                        <span className="text-medium mr-2 mlr">Email: {"   "}   </span>
+                        <span>{formData.email}</span>
                       </p>
                     </div>
                   </div>
@@ -166,7 +169,7 @@ const Invoice = () => {
                             <h6 className="text-sm text-medium">Discount</h6>
                           </td>
                           <td>
-                            <h6 className="text-sm text-bold">0%</h6>
+                            <h6 className="text-sm text-bold">$4.99</h6>
                           </td>
                         </tr>
                         <tr>
@@ -176,7 +179,7 @@ const Invoice = () => {
                             <h6 className="text-sm text-medium">Shipping Charge</h6>
                           </td>
                           <td>
-                            <h6 className="text-sm text-bold">$3.00</h6>
+                            <h6 className="text-sm text-bold">$0.00</h6>
                           </td>
                         </tr>
                         <tr>
@@ -186,13 +189,13 @@ const Invoice = () => {
                             <h4>Total</h4>
                           </td>
                           <td>
-                            <h4>$7.99</h4>
+                            <h4>$0.00</h4>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
-                  <div className="note-wrapper warning-alert py-4 px-sm-3 px-lg-5">
+                  {/* <div className="note-wrapper warning-alert py-4 px-sm-3 px-lg-5">
                     <div className="alert">
                       <h5 className="text-bold mb-15">Notes:</h5>
                       <p className="text-sm text-gray">
@@ -204,7 +207,7 @@ const Invoice = () => {
                         noted above.
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="invoice-action">
                     <ul className="d-flex flex-wrap align-items-center justify-content-center">
                       <li className="m-2">

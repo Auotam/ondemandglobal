@@ -32,7 +32,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar-nav-wrapper">
       <div className="navbar-logo">
-        <a href="index.html">
+        <a href="/mydashboard">
           <img className='logo' src="../assets/images/logo-white.png" alt="" />
         </a>
       </div>

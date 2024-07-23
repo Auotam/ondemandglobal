@@ -10,6 +10,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Form, Button } from 'react-bootstrap';
 import { Card } from "@mui/material";
+import DashQR from "@/components/qrpage/dashqr";
 
 const FormDataComponent = () => {
   const [formData, setFormData] = useState(null);
@@ -61,20 +62,23 @@ const FormDataComponent = () => {
   };
 
   if (!userData) {
-    return <div>Loading user data...</div>;
+    return <div className='d-flex align-items-center justify-content-center vh-100'>Loading QR Code...</div>;
   }
 
   if (loadingFormData) {
-    return <div>Loading form data...</div>;
+    return <div className='d-flex align-items-center justify-content-center vh-100'>Loading form data...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className='d-flex align-items-center justify-content-center vh-100'>Error: {error}</div>;
   }
 
+
+
   if (!formData) {
-    return <div>No form data found for the user</div>;
+    return <div className="className='d-flex align-items-center justify-content-center vh-100'">No form data found for the user</div>;
   }
+
 
   
   const emailParts = formData.email.split('@');
@@ -111,13 +115,13 @@ const FormDataComponent = () => {
                 <section className="py-4 px-4" >
 
                   <div className="row">
-                    <div className="col-md-4  ">
+                    <div className="col-md-5  ">
 
 
-                    <div class="card py-2 px-2 shadow-sm p-3 mb-5 bg-white rounded">
+                    <div class="card py-2 px-2 shadow-sm p-5 mb-5 bg-white rounded">
   <div class="card-body d-flex align-items-center justify-content-center">
 
-  <QRCodeWithLogoComponent value={qrCodeValue} />
+  <DashQR />
       
         </div>
   
@@ -127,7 +131,7 @@ const FormDataComponent = () => {
 
                     </div>
 
-                    <div className="col-md-8  ">
+                    <div className="col-md-7  ">
 
    <Card>
               <div className="col-md-12">

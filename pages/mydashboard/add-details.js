@@ -124,13 +124,15 @@ const Form = () => {
                 </div>
               </div>
             </div>
+            <div className='card card-style settings-card-1'>
             <form onSubmit={formik.handleSubmit} className="container">
               <div className="row">
                 <div className="col-md-4 input-style-1">
+                  <lable>First Name</lable>
                   <input
                     type="text"
                     name="firstName"
-                    placeholder="First Name"
+                    placeholder="Enter First Name"
                     value={formik.values.firstName}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -141,10 +143,11 @@ const Form = () => {
                   ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
+                <lable>Last Name</lable>
                   <input
                     type="text"
                     name="lastName"
-                    placeholder="Last Name"
+                    placeholder="Enter Last Name"
                     value={formik.values.lastName}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -155,6 +158,7 @@ const Form = () => {
                   ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
+                <lable>Email</lable>
                   <input
                     type="text"
                     name="email"
@@ -170,10 +174,11 @@ const Form = () => {
                   ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
+                <lable>Emergency Phone</lable>
                   <input
                     type="text"
                     name="emergencyPhone"
-                    placeholder="Emergency Phone"
+                    placeholder="Enter Your Emergency Phone"
                     value={formik.values.emergencyPhone}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -183,25 +188,13 @@ const Form = () => {
                     <div className="error">{formik.errors.emergencyPhone}</div>
                   ) : null}
                 </div>
+                
                 <div className="col-md-4 input-style-1">
-                  <input
-                    type="text"
-                    name="medicalAlert"
-                    placeholder="Medical Alert"
-                    value={formik.values.medicalAlert}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className="form-control"
-                  />
-                  {formik.touched.medicalAlert && formik.errors.medicalAlert ? (
-                    <div className="error">{formik.errors.medicalAlert}</div>
-                  ) : null}
-                </div>
-                <div className="col-md-4 input-style-1">
+                <lable>Covid Test Status</lable>
                   <input
                     type="text"
                     name="Covid19Tested"
-                    placeholder="Covid19 Tested"
+                    placeholder="eg: positive or Nagative"
                     value={formik.values.Covid19Tested}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -212,10 +205,11 @@ const Form = () => {
                   ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
+                <lable>Covid Vaccinated </lable>
                   <input
                     type="text"
                     name="Covid19vaccinated"
-                    placeholder="Covid19 Vaccinated"
+                    placeholder="eg: Yes or No"
                     value={formik.values.Covid19vaccinated}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -226,10 +220,11 @@ const Form = () => {
                   ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
+                <lable>Insurance Provider </lable>
                   <input
                     type="text"
                     name="InsuranceProvider"
-                    placeholder="Insurance Provider"
+                    placeholder="Enter Your Insurance Provider Details"
                     value={formik.values.InsuranceProvider}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -240,6 +235,7 @@ const Form = () => {
                   ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
+                <lable>Non-prescribed Drugs</lable>
                   <input
                     type="text"
                     name="nonprescribedrugs"
@@ -254,6 +250,7 @@ const Form = () => {
                   ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
+                <lable>Allergies</lable>
                   <input
                     type="text"
                     name="allergies"
@@ -268,6 +265,7 @@ const Form = () => {
                   ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
+                <lable>City</lable>
                   <input
                     type="text"
                     name="city"
@@ -282,6 +280,7 @@ const Form = () => {
                   ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
+                <lable>Country</lable>
                   <input
                     type="text"
                     name="county"
@@ -296,6 +295,7 @@ const Form = () => {
                   ) : null}
                 </div>
                 <div className="col-md-4 input-style-1">
+                <lable>Zip Code</lable>
                   <input
                     type="text"
                     name="zipCode"
@@ -309,6 +309,21 @@ const Form = () => {
                     <div className="error">{formik.errors.zipCode}</div>
                   ) : null}
                 </div>
+                <div className="col-md-4 input-style-1">
+                <lable>Medical Alert</lable>
+                  <textarea
+                    type="text"
+                    name="medicalAlert"
+                    placeholder="Enter Details for your Medical Alert"
+                    value={formik.values.medicalAlert}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    className="form-control"
+                  />
+                  {formik.touched.medicalAlert && formik.errors.medicalAlert ? (
+                    <div className="error">{formik.errors.medicalAlert}</div>
+                  ) : null}
+                </div>
               </div>
               <div className="row">
                 <div className="col-md-12">
@@ -318,6 +333,9 @@ const Form = () => {
                 </div>
               </div>
             </form>
+              
+            </div>
+            
           </div>
         </main>
       </Layout>

@@ -121,15 +121,15 @@ import React, { useState, useEffect } from 'react';
     };
 
     if (!userData) {
-      return <div>Loading user data...</div>;
+      return <div className='d-flex align-items-center justify-content-center vh-100'>Loading user data...</div>;
     }
 
     if (loadingFormData) {
-      return <div>Loading form data...</div>;
+      return <div className='d-flex align-items-center justify-content-center vh-100'>Loading form data...</div>;
     }
 
     if (error) {
-      return <div>Error: {error}</div>;
+      return <div className='d-flex align-items-center justify-content-center vh-100'>Error: {error}</div>;
     }
 
 
@@ -172,7 +172,7 @@ import React, { useState, useEffect } from 'react';
                   </div>
                   <div className="profile-meta">
                     <h5 className="text-bold text-dark mb-10 text-capitalize">{userData.user.name}</h5>
-                    <p className="text-sm text-gray">{formData.userId}</p>
+                    <p className="text-sm text-gray"><span className='mr-2'>User ID:</span>{formData.userId}</p>
                   </div>
                 </div>
                 <div className="input-style-1">
@@ -191,7 +191,7 @@ import React, { useState, useEffect } from 'react';
                 </div>
 
                 {formData.userId && formData.userId.length > 0 ? (
-                      <a href='mydashboard/edit-details' className='btn btnuserform ml-2'>Edit Details</a>
+                      <a href='/mydashboard/edit-details' className='btn btnuserform ml-2'>Edit Details</a>
                     ) : (
                       <a href='mydashboard/add-details' className='btn btnuserform'>Add Details</a>
                     )}

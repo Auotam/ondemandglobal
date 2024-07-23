@@ -166,6 +166,7 @@
               <form onSubmit={handleSubmit} className="container">
                 <div className="row">
                   <div className="col-md-4 input-style-1">
+                  <label>Fiest Name</label>
                     <input
                       type="text"
                       name="firstName"
@@ -176,6 +177,7 @@
                     />
                   </div>
                   <div className="col-md-4 input-style-1">
+                  <label>Last Name</label>
                     <input
                       type="text"
                       name="lastName"
@@ -186,6 +188,7 @@
                     />
                   </div>
                   <div className="col-md-4 input-style-1">
+                  <label>Email</label>
                     <input
                       type="text"
                       name="email"
@@ -197,6 +200,7 @@
                     />
                   </div>
                   <div className="col-md-4 input-style-1">
+                  <label>Emergency Phone</label>
                     <input
                       type="text"
                       name="emergencyPhone"
@@ -207,6 +211,7 @@
                     />
                   </div>
                   <div className="col-md-4 input-style-1">
+                  <label>Medical Alert</label>
                     <input
                       type="text"
                       name="medicalAlert"
@@ -216,7 +221,9 @@
                       className="form-control"
                     />
                   </div>
+
                   <div className="col-md-4 input-style-1">
+                  <label>Covid Test</label>
                     <input
                       type="text"
                       name="Covid19Tested"
@@ -227,6 +234,7 @@
                     />
                   </div>
                   <div className="col-md-4 input-style-1">
+                  <label>Covid 19 Vaccinated</label>
                     <input
                       type="text"
                       name="Covid19vaccinated"
@@ -237,6 +245,7 @@
                     />
                   </div>
                   <div className="col-md-4 input-style-1">
+                  <label>Insurance Provider</label>
                     <input
                       type="text"
                       name="InsuranceProvider"
@@ -247,6 +256,7 @@
                     />
                   </div>
                   <div className="col-md-4 input-style-1">
+                  <label>Non Prescribe Drugs</label>
                     <input
                       type="text"
                       name="nonprescribedrugs"
@@ -257,6 +267,7 @@
                     />
                   </div>
                   <div className="col-md-4 input-style-1">
+                  <label>Allergies</label>
                     <input
                       type="text"
                       name="allergies"
@@ -267,6 +278,7 @@
                     />
                   </div>
                   <div className="col-md-4 input-style-1">
+                  <label>City</label>
                     <input
                       type="text"
                       name="city"
@@ -277,6 +289,7 @@
                     />
                   </div>
                   <div className="col-md-4 input-style-1">
+                  <label>Country</label>
                     <input
                       type="text"
                       name="county"
@@ -287,6 +300,7 @@
                     />
                   </div>
                   <div className="col-md-4 input-style-1">
+                  <label>Zip Code</label>
                     <input
                       type="text"
                       name="zipCode"

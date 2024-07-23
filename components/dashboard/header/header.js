@@ -103,7 +103,7 @@ const Header = () => {
                   <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="notification">
                    
                     <li>
-                      <a href="#0">
+                      <a href="">
                         <div className="image">
                           <img src="assets/images/lead/lead-1.png" alt="" />
                         </div>
@@ -140,7 +140,8 @@ const Header = () => {
                         </div>
                         <div>
                           <h6 className="fw-500 text-capitalize">{userData.user.name}</h6>
-                          <p className='text-capitalize'>{userData.user.role}</p>
+                          <div className='d-flex'>
+                          <p className='text-capitalize'>{userData.user.role}</p> <div href="javascript:" class="badge badge-primary verified">Verified</div> </div>
                         </div>
                       </div>
                     </div>
@@ -151,13 +152,13 @@ const Header = () => {
                       
                         <div className="content">
                           <h4 className="text-sm">{userData.user.name}</h4>
-                          <a className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs" href="#">{userData.user.email}</a>
+                          <a title={userData.user.email} className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs" href="#">{userData.user.email}</a>
                         </div>
                       </div>
                     </li>
                     <li className="divider"></li>
                     <li>
-                      <a href="#0">
+                      <a href="/mydashboard/qr-management">
                         <i className="lni lni-user"></i> View Profile
                       </a>
                     </li>

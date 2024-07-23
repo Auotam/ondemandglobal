@@ -66,7 +66,7 @@ export default function Home() {
         Cookies.set("token", res.token);
 
         setTimeout(() => {
-          if (formData.userId && formData.userId.length > 0) {
+          if ( !formData) {
             router.push("/mydashboard");
           } else {
             router.push("/mydashboard/add-details");

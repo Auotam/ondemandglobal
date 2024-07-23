@@ -102,7 +102,7 @@ const DashQR = () => {
   return (
     <>
       <section>
-        <div className="row d-flex justify-content-start align-items-start vh-100 w-100">
+        <div className="row d-flex justify-content-start align-items-start  w-100">
           <div className="col col-lg-12 mb-4 mb-lg-0">
             <Card className="mb-3">
               <div className="row g-0">
