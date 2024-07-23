@@ -99,7 +99,7 @@ export default function Home() {
                   <div className="col-md-12">
                     <div className="register-page-form">
                       <div className="col-md-12 text-center">
-                        <img className='logologin' src="/assets/images/logo-white.png" alt="Logo" />
+                      <Link href="/"><a className="color--theme"><img className='logologin' src="/assets/images/logo-white.png" alt="Logo" /></a></Link>
                       </div>
                       <form name="signinform" className="row sign-in-form" onSubmit={handleSubmit}>
                         <div className="col-md-12">
@@ -133,7 +133,7 @@ export default function Home() {
                         </div>
                         <div className="col-md-12">
                           <div className="reset-password-link">
-                            <p className="p-sm"><Link href="/reset-password"><a className="color--theme">Forgot your password?</a></Link></p>
+                            <p className="p-sm"><Link href="/"><a className="color--theme">Forgot your password?</a></Link></p>
                           </div>
                         </div>
                         <div className="col-md-12">

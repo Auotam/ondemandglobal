@@ -3,6 +3,7 @@ import useUserData from '@/utils/UseUserdata';
 import Cookies from 'js-cookie'
 import Router from 'next/router'
 import { Upgrade } from '@mui/icons-material';
+import { toast } from 'react-toastify';
 
 const Header = () => {
   const userData = useUserData()
@@ -18,6 +19,7 @@ const Header = () => {
     console.log("logout work")
     Cookies.remove('token')
     Router.push('/')
+    toast.success("Logout User")
   }
   
   return (

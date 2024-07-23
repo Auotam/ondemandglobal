@@ -115,27 +115,10 @@ const FormDataComponent = () => {
 
 
                     <div class="card py-2 px-2 shadow-sm p-3 mb-5 bg-white rounded">
-  <div class="card-body">
+  <div class="card-body d-flex align-items-center justify-content-center">
 
-        <div className="id-card-tag"></div>
-        <div className="id-card-tag-strip"></div>
-        <div className="id-card-hook"></div>
-        <div className="id-card-holder">
-          <div className="id-card">
-            <div className="header">
-              <img src="/assets/images/logo-white.png" />
-            </div>
-            <h1>{formData.firstName || "N/A"} {formData.lastName || "N/A"}</h1>
-            <h2>{formData.email || "N/A"} </h2>
-            <div className="qr-code">
-              <QRCodeWithLogoComponent value={qrCodeValue} />
-            </div>
-            <h3>{formData.email || "N/A"}</h3>
-            <h3><span>Phone:</span>{formData.emergencyPhone || "N/A"}</h3>
-            <hr />
-            <h6><span>Insurance Provider:</span>{formData.InsuranceProvider || "N/A"}</h6>
-          </div>
-        </div>
+  <QRCodeWithLogoComponent value={qrCodeValue} />
+      
         </div>
   
 
@@ -218,63 +201,7 @@ const FormDataComponent = () => {
                  
                      
                 </Tab>
-                {/* <Tab eventKey="Shipping QR" title="Shipping QR">
-                  <div className="row p-4">
-                    <div className="col-md-12">
-                    <Form onSubmit={handleShippingSubmit}>
-                    <Form.Group controlId="formAddress">
-                      <Form.Label>Address</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Enter address"
-                        name="address"
-                        value={shippingData.address}
-                        onChange={handleShippingChange}
-                      />
-                    </Form.Group>
-
-                    <Form.Group controlId="formCity">
-                      <Form.Label>City</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Enter city"
-                        name="city"
-                        value={shippingData.city}
-                        onChange={handleShippingChange}
-                      />
-                    </Form.Group>
-
-                    <Form.Group controlId="formState">
-                      <Form.Label>State</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Enter state"
-                        name="state"
-                        value={shippingData.state}
-                        onChange={handleShippingChange}
-                      />
-                    </Form.Group>
-
-                    <Form.Group controlId="formZip">
-                      <Form.Label>Zip Code</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Enter zip code"
-                        name="zip"
-                        value={shippingData.zip}
-                        onChange={handleShippingChange}
-                      />
-                    </Form.Group>
-
-                    <Button variant="primary" className="submitbtn mt-4" type="submit">
-                      Submit
-                    </Button>
-                  </Form>
-                    </div>
                 
-                  </div>
-                
-                </Tab> */}
                 
               </Tabs>
             </div>

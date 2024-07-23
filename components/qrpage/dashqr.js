@@ -112,7 +112,9 @@ const DashQR = () => {
 
                     
                   </div>
-                  <Button className="mt-4" variant="contained" onClick={handleClick}>
+                  
+                </div>
+                <Button className="mt-4" variant="contained" onClick={handleClick}>
               Download QR Code
             </Button>
             <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
@@ -120,7 +122,6 @@ const DashQR = () => {
               <MenuItem onClick={() => { handleClose(); downloadPNG(); }}>Download PNG</MenuItem>
               <MenuItem onClick={() => { handleClose(); downloadSVG(); }}>Download SVG</MenuItem>
             </Menu>
-                </div>
               </div>
             </Card>
             {/* <Card>
