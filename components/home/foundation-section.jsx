@@ -81,7 +81,7 @@ const FoundationSection = ({ onPlanSelect = () => {} }) => {
 
     return (
         <>
-            <section id="pricing-1" className="gr--whitesmoke pb-40 inner-page-hero pricing-section">
+            <section id="pricing" className="gr--whitesmoke pb-40 inner-page-hero pricing-section">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-10 col-lg-8">

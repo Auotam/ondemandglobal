@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'; // Import useRouter
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import Sidebar from "../../components/common/sidebar";
@@ -12,17 +13,22 @@ import Router from "next/router";
 
 const HeaderOne = () => {
   const [token, setToken] = useState(null);
+  const router = useRouter(); // Use the router to get the current path
 
   useEffect(() => {
     const tokenFromCookies = Cookies.get("token");
     setToken(tokenFromCookies);
     console.log("Token from cookies:", tokenFromCookies);
 
-    if (!tokenFromCookies) {
+    // Define pages that do not require authentication
+    const publicPages = ["/privacy-policy", "/terms", "/about", "/"];
+
+    // Check if the current route is not in publicPages and if there's no token
+    if (!tokenFromCookies && !publicPages.includes(router.pathname)) {
       console.log("No token found, redirecting to home page.");
       Router.push("/");
     }
-  }, []);
+  }, [router.pathname]);
 
   const logout = () => {
     Cookies.remove("token");
@@ -140,17 +146,19 @@ const HeaderOne = () => {
                       className="nl-simple reg-fst-link mobile-last-link"
                       aria-haspopup="true"
                     >
-                      <a href="/login" className="h-link">
+                      <Link href="/login" ><a  className="h-link">
                         Sign In
                       </a>
+                      </Link>
                     </li>
                     <li className="nl-simple" aria-haspopup="true">
-                      <a
-                        href="/register"
+                  <Link   href="/register"><a
+                      
                         className="btn r-04 btn--theme hover--tra-white"
                       >
                         Sign Up
                       </a>
+                      </Link>
                     </li>
                   </>
                 )}

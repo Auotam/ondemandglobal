@@ -14,10 +14,10 @@ const QRCodeWithLogoComponent = forwardRef(({ value }, ref) => {
     logoBackgroundTransparent: false,
     qrStyle: 'dots',
     bgColor: "#fff",
-    logoPadding: 5,
+    logoPadding: 0,
     removeQrCodeBehindLogo: true,
     fgColor: "#000",
-    size: 300
+    size: 250
   };
 
   return <QRCode ref={ref} {...options} />;

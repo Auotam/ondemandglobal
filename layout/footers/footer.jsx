@@ -12,16 +12,17 @@ const FooterOne = () => {
 
 
               
-                <div className="col-xl-3">
+                <div className="col-xl-12 text-center">
                     <div className="footer-info">
                         <img className="footer-logo" src="/assets/images/logo-white.png" alt="footer-logo" />
                         <img className="footer-logo-dark" src="/assets/images/logo-white.png" alt="footer-logo" />
+                        <p className='font-sm text-center'>On Demand is a platform for creating Personal Emergency Profiles with QR codes. It enables the instant sharing of critical information during emergencies, ensuring quick and effective response. Perfect for individuals, families, businesses, and various industries, On Demand simplifies preparedness. Join us today for effortless safety and peace of mind.</p>
                     </div>	
                 </div>	
 
 
                 
-                <div className="col-sm-4 col-lg-3 col-xl-2">
+                {/* <div className="col-sm-4 col-lg-3 col-xl-2">
                     <div className="footer-links fl-1">
                     
                        
@@ -74,10 +75,10 @@ const FooterOne = () => {
                         </ul>
 
                     </div>	
-                </div>
+                </div> */}
 
 
-              
+{/*               
                 <div className="col-sm-10 col-md-8 col-lg-4 col-xl-3">
                     <div className="footer-form">
 
@@ -102,7 +103,7 @@ const FooterOne = () => {
                         </form>
                                                 
                     </div>	
-                </div>
+                </div> */}
 
 
             </div>
@@ -119,19 +120,17 @@ const FooterOne = () => {
                     
                     <div className="col">
                         <div className="footer-copyright">
-                            <p className="p-sm">&copy; 2023 OnDemand. <span>All Rights Reserved</span></p>
+                            <p className="p-sm">&copy; 2024 On Demand Global.<span>All Rights Reserved</span></p>
                         </div>
                     </div>
 
 
                    
                     <div className="col">
-                        {/* <ul className="bottom-footer-socials ico-20 text-end">
-                            <li><a href="#"><span className=""></span></a></li>
-                            <li><a href="#"><span className="flaticon-twitter"></span></a></li>
-                            <li><a href="#"><span className="flaticon-instagram"></span></a></li>
-                            <li><a href="#"><span className="flaticon-youtube"></span></a></li>
-                        </ul> */}
+                        <ul className="bottom-footer-socials ico-20 text-end">
+                            <li><Link  href="/privacy-policy"><a>Privacy Policy</a></Link></li>
+                          
+                        </ul>
                     </div>
 
 
