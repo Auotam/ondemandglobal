@@ -32,11 +32,11 @@ const Header = () => {
           <div className="row">
             <div className="col-lg-5 col-md-5 col-6">
               <div className="header-left d-flex align-items-center">
-                <div className="menu-toggle-btn mr-15">
-                  <button onClick={toggleSidebar} className="menu-button">
+                <div className="menu-toggle-btn mr-15 w-100 d-flex ml-4">
+                  <button onClick={toggleSidebar} className="menu-button mobile-head mr-4">
                     {isSidebarOpen ? <Close /> : <Menu />}
                   </button>
-                  <img className='logo ml-4' src="../assets/images/logo-white.png" alt="" />
+                  <img className='logo ml-4 mobile-head' src="../assets/images/logo-white.png" alt="" />
                 </div>
               </div>
             </div>
@@ -134,19 +134,31 @@ const Header = () => {
           background: none;
           border: none;
           cursor: pointer;
+           margin-right:10px
         }
 
         .mobile-sidebar {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(255, 255, 255, 0.8);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index:999;
+              position: fixed;
+    /* top: 0; */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    /* display: -webkit-box; */
+    /* display: -webkit-flex; */
+    display: -ms-flexbox;
+    /* display: flex; */
+    /* -webkit-align-items: center; */
+    /* -webkit-box-align: center; */
+    -ms-flex-align: center;
+    /* align-items: center; */
+    -webkit-box-pack: center;
+    /* -webkit-justify-content: center; */
+    -ms-flex-pack: center;
+    /* justify-content: center; */
+    z-index: 20;
+    padding: 8px 44px;
+}
         }
 
         .mobile-sidebar nav ul {
@@ -155,13 +167,13 @@ const Header = () => {
         }
 
         .mobile-sidebar nav ul li {
-          margin-bottom: 20px;
+          margin-bottom: 12px;
         }
 
         .mobile-sidebar nav ul li a {
           color: #000;
           text-decoration: none;
-          font-size: 20px;
+          font-size: 18px;
         }
 
         @media (min-width: 768px) {

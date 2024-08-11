@@ -12,11 +12,11 @@ const FooterOne = () => {
 
 
               
-                <div className="col-xl-12 text-center">
-                    <div className="footer-info">
+                <div className="col-xl-12 text-center ">
+                    <div className="footer-info mb-4">
                         <img className="footer-logo" src="/assets/images/logo-white.png" alt="footer-logo" />
                         <img className="footer-logo-dark" src="/assets/images/logo-white.png" alt="footer-logo" />
-                        <p className='font-sm text-center'>On Demand is a platform for creating Personal Emergency Profiles with QR codes. It enables the instant sharing of critical information during emergencies, ensuring quick and effective response. Perfect for individuals, families, businesses, and various industries, On Demand simplifies preparedness. Join us today for effortless safety and peace of mind.</p>
+                        <p className='font-sm text-center mt-4 pl-20 pr-20'>On Demand is a platform for creating Personal Emergency Profiles with QR codes. It enables the instant sharing of critical information during emergencies, ensuring quick and effective response. Perfect for individuals, families, businesses, and various industries, On Demand simplifies preparedness. Join us today for effortless safety and peace of mind.</p>
                     </div>	
                 </div>	
 
@@ -127,7 +127,7 @@ const FooterOne = () => {
 
                    
                     <div className="col">
-                        <ul className="bottom-footer-socials ico-20 text-end">
+                        <ul className="bottom-footer-socials ico-20 text-sm-center text-end">
                             <li><Link  href="/privacy-policy"><a>Privacy Policy</a></Link></li>
                           
                         </ul>

@@ -47,8 +47,8 @@ const HeroSlider = () => {
                                 <h2 className="s-52 w-700">Your Information, One Scan Away</h2>
                                 <h4 className="s-28 color--">Keep Your Personal Information Handy with a Quick Scan.</h4>
                                 <div className="btns-group">
-                                    <a href="/register" className="btn r-04 btn--white hover--black">Get started</a>
-                                    <a href="javascript:" className="video-popup2 btn r-04 btn-white color-white border-white ">See how it works</a>
+                                    <a href="/register" className="btn r-04 btn--white hover--black mb-4">Get started</a>
+                                    <a href="javascript:" className="video-popup2 btn r-04 btn-white color-white border-white mb-4 ">See how it works</a>
                                 </div>
                             </div>
                         </div>

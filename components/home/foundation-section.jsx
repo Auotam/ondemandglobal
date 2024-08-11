@@ -34,7 +34,7 @@ const FoundationSection = ({ onPlanSelect = () => {} }) => {
             <div className="col">
                 <div className="p-table pricing-1-table bg--white-100 block-shadow r-12 wow fadeInUp">
                     <div className="pricing-table-header">
-                        {isYearly && (
+                        {isYearly && title !== "Individual" && (
                             <div className="pricing-discount bg--yellow-400 color--black r-36">
                                 <h6 className="s-17">Save 25%</h6>
                             </div>
@@ -52,7 +52,7 @@ const FoundationSection = ({ onPlanSelect = () => {} }) => {
                         onClick={() => !isDisabled && handleButtonClick(title, price)}
                         disabled={isDisabled}
                     >
-                        {isDisabled ? 'Coming Soon...' : (isYearly ? 'Start 14-day trial' : 'Start 7-day free trial')}
+                        {title === "Individual" ? 'Get Started For Free' : isDisabled ? 'Coming Soon...' : 'Start 14-day trial'}
                     </button>
                     <ul className="pricing-features color--black ico-10 ico--green mt-25">
                         {features.map((feature, index) => (
@@ -99,11 +99,13 @@ const FoundationSection = ({ onPlanSelect = () => {} }) => {
                                 yearlyPrice="0"
                                 features={[
                                     '✔️ QR Code Access',
-                                    '✔️ ID Cards (Non-Customizable) ',
+                                    
                                     '✔️ Secure Data Encryption',
                                     '✔️ Emergency Notifications',
                                     '❌ Family Sharing',
-                                    '❌ Business Integration'
+                                    '❌ Business Integration',
+                                    '',
+                                    '',
                                 ]}
                                 isDisabled={false}
                             />

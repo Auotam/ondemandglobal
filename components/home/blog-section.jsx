@@ -88,15 +88,14 @@ const BlogSection = () => {
                   </div>
 
                   <div className="cbox-2-txt">
-                    <h5 className="s-22 w-700">Receive Online Scanner Card</h5>
+                    <h5 className="s-22 w-700">Download QR Code</h5>
                     <p className="mb-0">
-                      Users receive an online scanner card via email, providing
-                      them with easy access to their emergency details.
+                    Users can download their QR Code as PNG, PDF, and SVG file formats.
                     </p>
                   </div>
                 </div>
 
-                <div className="cbox-2 process-step">
+                {/* <div className="cbox-2 process-step">
                   <div className="ico-wrap">
                     <div className="cbox-2-ico bg--theme color--white">5</div>
                   </div>
@@ -111,7 +110,7 @@ const BlogSection = () => {
                       includes their QR code, photo, and other relevant details.{" "}
                     </p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

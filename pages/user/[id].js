@@ -126,7 +126,7 @@ const FormDataComponent = () => {
           <div className="card">
             <div className="rounded-top  d-flex flex-row ">
               <div className="ms-4 mt-5 d-flex flex-column imgcontainer" >
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp" alt="Generic placeholder image" className="img-fluid img-thumbnail mt-4 mb-2" />
+                <img src="/assets/images/man.png" alt="Generic placeholder image" className="img-fluid img-thumbnail mt-4 mb-2" />
                 
               </div>
               
@@ -145,16 +145,16 @@ const FormDataComponent = () => {
              
             </div>
             <div className="p-4 text-black bgf8f9fa" >
-              <div className="d-flex justify-content-between text-center py-1">
-                <div>
+              <div className="d-flex justify-content-between text-center py-1 responsive-column">
+                <div className="main-view mb-4">
                   <p className="mb-1 h5">Covid19 Tested</p>
                   <p className="small text-muted mb-0">{formData.Covid19Tested || "N/A"}</p>
                 </div>
-                <div className="px-3">
+                <div className="main-view mb-4">
                   <p className="mb-1 h5">Covid19vaccinated </p>
                   <p className="small text-muted mb-0">{formData.Covid19vaccinated || "N/A"}</p>
                 </div>
-                <div>
+                <div className="main-view mb-4">
                   <p className="mb-1 h5">Insurance Company</p>
                   <p className="small text-muted mb-0">{formData.InsuranceProvider || "N/A"}</p>
                 </div>
@@ -200,7 +200,7 @@ const FormDataComponent = () => {
                      <p className="text-muted">{formData.county || "N/A"} {formData.zipCode || "N/A"}</p>
                    </div>
 
-                   <QRCodeWithLogoComponent value={qrCodeValue} width="200" />
+                   {/* <QRCodeWithLogoComponent value={qrCodeValue} width="200" /> */}
                     
                   </div>
                
