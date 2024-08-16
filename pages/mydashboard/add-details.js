@@ -18,6 +18,8 @@ const generateUserId = () => {
   return userId;
 };
 
+import { useRouter } from "next/router";
+
 const validationSchema = yup.object({
   firstName: yup.string().required('First Name is required'),
   lastName: yup.string().required('Last Name is required'),
@@ -36,6 +38,7 @@ const validationSchema = yup.object({
 
 const Form = () => {
   const userData = useUserData();
+  const router = useRouter();
 
   const formik = useFormik({
     initialValues: {
@@ -59,14 +62,16 @@ const Form = () => {
       console.log('Data to submit:', values);
       try {
         const response = await axios.post('/api/Auth/submitForm', values);
-        console.log('Response:', response.data);
+        
         toast.success('Form submitted successfully!');
+        router.push('/mydashboard')
         resetForm({
           values: {
             ...values,
             userId: generateUserId(),
             email: userData.user.email,
           },
+          
         });
       } catch (error) {
         console.error('Error submitting form:', error);

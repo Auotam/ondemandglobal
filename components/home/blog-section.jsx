@@ -93,6 +93,10 @@ const BlogSection = () => {
                     Users can download their QR Code as PNG, PDF, and SVG file formats.
                     </p>
                   </div>
+                  
+                  <div>
+                  <a>Get Started For Free</a>
+                  </div>
                 </div>
 
                 {/* <div className="cbox-2 process-step">

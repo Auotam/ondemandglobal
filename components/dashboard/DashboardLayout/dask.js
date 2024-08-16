@@ -250,17 +250,8 @@ const Dask = () => {
                   <div className="paddingDonut w-100">
                     <Doughnut data={doughnutData} />
                   </div>
-                  <p className="text-center mb-10 text-dark w-100">
-                    QR Code Expiration
-                  </p>
-                  <div className="d-flex justify-content-center">
-                    <img src="/assets/images/qr-code.png" alt="QR Code" />
-                  </div>
-                  <p className="text-center text-sm mt-20">
-                    <a href={`https://ondemand.global/user/${emailParts[0]}-${formData.userId}`}>
-                      View QR Code
-                    </a>
-                  </p>
+                  
+                  
                 </div>
               </div>
             </div>

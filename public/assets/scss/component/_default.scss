@@ -16340,11 +16340,11 @@ h6,
 
 .main-wrapper {
   transition: all 0.3s ease-out 0s;
-  margin-left: 139px;
+  margin-left: 207px;
   min-height: 100vh;
   padding-bottom: 85px;
   position: relative;
-  width: calc(100% - 42px);
+  width: calc(100% - 151px);
 }
 .mobile-head { display: none;}
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
@@ -16359,6 +16359,7 @@ h6,
 @media (max-width: 767px) {
   .main-wrapper {
     padding-bottom: 110px;
+    margin-left: 0;
   }
 }
 .main-wrapper.active {

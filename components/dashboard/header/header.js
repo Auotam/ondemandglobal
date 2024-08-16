@@ -17,7 +17,7 @@ const Header = () => {
 
   const logout = () => {
     Cookies.remove('token');
-    Router.push('/');
+    Router.push('/login');
     toast.success('Logged out successfully');
   };
 
