@@ -59,7 +59,7 @@ export default async function handler(req, res) {
 async function sendConfirmationEmail(email) {
   try {
     await transporter.sendMail({
-      from: 'your-email@gmail.com',
+      from: 'delivery@auotam.com',
       to: email,
       subject: 'Welcome to On Demand Global!',
       text: 'Thank you for choosing On Demand Global.',

@@ -148,7 +148,7 @@ const Dask = () => {
         <div className="container-fluid">
           <div className="title-wrapper pt-30 mb-10">
             <div className="row align-items-center">
-              <ol className="breadcrumb">
+              <ol className="breadcrumb breadcrumb flex-end justify-content-end align-items-end">
                 <li className="breadcrumb-item">
                   <a href="#">Dashboard</a>
                 </li>
