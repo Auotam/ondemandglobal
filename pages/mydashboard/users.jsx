@@ -4,6 +4,9 @@ import useUserData from "@/utils/UseUserdata";
 import Daskqr from "@/components/qrpage/dashqr";
 import dayjs from "dayjs";
 import { Doughnut, Line } from "react-chartjs-2";
+import Layout from "@/components/dashboard/layout";
+import Wrapper from "@/layout/wrapper";
+import SEO from "@/components/seo";
 import {
   Chart as ChartJS,
   LineElement,
@@ -162,7 +165,11 @@ const Dask = () => {
 
   return (
 
+    
     <>
+      <Wrapper>
+      <SEO pageTitle={'OnDemand'} />
+      <Layout>
 
     {userData.user.role === 'admin'?
     
@@ -171,7 +178,7 @@ const Dask = () => {
         <div className="container-fluid">
           <div className="title-wrapper pt-30 mb-10">
             <div className="row align-items-center"></div>
-            <UsersTable onFetchUserDetails={handleFetchUserDetails} />
+            <Alldata onFetchUserDetails={handleFetchUserDetails} />
             {isPanelOpen && (
         <div className="sliding-panel">
           <button className="close-btn" onClick={handleClosePanel}>X</button>
@@ -182,6 +189,7 @@ const Dask = () => {
     </div>
     </section>
     </main>
+    
     
     
     
@@ -301,6 +309,9 @@ const Dask = () => {
         </div>
       </section>
     </main>}
+
+    </Layout>
+    </Wrapper>
 
     </>
   );

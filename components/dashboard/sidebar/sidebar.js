@@ -8,6 +8,7 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import HelpIcon from '@mui/icons-material/Help';
 import axios from 'axios';
 import useUserData from "@/utils/UseUserdata";
+import { People } from '@mui/icons-material';
 
 const Sidebar = () => {
   const [formData, setFormData] = useState(null);
@@ -15,6 +16,8 @@ const Sidebar = () => {
   const [error, setError] = useState(null);
   const router = useRouter();
   const userData = useUserData();
+
+  console.log(userData)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,8 +44,14 @@ const Sidebar = () => {
     }
   }, [userData]);
 
-  // Define navigation items with href, text, and icon
-  const navItems = [
+  // Define navigation items for admin and user roles
+  const adminNavItems = [
+    { href: '/mydashboard/', text: 'Dashboard', icon: <DashboardIcon /> },
+    { href: '/mydashboard/users', text: 'Users', icon: <People /> },
+
+  ];
+
+  const userNavItems = [
     { href: '/mydashboard', text: 'Dashboard', icon: <DashboardIcon /> },
     { href: '/mydashboard/qr-management', text: 'QR Code Management', icon: <QrCodeIcon /> },
     { href: '/mydashboard/billing', text: 'Subscription & Billing', icon: <CardMembershipIcon /> },
@@ -59,7 +68,7 @@ const Sidebar = () => {
     return <div>Loading...</div>;
   }
 
-  if (!formData) {
+  if (!formData && userData.user.role !== 'admin') { // Show Add Details link only for non-admin users
     return (
       <aside className="sidebar-nav-wrapper">
         <div className="navbar-logo">
@@ -69,10 +78,9 @@ const Sidebar = () => {
         </div>
         <nav className="sidebar-nav">
           <ul>
-            <li className={`nav-item ${isActiveLink('mydashboard/add-details') ? 'active' : ''}`}>
-              <Link href="/add-details">
+            <li className={`nav-item ${isActiveLink('/mydashboard/add-details') ? 'active' : ''}`}>
+              <Link href="/mydashboard/add-details">
                 <a>
-             
                   <span className="text">Add Details</span>
                 </a>
               </Link>
@@ -82,6 +90,10 @@ const Sidebar = () => {
       </aside>
     );
   }
+
+  // Determine the appropriate navigation items based on the user role
+  const navItems = userData.user.role === 'admin' ? adminNavItems : userNavItems;
+  console.log(userData.user.role )
 
   return (
     <aside className="sidebar-nav-wrapper">

@@ -18749,3 +18749,41 @@ h3 {
   }
   .profile-info image{ display: none;}
 }
+
+
+/* CSS for the sliding panel */
+.sliding-panel {
+  position: fixed;
+  top: 90px;
+  right: 0;
+  width: 50%; /* Adjust as needed */
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  transform: translateX(0); /* Panel is visible */
+  z-index: 1000;
+}
+
+.sliding-panel.hidden {
+  transform: translateX(100%); /* Panel is hidden */
+}
+
+.light-theme { background-color: #fff;}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

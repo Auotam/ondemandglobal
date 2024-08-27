@@ -58,7 +58,7 @@ export default function Home() {
     e.preventDefault();
 
     try {
-      const res = await login_user(formData);
+    const res = await login_user(formData);
       console.log("form data on login", formData);
       if (res.success) {
         toast.success(res.message);
@@ -66,7 +66,10 @@ export default function Home() {
         Cookies.set("token", res.token);
 
         setTimeout(() => {
-          if ( !formData) {
+          // Check if user role is admin
+          if (res.user && res.user.role === 'admin') {
+            router.push("/mydashboard/ondemandadmin");
+          } else if (!formData) {
             router.push("/mydashboard/add-details");
           } else {
             router.push("/mydashboard");
