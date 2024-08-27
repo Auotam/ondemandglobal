@@ -112,11 +112,11 @@ const UserTable = ({ onFetchUserDetails }) => {
       </div>
 
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-        <div style={{ flex: 1, marginRight: '20px', height: '500px' }}>
+        <div style={{ flex: 1, marginRight: '20px', height: '300px' }}>
           <h2 className='mb-10'>User Logins Per Day</h2>
           <Bar className="light-theme" data={barChartData} options={{ responsive: true, maintainAspectRatio: false }} />
         </div>
-        <div style={{ flex: 1, height: '500px' }}>
+        <div style={{ flex: 1, height: '300px' }}>
           <h2 className='mb-10'>User Distribution</h2>
           <Doughnut className="light-theme"  data={donutChartData} options={{ responsive: true, maintainAspectRatio: false }} />
         </div>
